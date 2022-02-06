@@ -1,0 +1,9 @@
+.top-bar{
+  background: #121212;
+  &__container{
+    margin: 0 auto;
+    max-width: 1110px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
