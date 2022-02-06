@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "./components/header/header";
 
-import {Link, HashRouter as Router, Route} from "react-router-dom";
+/*import {Link, HashRouter as Router, Route} from "react-router-dom";*/
 
 import './App.scss';
 
