@@ -1,0 +1,31 @@
+.nav{
+  margin: 0 auto;
+  max-width: 1110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__logo{
+  }
+  &__list{
+    display: flex;
+    align-items: center;
+  }
+  &__item{
+    padding: 25px 16px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #121212;
+    list-style-type: none;
+  }
+  &__block{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+  }
+  &__ico{
+    padding-left: 27px;
+  }
+}
