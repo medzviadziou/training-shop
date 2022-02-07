@@ -31,4 +31,10 @@
     font-weight: 500;
     opacity: 0.9;
   }
+  &__line{
+    margin-top: -2px;
+    height: 2px;
+    border: none;
+    background: #F8F8F8;
+  }
 }

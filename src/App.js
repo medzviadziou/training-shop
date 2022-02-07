@@ -4,6 +4,7 @@ import Preview from "./components/preview/preview";
 
 import './App.scss';
 import Advantage from "./components/advantage/advantage";
+import Catalog from "./components/catalog/catalog";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header/>
       <Preview />
       <Advantage />
+      <Catalog name="Men"/>
     </section>
   );
 }

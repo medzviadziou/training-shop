@@ -1,25 +1,33 @@
 import React from 'react';
 
-import slider from './img/preview_slider.jpg'
 import women from './img/preview_women.jpg'
 import men from './img/preview_men.jpg'
 import accessories from './img/preview_accessories.jpg'
 
 import './preview.scss'
-
+import Slider from "../slider/slider";
 
 
 const Preview = () => {
     return (
         <div className='preview'>
             <div className='preview__wrap'>
-            <img className='preview__slider' src={slider} alt="slider"/>
-            <img src={women} alt="women"/>
-            <img src={men} alt="men"/>
-            <img className='preview__accessories' src={accessories} alt="accessories"/>
+                <div className='preview__slider'><Slider/></div>
+                <div className='preview__item'>
+                    <img src={women} alt="women"/>
+                    <span className="preview__banner">Women</span>
+                </div>
+                <div className='preview__item'>
+                    <img src={men} alt="men"/>
+                    <span className="preview__banner">Men</span>
+                </div>
+                <div className='preview__item preview__accessories'>
+                    <img src={accessories} alt="accessories"/>
+                    <span className="preview__banner">Accessories</span>
+                </div>
             </div>
         </div>
-    );
+);
 };
 
 export default Preview;
