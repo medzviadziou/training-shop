@@ -1,0 +1,99 @@
+.subscribe {
+  background: linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%);
+
+  &__wrap {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  &__block {
+    box-sizing: content-box;
+    margin: 60px 0;
+    padding: 80px 95px 96px 96px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+
+  }
+  &__title{
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+    opacity: 0.4;
+  }
+  &__text{
+    padding-top: 16px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+  &__text--color{
+    color: #E91E63;
+  }
+
+  &__button {
+    margin-top: 24px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.9;
+    background: #121212;
+    border: 2px solid #121212;
+    box-sizing: border-box;
+  }
+
+  &__input {
+    margin-top: 32px;
+    height: 64px;
+    background: #F8F8F8;
+    border: none;
+    &::placeholder{
+      font-family: 'Spartan', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      color: #121212;
+      opacity: 0.4;
+    }
+  }
+
+  &__img {
+    position: absolute;
+  }
+
+  &__img--left {
+    left: 40px;
+    bottom: -38px;
+  }
+
+  &__img--right {
+    right: 105px;
+    bottom: 11px;
+  }
+}

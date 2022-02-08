@@ -7,7 +7,7 @@ import "./top-bar.scss"
 const TopBar = () => {
     return (
         <div className='top-bar'>
-            <div className='top-bar__container'>
+            <div className='top-bar__wrap contain'>
                 <Visit />
                 <Social />
             </div>

@@ -1,17 +1,19 @@
-.advantage{
-  margin: 0 auto;
-  padding: 32px 0;
-  max-width: 1110px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  &__block{
+.advantage {
+  border-bottom: 2px solid #F8F8F8;
+  &__wrap {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+  &__block {
     display: flex;
   }
-  &__img{
+  &__img {
     margin-right: 8px;
   }
-  &__description{
+  &__description {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -20,18 +22,18 @@
     font-size: 12px;
     color: #121212;
   }
-  &__title{
+  &__title {
     font-weight: 600;
     display: flex;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 
   }
-  &__text{
+  &__text {
     font-weight: 500;
     opacity: 0.9;
   }
-  &__line{
+  &__line {
     margin-top: -2px;
     height: 2px;
     border: none;

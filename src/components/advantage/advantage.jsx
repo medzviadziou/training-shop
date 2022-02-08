@@ -8,8 +8,8 @@ import './advantage.scss'
 
 const Advantage = () => {
     return (
-        <div>
-            <div className='advantage'>
+        <div className='advantage'>
+            <div className='advantage__wrap contain'>
                 <div className='advantage__block'>
                     <img className='advantage__img' src={truck} alt="" width='40' height='40'/>
                     <div className='advantage__description'>
@@ -32,7 +32,6 @@ const Advantage = () => {
                     </div>
                 </div>
             </div>
-            <hr className='advantage__line'/>
         </div>
     );
 };

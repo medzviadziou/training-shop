@@ -1,8 +1,6 @@
 .top-bar{
   background: #121212;
-  &__container{
-    margin: 0 auto;
-    max-width: 1110px;
+  &__wrap{
     display: flex;
     justify-content: space-between;
   }

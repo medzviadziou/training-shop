@@ -1,11 +1,4 @@
 .nav{
-  margin: 0 auto;
-  max-width: 1110px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &__logo{
-  }
   &__list{
     display: flex;
     align-items: center;
@@ -20,12 +13,4 @@
     color: #121212;
     list-style-type: none;
   }
-  &__block{
-    display: flex;
-    align-items: center;
-    list-style-type: none;
   }
-  &__ico{
-    padding-left: 27px;
-  }
-}

@@ -11,6 +11,7 @@
     position: absolute;
     top: calc(50% - 20px);
     z-index: 4;
+    border: none;
     cursor: pointer;
     transition: 0.1s ease-in-out;
     &:hover {

@@ -1,0 +1,41 @@
+.panel {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  &__logo{
+object-fit: contain;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+  }
+
+  &__ico {
+    padding-left: 27px;
+  }
+
+  &__cart {
+    position: relative;
+
+    &::before {
+      content: "2";
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      bottom: 50%;
+      right: -10px;
+      text-align: center;
+      font-family: 'Spartan', sans-serif;
+      font-weight: bold;
+      font-size: 9px;
+      line-height: 18px;
+      color: #fff;
+      background: #121212;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+      z-index: 4;
+    }
+  }
+}

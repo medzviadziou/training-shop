@@ -11,7 +11,7 @@ import Slider from "../slider/slider";
 const Preview = () => {
     return (
         <div className='preview'>
-            <div className='preview__wrap'>
+            <div className='preview__wrap contain'>
                 <div className='preview__slider'><Slider/></div>
                 <div className='preview__item'>
                     <img src={women} alt="women"/>
@@ -21,7 +21,7 @@ const Preview = () => {
                     <img src={men} alt="men"/>
                     <span className="preview__banner">Men</span>
                 </div>
-                <div className='preview__item preview__accessories'>
+                <div className='preview__item preview__big'>
                     <img src={accessories} alt="accessories"/>
                     <span className="preview__banner">Accessories</span>
                 </div>
