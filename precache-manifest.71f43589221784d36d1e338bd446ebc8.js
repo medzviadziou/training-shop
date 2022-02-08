@@ -1,27 +1,59 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5408599d2ca5a225ccf2de6ebeaed31f",
+    "revision": "34c8ed2f9ca70b36f4b54d75e98ab52a",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "17b20c2705cde71e1210",
-    "url": "/training-shop/static/css/main.70a96721.chunk.css"
+    "revision": "1853dbeef96c1f45c087",
+    "url": "/training-shop/static/css/main.b753f4ad.chunk.css"
   },
   {
-    "revision": "34b689c880b0c349f19d",
-    "url": "/training-shop/static/js/2.b16c5408.chunk.js"
+    "revision": "b8cb28a6850d57bcdad2",
+    "url": "/training-shop/static/js/2.52c8e6a5.chunk.js"
   },
   {
     "revision": "fb6fca4f0fa26a7e27d26480a74532c9",
-    "url": "/training-shop/static/js/2.b16c5408.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.52c8e6a5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17b20c2705cde71e1210",
-    "url": "/training-shop/static/js/main.03767453.chunk.js"
+    "revision": "1853dbeef96c1f45c087",
+    "url": "/training-shop/static/js/main.30050885.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
     "url": "/training-shop/static/js/runtime-main.461599c6.js"
+  },
+  {
+    "revision": "c1f131f975b453bad5489859aedde13d",
+    "url": "/training-shop/static/media/1.c1f131f9.jpg"
+  },
+  {
+    "revision": "0dcfb7dacece93d4aae9c2ec621b82df",
+    "url": "/training-shop/static/media/2.0dcfb7da.jpg"
+  },
+  {
+    "revision": "6254640ba06450967862ca03fe550f9e",
+    "url": "/training-shop/static/media/3.6254640b.jpg"
+  },
+  {
+    "revision": "39ed0835b340bd7e0d619e6c390a09c6",
+    "url": "/training-shop/static/media/4.39ed0835.jpg"
+  },
+  {
+    "revision": "747896832984bb92f6dd6e3c12975d30",
+    "url": "/training-shop/static/media/5.74789683.jpg"
+  },
+  {
+    "revision": "7b07c879f305a977e0066619fc734d91",
+    "url": "/training-shop/static/media/6.7b07c879.jpg"
+  },
+  {
+    "revision": "8a950dcf1a5e38302544f9eb670aa065",
+    "url": "/training-shop/static/media/7.8a950dcf.jpg"
+  },
+  {
+    "revision": "b5c3660d16da401160f1052f169804f8",
+    "url": "/training-shop/static/media/8.b5c3660d.jpg"
   },
   {
     "revision": "278ce0e7c60a72f2dad853993a47388f",
@@ -50,6 +82,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2af24722870868a5e0f6b792ed71109f",
     "url": "/training-shop/static/media/logo.2af24722.svg"
+  },
+  {
+    "revision": "2af574df6df02a4cd4b22ba52d0a6913",
+    "url": "/training-shop/static/media/men_right.2af574df.png"
+  },
+  {
+    "revision": "034d3ec5ee9d8da6222236008160320a",
+    "url": "/training-shop/static/media/new.034d3ec5.jpg"
   },
   {
     "revision": "440b7628ff09259602cef2f320e136e2",
@@ -84,6 +124,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/refresh.413a338f.svg"
   },
   {
+    "revision": "a5aab770d9b04eb42656186a1dd23792",
+    "url": "/training-shop/static/media/sale.a5aab770.jpg"
+  },
+  {
     "revision": "4c728ef62bbf8080cb04e7e84ca5c382",
     "url": "/training-shop/static/media/search.4c728ef6.svg"
   },
@@ -106,5 +150,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "81378b8faa6dd352fe95d777281e408f",
     "url": "/training-shop/static/media/user.81378b8f.svg"
+  },
+  {
+    "revision": "5916ff11630455658e0306a7bb78999a",
+    "url": "/training-shop/static/media/women_left.5916ff11.png"
   }
 ]);
