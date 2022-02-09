@@ -12,6 +12,10 @@
   }
   &__item {
     position: relative;
+    &--big{
+      grid-column: 2/4;
+      grid-row: 2/ 3;
+    }
   }
   &__banner{
     min-width: 118px;
@@ -30,10 +34,7 @@
     color: #121212;
     background-color: #FFFFFF;
     border-radius: 4px;
-    &--big{
-    grid-column: 2/4;
-    grid-row: 2/ 3;
-  }
+
   }
 
 }

@@ -8,6 +8,11 @@ a{
   text-decoration:none;
   color: inherit;
 }
+img{
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
 
 .contain {
   max-width: 1140px;
