@@ -1,8 +1,8 @@
 import React from 'react';
-import TopBar from "../top-bar/top-bar";
-
 import './header.scss'
-import Panel from "../panel/panel";
+
+import TopBar from "../top-bar";
+import Panel from "../panel";
 
 const Header = () => {
     return (

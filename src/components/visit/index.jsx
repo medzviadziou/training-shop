@@ -1,11 +1,9 @@
 import React from 'react';
+import './visit.scss'
 
 import phone from "./img/phone.svg"
 import location from "./img/location.svg"
 import clock from "./img/clock.svg"
-
-import './visit.scss'
-
 
 const Visit = () => {
     return (

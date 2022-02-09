@@ -1,0 +1,32 @@
+.info{
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  &__block li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Spartan',sans-serif;
+    list-style-type: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 34px;
+    color: #121212;
+    opacity: 0.8;
+  }
+  &__block img{
+    padding-right: 8px;
+  }
+  &__title{
+    padding-bottom: 8px;
+    font-family: 'Spartan',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+}

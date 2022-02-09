@@ -1,12 +1,12 @@
 import React from 'react';
 
+import './advantage.scss'
+
 import truck from './img/truck.svg'
 import refresh from './img/refresh.svg'
 import support from './img/support.svg'
 
-import './advantage.scss'
-
-const Advantage = () => {
+const Advantage= () => {
     return (
         <div className='advantage'>
             <div className='advantage__wrap contain'>

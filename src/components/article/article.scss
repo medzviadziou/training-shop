@@ -1,0 +1,34 @@
+.article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__banner {
+    margin: -56px 24px 44px 24px;
+    background: #FFFFFF;
+  }
+
+  &__title {
+    padding: 24px 16px 12px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  &__text {
+    padding: 0 16px 52px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,24 @@
+.reference{
+  background: #F8F8F8;
+  &__wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__text{
+    padding: 9px 0;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 22px;
+    color: #121212;
+    opacity: 0.8;
+    &--underline{
+      text-decoration: underline;
+    }
+  }
+  &__img{
+    padding: 0 6px;
+  }
+}

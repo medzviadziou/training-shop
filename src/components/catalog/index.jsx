@@ -1,6 +1,8 @@
 import React from 'react';
 import './catalog.scss'
-import '../../data/catalog'
+import '../../data/womenCatalog'
+
+
 
 const Catalog = (props) => {
 

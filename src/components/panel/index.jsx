@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from "../nav/img/logo.svg";
-import search from "../nav/img/search.svg";
-import globe from "../nav/img/globe.svg";
-import user from "../nav/img/user.svg";
-import cart from "../nav/img/cart.svg";
-import Nav from "../nav/nav";
-
 import './panel.scss'
+
+import logo from "./img/logo.svg";
+import search from "./img/search.svg";
+import globe from "./img/globe.svg";
+import user from "./img/user.svg";
+import cart from "./img/cart.svg";
+
+import Nav from "../nav";
+
 
 const Panel = () => {
     return (

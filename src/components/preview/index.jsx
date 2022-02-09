@@ -1,12 +1,11 @@
 import React from 'react';
+import './preview.scss'
 
 import women from './img/preview_women.jpg'
 import men from './img/preview_men.jpg'
 import accessories from './img/preview_accessories.jpg'
 
-import './preview.scss'
-import Slider from "../slider/slider";
-
+import Slider from "../slider";
 
 const Preview = () => {
     return (
