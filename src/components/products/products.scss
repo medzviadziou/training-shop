@@ -1,5 +1,24 @@
 .products{
-  display: grid;
-  grid-template-columns: repeat(4,1fr) ;
-  gap: 30px;
+
+  &__grid{
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4,255px) ;
+    grid-gap: 30px;
+  }
+  &__button{
+    width: 100%;
+    margin-top: 48px;
+    padding: 18px 15px 16px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    align-items: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+   opacity: 0.8;
+  }
 }

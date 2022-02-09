@@ -43,10 +43,11 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #121212;
-  }
-  &__text--color{
+    &--color{
     color: #E91E63;
   }
+  }
+
 
   &__button {
     margin-top: 24px;

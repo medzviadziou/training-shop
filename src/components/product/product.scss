@@ -1,0 +1,28 @@
+.product{
+  &__info{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title{
+    padding-top: 16px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #121212;
+    opacity: 0.6;
+  }
+  &__price{
+    padding-top: 12px;
+    font-family: 'Spartan', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #121212;
+  }
+  &__star{
+    padding-left: 3px;
+  }
+}

@@ -21,7 +21,7 @@ const Preview = () => {
                     <img src={men} alt="men"/>
                     <span className="preview__banner">Men</span>
                 </div>
-                <div className='preview__item preview__big'>
+                <div className='preview__item preview--big'>
                     <img src={accessories} alt="accessories"/>
                     <span className="preview__banner">Accessories</span>
                 </div>

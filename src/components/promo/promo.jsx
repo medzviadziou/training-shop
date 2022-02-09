@@ -18,7 +18,7 @@ const Promo = () => {
                 <img className='promo__img' src={sale} alt="sale"/>
                 <div className="promo__banner">
                     <h3 className="promo__title">Sale</h3>
-                    <p className="promo__text">Get UP to <span className="promo__text--color">50% off</span></p>
+                    <p className="promo__text">Get UP to <span className="promo__text promo__text--color">50% off</span></p>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ const Subscribe = () => {
             <div className='subscribe__wrap contain'>
                 <div className='subscribe__block'>
                     <h3 className='subscribe__title'>Special Offer</h3>
-                    <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text--color'>Get 10% Off</span></p>
+                    <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text subscribe__text--color'>Get 10% Off</span></p>
                     <input className='subscribe__input' placeholder='Enter your email'/>
                     <button className='subscribe__button' type='button'>Subscribe</button>
                 </div>
