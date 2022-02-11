@@ -9,7 +9,7 @@ import prev from './img/previous.svg'
 const Slider = () => {
     return (
         <div className='slider'>
-            <img className='slider__img' src={slider} alt="slider"/>
+            <figure><img className='slider__img' src={slider} alt="slider"/></figure>
             <button className='slider__arrow slider__arrow-prev'><img src={prev} alt="previous"/></button>
             <button className='slider__arrow slider__arrow-next'><img src={next} alt="next"/></button>
             <div className="slider__banner">

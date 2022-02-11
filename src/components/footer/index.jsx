@@ -5,7 +5,7 @@ import Info from "../info";
 
 const Footer = () => {
     return (
-        <footer className='footer'>
+        <footer className='footer' data-test-id='footer'>
             <Contacts/>
             <Info/>
             <Reference/>

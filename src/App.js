@@ -11,7 +11,7 @@ import ProductsPage from "./pages/products-page";
 function App() {
     return (
 
-        <section className="app">
+        <section className="app" data-test-id='app'>
             <Header/>
             <Routes>
                 <Route index element={<MainPage/>}/>

@@ -1,7 +1,6 @@
 .visit {
-  padding-top: 5px;
-  padding-bottom: 5px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   font-family: 'Spartan', sans-serif;
   font-style: normal;
@@ -10,18 +9,26 @@
   line-height: 12px;
   color: #FFFFFF;
   opacity: 0.8;
+  @media (max-width: 576px){
+    justify-content: center;
+  }
 
   &__item {
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
     align-items: center;
     padding-right: 30px;
-  }
+    }
 
   &__address {
     padding-right: 20px;
     font-family: 'Inter', sans-serif;
     line-height: 13px;
     letter-spacing: 0.03em;
+    @media (max-width: 576px){
+      padding-right: 0;
+    }
   }
 
   &__img {

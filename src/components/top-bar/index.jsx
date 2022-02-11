@@ -9,7 +9,7 @@ const TopBar = () => {
         <div className='top-bar'>
             <div className='top-bar__wrap contain'>
                 <Visit/>
-                <Social size='12'/>
+                <Social size='14'/>
             </div>
         </div>
     );

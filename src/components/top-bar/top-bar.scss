@@ -3,5 +3,9 @@
   &__wrap{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    @media (max-width: 576px){
+            justify-content: center;
+    }
   }
 }

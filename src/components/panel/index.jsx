@@ -14,8 +14,8 @@ import Nav from "../nav";
 const Panel = () => {
     return (
         <div className='panel contain'>
-            <Link to="/" className='header-nav-logo' data-test-id='header-logo-link'><img className='panel__logo' src={logo} alt="CleverShop"/></Link>
-            <Nav/>
+            <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo} alt="CleverShop"/></Link>
+            <Nav className='panel__nav' />
             <ul className='panel__block'>
                 <li className='panel__ico'><img src={search} alt="search"/></li>
                 <li className='panel__ico'><img src={globe} alt="globe"/></li>

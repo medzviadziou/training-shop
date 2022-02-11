@@ -6,7 +6,7 @@ import Panel from "../panel";
 
 const Header = () => {
     return (
-        <header className='header'>
+        <header className='header' data-test-id='header'>
             <TopBar/>
             <Panel/>
         </header>
