@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "12b4dca4a6ce2aa16fe8f9c35339da12",
+    "revision": "9be4bcb417140485ade1402f01afe808",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "f7a85d9ccca66ad424ba",
-    "url": "/training-shop/static/css/main.d72cb1c4.chunk.css"
+    "revision": "20fb6e26d803d2a5dff2",
+    "url": "/training-shop/static/css/main.5c465992.chunk.css"
   },
   {
     "revision": "f50598c0c39da6cf875e",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/js/2.fc607255.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f7a85d9ccca66ad424ba",
-    "url": "/training-shop/static/js/main.cf6d352b.chunk.js"
+    "revision": "20fb6e26d803d2a5dff2",
+    "url": "/training-shop/static/js/main.c1299c21.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -100,36 +100,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/8.ca34ad10.jpg"
   },
   {
-    "revision": "278ce0e7c60a72f2dad853993a47388f",
-    "url": "/training-shop/static/media/cart.278ce0e7.svg"
-  },
-  {
-    "revision": "7740b019335207ecdee1c0ae28d10cc2",
-    "url": "/training-shop/static/media/clock.7740b019.svg"
+    "revision": "e4a38bcfcfd139774dcb5ba6ec614f28",
+    "url": "/training-shop/static/media/cart.e4a38bcf.svg"
   },
   {
     "revision": "80e8116afe30c9d5ed2f416a436c76ed",
     "url": "/training-shop/static/media/clock.80e8116a.svg"
   },
   {
-    "revision": "c27e33a0f535dd256ace6e0b5cf5f63d",
-    "url": "/training-shop/static/media/facebook.c27e33a0.svg"
+    "revision": "f2424f95f872fcbd4a220c74c5ac04a8",
+    "url": "/training-shop/static/media/clock.f2424f95.svg"
   },
   {
-    "revision": "40915ca3f04f2261f78d1cf27d631fb6",
-    "url": "/training-shop/static/media/globe.40915ca3.svg"
+    "revision": "9dc99b20a10f427562e1f0cc2b863493",
+    "url": "/training-shop/static/media/facebook.9dc99b20.svg"
   },
   {
-    "revision": "7113ea34142b95ad119e20041550d963",
-    "url": "/training-shop/static/media/instagram.7113ea34.svg"
+    "revision": "43473a8a1d9da7907f8224f582730cd5",
+    "url": "/training-shop/static/media/globe.43473a8a.svg"
   },
   {
-    "revision": "5215ab224f7290074f24ea8a5a92b55a",
-    "url": "/training-shop/static/media/location.5215ab22.svg"
+    "revision": "455e959b5a6fe61414b2c59b47f09f97",
+    "url": "/training-shop/static/media/instagram.455e959b.svg"
   },
   {
     "revision": "a0b4069f1694c389842d7939dfcf395e",
     "url": "/training-shop/static/media/location.a0b4069f.svg"
+  },
+  {
+    "revision": "fe8ca3de644fc56f2d5d2576980863b7",
+    "url": "/training-shop/static/media/location.fe8ca3de.svg"
   },
   {
     "revision": "2af24722870868a5e0f6b792ed71109f",
@@ -152,16 +152,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/next.440b7628.svg"
   },
   {
-    "revision": "c0f3d819b1484259fa2f22fdde5953a0",
-    "url": "/training-shop/static/media/phone.c0f3d819.svg"
+    "revision": "5e7cf247242b3aba1afefcfdc586426c",
+    "url": "/training-shop/static/media/phone.5e7cf247.svg"
   },
   {
     "revision": "f02ae6ab3bc7319c72d5dafc80f836c6",
     "url": "/training-shop/static/media/phone.f02ae6ab.svg"
   },
   {
-    "revision": "a16aa5e337dadf9d19ee8760412f257e",
-    "url": "/training-shop/static/media/pinterest.a16aa5e3.svg"
+    "revision": "f5beee96eeaf910283ee5b837649a941",
+    "url": "/training-shop/static/media/pinterest.f5beee96.svg"
   },
   {
     "revision": "11d179f1363a28b6dd42de81c06b8b72",
@@ -188,8 +188,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/sale.a5aab770.jpg"
   },
   {
-    "revision": "4c728ef62bbf8080cb04e7e84ca5c382",
-    "url": "/training-shop/static/media/search.4c728ef6.svg"
+    "revision": "47615f3d3cf343f2bc48cacc10701fb0",
+    "url": "/training-shop/static/media/search.47615f3d.svg"
   },
   {
     "revision": "0e00750f921c886d5362e89b73dd3eb4",
@@ -212,12 +212,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/truck.08cd335e.svg"
   },
   {
-    "revision": "4063ebfb5a2b82ea801c32c51aab1fda",
-    "url": "/training-shop/static/media/twitter.4063ebfb.svg"
+    "revision": "ad658a6bf26c6df1157b6cb223e733eb",
+    "url": "/training-shop/static/media/twitter.ad658a6b.svg"
   },
   {
-    "revision": "81378b8faa6dd352fe95d777281e408f",
-    "url": "/training-shop/static/media/user.81378b8f.svg"
+    "revision": "3262d8bf570b9e8f9eb9ab8af03e215a",
+    "url": "/training-shop/static/media/user.3262d8bf.svg"
   },
   {
     "revision": "5916ff11630455658e0306a7bb78999a",
