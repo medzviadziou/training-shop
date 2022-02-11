@@ -1,28 +1,27 @@
 import React from 'react';
-
+import {Routes, Route} from "react-router-dom";
 import './app.scss';
 
 import Header from "./components/header";
-import Preview from "./components/preview";
-import Advantage from "./components/advantage";
-import Promo from "./components/promo";
-import Subscribe from "./components/subscribe";
-import Products from "./components/products/products";
-import Blog from "./components/blog";
 import Footer from "./components/footer";
+import MainPage from "./pages/main-page";
+import ProductsPage from "./pages/products-page";
+
 
 function App() {
     return (
+
         <section className="app">
             <Header/>
-            <Preview/>
-            <Advantage/>
-            <Products/>
-            <Promo/>
-            <Subscribe/>
-            <Blog/>
+            <Routes>
+                <Route index element={<MainPage/>}/>
+                <Route path='/women' element={<ProductsPage item='women'/>}/>
+                <Route path='/men' element={<ProductsPage item='men'/>}/>
+            </Routes>
             <Footer/>
         </section>
+
+
     );
 }
 

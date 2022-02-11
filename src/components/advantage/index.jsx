@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './advantage.scss'
 
 import truck from './img/truck.svg'

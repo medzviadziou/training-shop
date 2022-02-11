@@ -1,18 +1,19 @@
 import React from 'react';
 
 import './nav.scss'
+import {Link} from "react-router-dom";
 
 const Nav = () => {
     return (
         <nav className='nav'>
             <ul className='nav__list'>
-                <li className='nav__item'>About Us</li>
-                <li className='nav__item'>Women</li>
-                <li className='nav__item'>Men</li>
-                <li className='nav__item'>Beauty</li>
-                <li className='nav__item'>Accessories</li>
-                <li className='nav__item'>Blog</li>
-                <li className='nav__item'>Contact</li>
+                <li className='nav__item'><Link to='/'>About Us</Link></li>
+                <li className='nav__item'><Link to='/women'>Women</Link></li>
+                <li className='nav__item'><Link to='/men'>Men</Link></li>
+                <li className='nav__item'><Link to='/'>Beauty</Link></li>
+                <li className='nav__item'><Link to='/'>Accessories</Link></li>
+                <li className='nav__item'><Link to='/'>Blog</Link></li>
+                <li className='nav__item'><Link to='/'>Contact</Link></li>
             </ul>
         </nav>
     );

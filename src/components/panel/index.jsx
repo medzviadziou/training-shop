@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link,} from "react-router-dom";
 import './panel.scss'
 
 import logo from "./img/logo.svg";
@@ -13,7 +14,7 @@ import Nav from "../nav";
 const Panel = () => {
     return (
         <div className='panel contain'>
-            <img className='panel__logo' src={logo} alt="CleverShop"/>
+            <Link to="/" className='header-nav-logo' data-test-id='header-logo-link'><img className='panel__logo' src={logo} alt="CleverShop"/></Link>
             <Nav/>
             <ul className='panel__block'>
                 <li className='panel__ico'><img src={search} alt="search"/></li>
