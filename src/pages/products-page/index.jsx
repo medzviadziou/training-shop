@@ -2,12 +2,13 @@ import React from 'react';
 import womenCatalog from "../../data/womenCatalog";
 import menCatalog from "../../data/menCatalog";
 import Product from "../../components/product";
+import './products-page.scss'
 
 const ProductsPage = (props) => {
     if (props.item === 'men'){
         return (
             <div>
-                <div className='products__grid contain'>
+                <div className='products-page__grid contain'>
                     {menCatalog.map((item) => {
                         return <Product item={item} key={item.id}/>
                     })}
@@ -17,7 +18,7 @@ const ProductsPage = (props) => {
     } else {
         return (
             <div>
-                <div className='products__grid contain'>
+                <div className='products-page__grid contain'>
                     {womenCatalog.map((item) => {
                         return <Product item={item} key={item.id}/>
                     })}

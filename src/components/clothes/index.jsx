@@ -7,29 +7,29 @@ import menCatalog from "../../data/menCatalog";
 import Product from "../product";
 import Catalog from "../catalog";
 
-const Products = () => {
+const Clothes = () => {
     return (
-        <div className='products'>
+        <div className='clothes'>
             <Catalog title="WOMEN’S"/>
-            <div className='products__wrap contain'>
-                <div className='products__grid contain'>
+            <div className='clothes__wrap contain'>
+                <div className='clothes__grid contain'>
                     {womenCatalog.map((item) => {
                         return <Product item={item} key={item.id}/>
                     })}
                 </div>
-                <button className='products__button' type="button">See All</button>
+                <button className='clothes__button' type="button">See All</button>
             </div>
             <Catalog title="MEN’S"/>
-            <div className='products__wrap contain'>
-                <div className='products__grid contain'>
+            <div className='clothes__wrap contain'>
+                <div className='clothes__grid contain'>
                     {menCatalog.map((item) => {
                         return <Product item={item} key={item.id}/>
                     })}
                 </div>
-                <button className='products__button' type="button">See All</button>
+                <button className='clothes__button' type="button">See All</button>
             </div>
         </div>
     );
 };
 
-export default Products;
+export default Clothes;
