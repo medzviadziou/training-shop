@@ -19,7 +19,7 @@
 
   }
   &__title {
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -32,7 +32,7 @@
   }
   &__text {
     padding-top: 16px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 26px;
@@ -41,7 +41,6 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #121212;
-
     &--color {
       color: #E91E63;
     }
@@ -50,7 +49,7 @@
     margin-top: 24px;
     padding-top: 23px;
     padding-bottom: 23px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -66,7 +65,7 @@
   &__input {
     margin-top: 32px;
     height: 64px;
-    font-family: 'Spartan', sans-serif;
+    font-family:  var(--Spartan);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -82,6 +81,9 @@
   }
   &__img {
     position: absolute;
+    @media (max-width: 1110px){
+      display: none;
+    }
     &--left {
       left: 40px;
       bottom: -38px;

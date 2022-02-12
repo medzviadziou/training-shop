@@ -7,11 +7,14 @@
   &__banner {
     margin: -56px 24px 44px 24px;
     background: #FFFFFF;
+    @media (max-width: 768px){
+      max-width: 340px;
+    }
   }
 
   &__title {
     padding: 24px 16px 12px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -23,7 +26,7 @@
 
   &__text {
     padding: 0 16px 52px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: normal;
     font-size: 14px;

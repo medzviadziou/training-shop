@@ -1,12 +1,18 @@
 .promo{
+  margin-top: 96px;
+  margin-bottom: 96px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 
   &__block{
-    margin-top: 96px;
-    margin-bottom: 96px;
     position: relative;
+  }
+  &__img{
+    width: 100%;
   }
 
   &__banner{
@@ -16,7 +22,7 @@
     left: 50%;
     transform:translate(-50%, -50%);
     text-align: center;
-    font-family: 'Spartan', sans-serif;
+    font-family:  var(--Spartan);
     font-style: normal;
     font-weight: 600;
     border-radius: 4px;

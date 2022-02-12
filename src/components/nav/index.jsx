@@ -7,13 +7,13 @@ const Nav = () => {
     return (
         <nav className='nav'>
             <ul className='nav__list'>
-                <li className='nav__item'><Link to='/'>About Us</Link></li>
+                <li className='nav__item'><Link to='/aboutUs'>About Us</Link></li>
                 <li className='nav__item'><Link to='/women'>Women</Link></li>
                 <li className='nav__item'><Link to='/men'>Men</Link></li>
-                <li className='nav__item'><Link to='/'>Beauty</Link></li>
-                <li className='nav__item'><Link to='/'>Accessories</Link></li>
-                <li className='nav__item'><Link to='/'>Blog</Link></li>
-                <li className='nav__item'><Link to='/'>Contact</Link></li>
+                <li className='nav__item'><Link to='/beauty'>Beauty</Link></li>
+                <li className='nav__item'><Link to='/accessories'>Accessories</Link></li>
+                <li className='nav__item'><Link to='/blog'>Blog</Link></li>
+                <li className='nav__item'><Link to='/contact'>Contact</Link></li>
             </ul>
         </nav>
     );

@@ -15,17 +15,17 @@ const Preview = () => {
                 <div className='preview__block'>
                     <div className='preview__list'>
                         <div className='preview__item'>
-                        <img src={women} alt="women"/>
+                        <img className='preview__img' src={women} alt="women"/>
                         <span className="preview__banner">Women</span>
                     </div>
                         <div className='preview__item'>
-                            <img src={men} alt="men"/>
+                            <img className='preview__img' src={men} alt="men"/>
                             <span className="preview__banner">Men</span>
                         </div>
                     </div>
 
-                    <div className='preview__item'>
-                        <img src={accessories} alt="accessories"/>
+                    <div className='preview__item '>
+                        <img className='preview__img' src={accessories} alt="accessories"/>
                         <span className="preview__banner">Accessories</span>
                     </div>
                 </div>

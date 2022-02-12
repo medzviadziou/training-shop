@@ -3,11 +3,20 @@
   padding-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 576px) {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
   &__block li{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-family: 'Spartan',sans-serif;
+    font-family: var(--Spartan);
     list-style-type: none;
     font-style: normal;
     font-weight: normal;
@@ -21,7 +30,7 @@
   }
   &__title{
     padding-bottom: 8px;
-    font-family: 'Spartan',sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 12px;

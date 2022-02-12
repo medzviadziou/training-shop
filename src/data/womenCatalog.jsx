@@ -9,8 +9,8 @@ import photo8 from "./img/women/8.jpg"
 
 const womenCatalog = [
     { id:"1", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo1, star: 4, },
-    { id:"2", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo2, star: 4, },
-    { id:"3", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo3, star: 4, sale: 0.5, },
+    { id:"2", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo2, star: 4, sale: 0.5,},
+    { id:"3", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo3, star: 4, },
     { id:"4", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo4, star: 4, },
     { id:"5", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo5, star: 4, },
     { id:"6", title: 'Women\'s tracksuit Q109',  price: '$ 30.00', photo: photo6, star: 4, },

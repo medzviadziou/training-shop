@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  font-family: 'Spartan', sans-serif;
+  font-family: var(--Spartan);
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -23,7 +23,7 @@
 
   &__address {
     padding-right: 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--Inter);
     line-height: 13px;
     letter-spacing: 0.03em;
     @media (max-width: 576px){

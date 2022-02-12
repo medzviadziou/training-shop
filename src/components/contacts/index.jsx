@@ -11,7 +11,7 @@ const Contacts = () => {
                     <input className='contacts__input' placeholder="Enter your email"/>
                     <button className='contacts__button' type='reset'>Join Us</button>
                 </form>
-                <Social size='18'/>
+                <div className='contacts__social' ><Social size='18'/></div>
             </div>
 
         </div>

@@ -18,9 +18,10 @@
   &__ico {
     margin-top: 21px;
     margin-bottom: 21px;
-    padding-left: 21px;
+    margin-left: 21px;
     @media (max-width: 576px){
       margin-top: 0;
+      margin-right: 21px;
     }
 
   }
@@ -36,7 +37,7 @@
       bottom: 10px;
       right: -6px;
       text-align: center;
-      font-family: 'Spartan', sans-serif;
+      font-family: var(--Spartan);
       font-weight: bold;
       font-size: 9px;
       line-height: 18px;

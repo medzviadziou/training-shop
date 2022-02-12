@@ -4,10 +4,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 992px) {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
+
   &__title{
     padding: 19px 0 19px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -17,16 +22,26 @@
     text-transform: uppercase;
     color: #FFFFFF;
   }
+  &__form{
+    @media (max-width: 992px){
+      display: flex;
+      flex-direction: column;
+    }
+  }
   &__input{
     margin: 6px;
     padding-left: 10px;
+    padding-right: 10px;
     width: 400px;
     height: 32px;
     color: #FFFFFF;
     background: #414141;
     border: none;
-    &::placeholder{
-      font-family: 'Spartan',sans-serif;
+    @media (max-width: 992px){
+      width: initial;
+    }
+   &::placeholder{
+      font-family: var(--Spartan);
       font-style: normal;
       font-weight: 500;
       font-size: 13px;
@@ -38,7 +53,7 @@
     padding: 0 24px;
     margin: 6px;
     height: 32px;
-    font-family: 'Spartan',sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -51,5 +66,9 @@
     opacity: 0.9;
     background: #121212;
     border: 1px solid #FFFFFF;
+  }
+  &__social{
+    padding-top: 19px;
+    padding-bottom: 19px;
   }
 }

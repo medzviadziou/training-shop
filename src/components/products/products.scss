@@ -5,12 +5,18 @@
     display: grid;
     grid-template-columns: repeat(4,1fr) ;
     grid-gap: 30px;
+    @media (max-width: 992px){
+      grid-template-columns: repeat(3,1fr) ;
+    }
+    @media (max-width: 768px){
+      grid-template-columns: repeat(2,1fr) ;
+    }
   }
   &__button{
     width: 100%;
     margin-top: 48px;
     padding: 18px 15px 16px;
-    font-family: 'Spartan', sans-serif;
+    font-family:  var(--Spartan);
     font-style: normal;
     font-weight: 500;
     font-size: 13px;

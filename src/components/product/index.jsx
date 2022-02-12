@@ -14,8 +14,10 @@ const Product = (props) => {
         i=i-1
     }
 
+    const sale =(props.item.sale > 0)?' product__item--sale':""
+
     return (
-        <div className='product__item'>
+        <div className={`product__item${sale}`} >
             <img className='product__img' src={props.item.photo} alt=""/>
             <h3 className='product__title'>{props.item.title}</h3>
             <div className='product__info'>

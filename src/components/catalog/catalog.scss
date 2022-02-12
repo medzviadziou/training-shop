@@ -4,9 +4,12 @@
   &__header{
     display: flex;
     justify-content: space-between;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
   }
   &__title{
-    font-family: Spartan, sans-serif;
+    font-family:var(--Spartan);
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
@@ -17,10 +20,14 @@
   }
   &__filter{
     display: flex;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
   }
   &__sorting{
+    padding-top: 9px;
     padding-left: 32px;
-    font-family: 'Spartan', sans-serif;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: normal;
     font-size: 12px;

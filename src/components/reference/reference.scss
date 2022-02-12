@@ -1,24 +1,45 @@
-.reference{
+.reference {
   background: #F8F8F8;
-  &__wrap{
+
+  &__wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+      column-gap: 20px;
+    }
   }
-  &__text{
-    padding: 9px 0;
-    font-family: 'Spartan', sans-serif;
+
+  &__text {
+    margin: 9px 0;
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
     line-height: 22px;
     color: #121212;
     opacity: 0.8;
-    &--underline{
+
+    &--underline {
       text-decoration: underline;
     }
   }
-  &__img{
+
+  &__partner {
+    @media (max-width: 992px) {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      order: 3;
+    }
+  }
+  &__img {
     padding: 0 6px;
+    @media (max-width: 992px) {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
   }
 }
