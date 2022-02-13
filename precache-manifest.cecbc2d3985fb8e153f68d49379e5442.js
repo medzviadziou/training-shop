@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aad2e6279b3cd9d80961c3d88ff94959",
+    "revision": "0312a87fbeda72dbfe77124b0bc5045c",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "2ccc625cabab2dc08d7a",
-    "url": "/training-shop/static/css/main.cfcd042d.chunk.css"
+    "revision": "25ff71b16a8db35aaa17",
+    "url": "/training-shop/static/css/main.5d99c0e2.chunk.css"
   },
   {
-    "revision": "f50598c0c39da6cf875e",
-    "url": "/training-shop/static/js/2.fc607255.chunk.js"
+    "revision": "64723f5294250e94f2b6",
+    "url": "/training-shop/static/js/2.20bfaa25.chunk.js"
   },
   {
     "revision": "a90bb751b102ed9d8f9443a23ededd32",
-    "url": "/training-shop/static/js/2.fc607255.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.20bfaa25.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2ccc625cabab2dc08d7a",
-    "url": "/training-shop/static/js/main.51813b12.chunk.js"
+    "revision": "25ff71b16a8db35aaa17",
+    "url": "/training-shop/static/js/main.52878450.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -98,6 +98,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ca34ad10c46a326e0ca0a519210cfacf",
     "url": "/training-shop/static/media/8.ca34ad10.jpg"
+  },
+  {
+    "revision": "2ed28b96ea3477f102f04b207d8b662d",
+    "url": "/training-shop/static/media/adjustments.2ed28b96.svg"
   },
   {
     "revision": "e4a38bcfcfd139774dcb5ba6ec614f28",
@@ -192,6 +196,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/search.47615f3d.svg"
   },
   {
+    "revision": "932cf8ef2cefc4ad9cb4df0214f6bb79",
+    "url": "/training-shop/static/media/share.932cf8ef.svg"
+  },
+  {
     "revision": "0e00750f921c886d5362e89b73dd3eb4",
     "url": "/training-shop/static/media/slider.0e00750f.jpg"
   },
@@ -218,6 +226,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "3262d8bf570b9e8f9eb9ab8af03e215a",
     "url": "/training-shop/static/media/user.3262d8bf.svg"
+  },
+  {
+    "revision": "870de1401d21239fa72c41069850cdab",
+    "url": "/training-shop/static/media/view-grid.870de140.svg"
+  },
+  {
+    "revision": "837bf7493c26226c6375902316af5718",
+    "url": "/training-shop/static/media/view-list.837bf749.svg"
   },
   {
     "revision": "5916ff11630455658e0306a7bb78999a",
