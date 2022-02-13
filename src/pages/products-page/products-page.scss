@@ -1,4 +1,106 @@
 .products-page {
+  &__top {
+    background: #F8F8F8;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__share {
+    margin: 7px 0;
+  }
+
+  &__img {
+    margin-right: 8px;
+  }
+
+  &__link {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    position: relative;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    color: #121212;
+    opacity: 0.6;
+
+    &--next {
+      padding-left: 21px;
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        transform: translate(-50%, -50%);
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 3px 6px 3px 9px;
+        border-color: transparent transparent transparent #121212;;
+        z-index: 2;
+        opacity: 0.6;
+      }
+
+    }
+
+    &--active {
+      opacity: 1;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    padding-top: 10px;
+    padding-bottom: 24px;
+    text-align: center;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  &__filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+    opacity: 0.6;
+  }
+
+  &__ico {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
   &__grid {
     padding: 0;
     display: grid;
@@ -10,5 +112,11 @@
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  &__square {
+    margin: 48px 0 80px 0;
+    display: flex;
+    justify-content: center;
   }
 }
