@@ -1,8 +1,9 @@
 import React from 'react';
-import starGold from './img/star_gold.svg'
-import starGray from './img/star_gray.svg'
+import starGold from './img/ico/star_gold.svg'
+import starGray from './img/ico/star_gray.svg'
 
 import './product.scss'
+import {Link} from "react-router-dom";
 
 const Product = (props) => {
 
@@ -17,7 +18,8 @@ const Product = (props) => {
     const sale =(props.item.sale > 0)?' product__item--sale':""
 
     return (
-        <div className={`product__item${sale}`} >
+        <Link to={`/product/${props.item.id}`}>
+            <div className={`product__item${sale}`} >
             <img className='product__img' src={props.item.photo} alt=""/>
             <h3 className='product__title'>{props.item.title}</h3>
             <div className='product__info'>
@@ -31,6 +33,8 @@ const Product = (props) => {
                 </span>
             </div>
         </div>
+        </Link>
+
     );
 };
 
