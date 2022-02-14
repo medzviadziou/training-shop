@@ -13,7 +13,7 @@ import square from './img/square-loading.png'
 const ProductsPage = (props) => {
     if (props.item === 'men') {
         return (
-            <div data-test-id='clothes-men'>
+            <div data-test-id='products-page-men'>
                 <div className='products-page__top'>
                     <div className='products-page__header contain'>
                         <div className='products-page__link-list'>
@@ -41,7 +41,7 @@ const ProductsPage = (props) => {
         );
     } else {
         return (
-            <div data-test-id='clothes-women'>
+            <div data-test-id='products-page-women'>
                 <div className='products-page__top'>
                     <div className='products-page__header contain'>
                         <div className='products-page__link-list'>
