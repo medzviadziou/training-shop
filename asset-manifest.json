@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/training-shop/static/css/main.ae71892c.chunk.css",
-    "main.js": "/training-shop/static/js/main.07d487e2.chunk.js",
-    "main.js.map": "/training-shop/static/js/main.07d487e2.chunk.js.map",
+    "main.css": "/training-shop/static/css/main.2bbe059b.chunk.css",
+    "main.js": "/training-shop/static/js/main.656e3f26.chunk.js",
+    "main.js.map": "/training-shop/static/js/main.656e3f26.chunk.js.map",
     "runtime-main.js": "/training-shop/static/js/runtime-main.461599c6.js",
     "runtime-main.js.map": "/training-shop/static/js/runtime-main.461599c6.js.map",
-    "static/js/2.5d7e827c.chunk.js": "/training-shop/static/js/2.5d7e827c.chunk.js",
-    "static/js/2.5d7e827c.chunk.js.map": "/training-shop/static/js/2.5d7e827c.chunk.js.map",
+    "static/js/2.a1a2449d.chunk.js": "/training-shop/static/js/2.a1a2449d.chunk.js",
+    "static/js/2.a1a2449d.chunk.js.map": "/training-shop/static/js/2.a1a2449d.chunk.js.map",
     "index.html": "/training-shop/index.html",
-    "precache-manifest.2bc98acc27e996fe1c0937d4a03670d8.js": "/training-shop/precache-manifest.2bc98acc27e996fe1c0937d4a03670d8.js",
+    "precache-manifest.bd1ebfa221bf180f809c63443b2dd915.js": "/training-shop/precache-manifest.bd1ebfa221bf180f809c63443b2dd915.js",
     "service-worker.js": "/training-shop/service-worker.js",
-    "static/css/main.ae71892c.chunk.css.map": "/training-shop/static/css/main.ae71892c.chunk.css.map",
-    "static/js/2.5d7e827c.chunk.js.LICENSE.txt": "/training-shop/static/js/2.5d7e827c.chunk.js.LICENSE.txt",
+    "static/css/main.2bbe059b.chunk.css.map": "/training-shop/static/css/main.2bbe059b.chunk.css.map",
+    "static/js/2.a1a2449d.chunk.js.LICENSE.txt": "/training-shop/static/js/2.a1a2449d.chunk.js.LICENSE.txt",
     "static/media/-arrow.svg": "/training-shop/static/media/-arrow.ba2ba65b.svg",
     "static/media/1.jpg": "/training-shop/static/media/1.c1f131f9.jpg",
     "static/media/2.jpg": "/training-shop/static/media/2.a314226e.jpg",
@@ -25,6 +25,7 @@
     "static/media/Q109-2.jpg": "/training-shop/static/media/Q109-2.ec19c164.jpg",
     "static/media/Q109-3.jpg": "/training-shop/static/media/Q109-3.7769d8b8.jpg",
     "static/media/adjustments.svg": "/training-shop/static/media/adjustments.2ed28b96.svg",
+    "static/media/annotation.svg": "/training-shop/static/media/annotation.7e877418.svg",
     "static/media/arrow-.svg": "/training-shop/static/media/arrow-.440b7628.svg",
     "static/media/cart.svg": "/training-shop/static/media/cart.e4a38bcf.svg",
     "static/media/clock.svg": "/training-shop/static/media/clock.f2424f95.svg",
@@ -66,8 +67,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.461599c6.js",
-    "static/js/2.5d7e827c.chunk.js",
-    "static/css/main.ae71892c.chunk.css",
-    "static/js/main.07d487e2.chunk.js"
+    "static/js/2.a1a2449d.chunk.js",
+    "static/css/main.2bbe059b.chunk.css",
+    "static/js/main.656e3f26.chunk.js"
   ]
 }
