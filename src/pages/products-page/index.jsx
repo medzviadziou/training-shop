@@ -13,7 +13,7 @@ import square from './img/square-loading.png'
 const ProductsPage = (props) => {
     if (props.item === 'men') {
         return (
-            <div>
+            <div data-test-id='clothes-men'>
                 <div className='products-page__top'>
                     <div className='products-page__header contain'>
                         <div className='products-page__link-list'>
@@ -33,7 +33,7 @@ const ProductsPage = (props) => {
                 </div>
                 <div className='products-page__grid contain'>
                     {menCatalog.map((item) => {
-                        return <Product item={item} key={item.id}/>
+                        return <Product item={item}  key={item.id}/>
                     })}
                 </div>
                 <div className='products-page__square'><img src={square} alt=""/></div>
@@ -41,7 +41,7 @@ const ProductsPage = (props) => {
         );
     } else {
         return (
-            <div>
+            <div data-test-id='clothes-women'>
                 <div className='products-page__top'>
                     <div className='products-page__header contain'>
                         <div className='products-page__link-list'>

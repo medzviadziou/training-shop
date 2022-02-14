@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import share from "../products-page/img/share.svg";
 import star from '../../components/product/img/ico/star_gold.svg'
 import Product from "../../components/product";
-import relatedCatalog from "../../data/img/related";
+import relatedCatalog from "../../data/related";
 import arrowLeft from './img/ico/-arrow.svg'
 import arrowRight from './img/ico/arrow-.svg'
 import Slider from "../../components/slider";
@@ -32,9 +32,9 @@ import pay5 from './img/pay/mastercard.png'
 import pay6 from './img/pay/discover.png'
 import pay7 from './img/pay/express.png'
 
-const ProductPage = () => {
+const ProductPage = (props) => {
     return (
-        <div className='product-page'>
+        <div className='product-page' data-test-id={`product-page-${props.productType}`}>
             <div className='product-page__top'>
                 <div className='product-page__header contain'>
                     <div className='product-page__link-list'>

@@ -18,7 +18,7 @@ const Product = (props) => {
     const sale =(props.item.sale > 0)?' product__item--sale':""
 
     return (
-        <Link to={`/product/${props.item.id}`}>
+        <Link to={`/${props.item.type}/${props.item.id}`} data-test-id={`clothes-card-${props.item.type}`}>
             <div className={`product__item${sale}`} >
             <img className='product__img' src={props.item.photo} alt=""/>
             <h3 className='product__title'>{props.item.title}</h3>

@@ -9,7 +9,8 @@ import Catalog from "../catalog";
 
 const Clothes = () => {
     return (
-        <div className='clothes'>
+        <div className='clothes' >
+            <div data-test-id='clothes-women'>
             <Catalog title="WOMEN’S"/>
             <div className='clothes__wrap contain'>
                 <div className='clothes__grid contain'>
@@ -19,6 +20,8 @@ const Clothes = () => {
                 </div>
                 <button className='clothes__button' type="button">See All</button>
             </div>
+            </div>
+            <div data-test-id='clothes-men'>
             <Catalog title="MEN’S"/>
             <div className='clothes__wrap contain'>
                 <div className='clothes__grid contain'>
@@ -27,6 +30,7 @@ const Clothes = () => {
                     })}
                 </div>
                 <button className='clothes__button' type="button">See All</button>
+            </div>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@
   }
 
   &__slider {
+    position: relative;
     width: 100%;
   }
 
@@ -65,7 +66,24 @@
     color: #121212;
     background-color: #FFFFFF;
     border-radius: 4px;
+    z-index: 4;
+    &--slider{
+      padding: 24px 32px;
+         }
+  }
 
+
+
+  &__title{
+    font-size: 12px;
+    line-height: 13px;
+    opacity: 0.4;
+  }
+  &__text{
+    padding-top: 14px;
+    white-space: pre;
+    font-size: 22px;
+    line-height: 25px;
   }
 
 }

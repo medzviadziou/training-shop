@@ -1,7 +1,7 @@
-import photo1 from "../../pages/product-page/img/related/1.jpg"
-import photo2 from "../../pages/product-page/img/related/2.jpg"
-import photo3 from "../../pages/product-page/img/related/3.jpg"
-import photo4 from "../../pages/product-page/img/related/4.jpg"
+import photo1 from "../pages/product-page/img/related/1.jpg"
+import photo2 from "../pages/product-page/img/related/2.jpg"
+import photo3 from "../pages/product-page/img/related/3.jpg"
+import photo4 from "../pages/product-page/img/related/4.jpg"
 
 
 const relatedCatalog = [

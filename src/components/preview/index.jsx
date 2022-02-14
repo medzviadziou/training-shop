@@ -12,7 +12,13 @@ const Preview = () => {
     return (
         <div className='preview'>
             <div className='preview__wrap contain'>
-                <div className='preview__slider'><Slider slider={slider}/></div>
+                <div className='preview__slider'>
+                    <Slider slider={slider}/>
+                    <div className="preview__banner preview__banner--slider">
+                        <h3 className="preview__title">BANNER</h3>
+                        <p className="preview__text">YOUR TITLE TEXT</p>
+                    </div>
+                </div>
                 <div className='preview__block'>
                     <div className='preview__list'>
                         <div className='preview__item'>
