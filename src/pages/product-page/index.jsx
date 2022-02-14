@@ -22,6 +22,7 @@ import heart from './img/ico/heart.svg'
 import scale from './img/ico/scale.svg'
 import truck from './img/ico/truck.svg'
 import refresh from './img/ico/refresh.svg'
+import annotation from './img/ico/annotation.svg'
 import mail from './img/ico/mail.svg'
 import pay1 from './img/pay/stripe.png'
 import pay2 from './img/pay/AES256.png'
@@ -47,7 +48,7 @@ const ProductPage = () => {
                 </div>
                 <h1 className='product-page__title'>Women's tracksuit Q109</h1>
                 <div className='product-page__info contain'>
-                    <div className='product-page__reviews'>
+                    <div className='product-page__rating'>
                     <span className='product-page__stars'>
                     <img className='product-page__star' src={star} alt=""/>
                     <img className='product-page__star' src={star} alt=""/>
@@ -70,7 +71,7 @@ const ProductPage = () => {
                 </div>
             </div>
             <div className='product-page__block  contain'>
-                <div  className='product-page__ribbon'>
+                <div className='product-page__ribbon'>
                     <span className='product-page__control'>
                         <img className='product-page__arrow' src={arrowLeft} alt=""/>
                         <img className='product-page__arrow' src={arrowRight} alt=""/>
@@ -81,13 +82,13 @@ const ProductPage = () => {
                     <img src={q4} alt=""/>
                 </div>
                 <div className='product-page__slider'>
-                <Slider slider={slider}/>
+                    <Slider slider={slider}/>
                 </div>
                 <div className='product-page__order'>
                     <div className='product-page__color'>
-                            <span className='product-page__text'>COLOR:</span>
-                            <span className='product-page__text product-page__text--bold'>Blue</span>
-                        </div>
+                        <span className='product-page__text'>COLOR:</span>
+                        <span className='product-page__text product-page__text--bold'>Blue</span>
+                    </div>
                     <div className='product-page__choice'>
                         <img src={color1} alt="" width='64' height='64'/>
                         <img src={color2} alt="" width='64' height='64'/>
@@ -100,9 +101,9 @@ const ProductPage = () => {
                     </div>
                     <div className='product-page__choice'>
                         <span className='product-page__size'>XS</span>
-                        <span  className='product-page__size product-page__size--active'>S</span>
-                        <span  className='product-page__size'>M</span>
-                        <span  className='product-page__size'>L</span>
+                        <span className='product-page__size product-page__size--active'>S</span>
+                        <span className='product-page__size'>M</span>
+                        <span className='product-page__size'>L</span>
                     </div>
                     <div className='product-page__hanger'>
                         <img src={hanger} alt=""/><span className='product-page__text'>Size guide</span>
@@ -114,13 +115,16 @@ const ProductPage = () => {
                         <img src={scale} alt="" width="24" height="24"/>
                     </div>
                     <div className='product-page__advantage'>
-                        <div><img className='product-page__ico' src={truck} alt="" width="24" height="24"/><span className='product-page__text'>Shipping & Delivery</span></div>
-                        <div><img className='product-page__ico' src={refresh} alt="" width="24" height="24"/><span className='product-page__text'>Returns & Exchanges</span></div>
-                         <div><img className='product-page__ico' src={mail} alt="" width="24" height="24"/><span className='product-page__text'>Ask a question</span></div>
+                        <div><img className='product-page__ico' src={truck} alt="" width="24" height="24"/><span
+                            className='product-page__text'>Shipping & Delivery</span></div>
+                        <div><img className='product-page__ico' src={refresh} alt="" width="24" height="24"/><span
+                            className='product-page__text'>Returns & Exchanges</span></div>
+                        <div><img className='product-page__ico' src={mail} alt="" width="24" height="24"/><span
+                            className='product-page__text'>Ask a question</span></div>
                     </div>
                     <div className='product-page__checkout'>
-                        <span>guaranteed safe checkout</span><span className='product-page__line'>
-                    </span>
+                        <span>guaranteed safe checkout</span>
+                        <span className='product-page__line'>.</span>
                     </div>
                     <div className='product-page__payment'>
                         <img src={pay1} alt=""/>
@@ -133,8 +137,74 @@ const ProductPage = () => {
 
                     </div>
                     <div className='product-page__chapter'>
-                        <span>DESCRIPTION</span></div>
+                        <span className='product-page__text'>DESCRIPTION</span></div>
+                    <div className='product-page__stickers'>
+                        <span className='product-page__text product-page__text--bold'>ADDITIONAL INFORMATION</span>
+                        <div className='product-page__stickers-list'>
+                            <div className='product-page__sticker'>
+                                <span className='product-page__text product-page__text--bold'>Color:</span>
+                                <span className='product-page__text'>Blue, White, Black, Grey</span>
 
+                            </div>
+                            <div className='product-page__sticker'>
+                                <span className='product-page__text product-page__text--bold'>Size:</span>
+                                <span className='product-page__text'>XS, S, M, L</span>
+
+                            </div>
+                            <div className='product-page__sticker'>
+                                <span className='product-page__text product-page__text--bold'>Material:</span>
+                                <span className='product-page__text'>100% Polyester</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='product-page__chapter product-page__reviews'>
+                        <span className='product-page__text product-page__text--bold'>REVIEWS</span>
+                        <div className='product-page__annotations'>
+                            <div className='product-page__rating'>
+                                <span className='product-page__stars'>
+                                    <img className='product-page__star' src={star} alt="" width='16' height='16'/>
+                                    <img className='product-page__star' src={star} alt="" width='16' height='16'/>
+                                    <img className='product-page__star' src={star} alt="" width='16' height='16'/>
+                                    <img className='product-page__star' src={star} alt="" width='16' height='16'/>
+                                    <img className='product-page__star' src={star} alt="" width='16' height='16'/>
+                                 </span>
+                                <span className='product-page__amount'>2 Reviews</span>
+                            </div>
+                            <div className='product-page__annotation'>
+                                <img src={annotation} alt=""/>
+                                <span className='product-page__text'>Write a review</span>
+                            </div>
+                        </div>
+                        <div className='product-page__review'>
+                            <div className='product-page__review-title'>
+                                <span  className='product-page__text product-page__text--large product-page__text--bold'>Oleh Chabanov</span>
+                                <span className='product-page__stars'>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                </span>
+                            </div>
+                            <p className='product-page__text product-page__text--large'>On the other hand, we denounce with righteous indignation and like men who are so
+                                beguiled and demoralized by the charms of pleasure of the moment</p>
+
+                        </div>
+                        <div className='product-page__review product-page__review--next'>
+                            <div  className='product-page__review-title'>
+                                <span className='product-page__text product-page__text--large product-page__text--bold'>ShAmAn design</span>
+                                <span className='product-page__stars'>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                    <img className='product-page__star' src={star} alt="" width='10' height='10'/>
+                </span>
+                            </div>
+                            <p className='product-page__text product-page__text--large'>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                voluptatum deleniti</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className='product-page__related contain'>

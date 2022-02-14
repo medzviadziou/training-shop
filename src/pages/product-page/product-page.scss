@@ -74,6 +74,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__availability {
@@ -83,7 +86,7 @@
     gap: 24px;
   }
 
-  &__reviews {
+  &__rating {
     padding-bottom: 6px;
     display: flex;
     justify-content: flex-start;
@@ -113,6 +116,7 @@
   }
 
   &__text {
+    padding-right: 2px;
     font-family: var(--Spartan);
     font-style: normal;
     font-weight: 500;
@@ -124,6 +128,11 @@
     &--bold {
       font-weight: bold;
       opacity: 1;
+    }
+
+    &--large {
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 
@@ -151,6 +160,10 @@
     margin-top: 32px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
   }
 
   &__ribbon {
@@ -159,7 +172,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 16px
+    gap: 16px;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__control {
@@ -188,7 +204,10 @@
     margin-bottom: 12px;
     display: flex;
     justify-content: flex-start;
-    gap: 16px
+    gap: 16px;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__sizes {
@@ -225,7 +244,7 @@
     gap: 8px;
   }
 
-  &__chapter{
+  &__chapter {
     padding-top: 32px;
     padding-bottom: 32px;
     display: flex;
@@ -233,6 +252,10 @@
     gap: 24px;
     border-top: 2px solid #E6E6E6;
     border-bottom: 2px solid #E6E6E6;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+
+    }
   }
 
   &__price {
@@ -244,7 +267,6 @@
   }
 
   &__button {
-
     padding: 17px 24px 16px;
     font-family: var(--Spartan);
     font-style: normal;
@@ -264,6 +286,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
   }
 
   &__ico {
@@ -286,11 +313,13 @@
   }
 
   &__line {
-      width: 50%;
-      height: 2px;
-      background-color: #E6E6E6;
-    }
-  &__payment{
+    width: 50%;
+    height: 2px;
+    background-color: #E6E6E6;
+    color: #FFFFFF;
+  }
+
+  &__payment {
     padding-top: 23px;
     padding-bottom: 32px;
     display: flex;
@@ -300,6 +329,42 @@
     gap: 10px;
   }
 
+  &__stickers {
+    margin-top: 32px;
+  }
+
+  &__stickers-list {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__annotations {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__review-title {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__review {
+    &--next {
+      padding-top: 24px;
+      line-height: 22px;
+    }
+  }
 
   &__grid {
     padding: 0;
