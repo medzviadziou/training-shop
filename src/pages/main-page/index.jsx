@@ -12,7 +12,8 @@ const MainPage = () => {
             <main className='main-page'>
                 <Preview/>
                 <Advantage/>
-                <Clothes/>
+                <Clothes productType="women"/>
+                <Clothes  productType="men"/>
                 <Promo/>
                 <Subscribe/>
                 <Blog/>

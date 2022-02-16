@@ -1,8 +1,9 @@
 import React from 'react';
 import './blog.scss'
-
-import articles from "../../data/articles";
 import Article from "../article";
+import articles from "../../data/articles";
+
+
 
 
 

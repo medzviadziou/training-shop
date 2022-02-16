@@ -1,36 +1,24 @@
 import React from 'react';
-import './products.scss'
+import './clothes.scss'
+import PRODUCTS from "../../data/products";
 
-import womenCatalog from "../../data/womenCatalog";
-import menCatalog from "../../data/menCatalog";
-
-import Product from "../product";
+import Cards from "../cards";
 import Catalog from "../catalog";
 
-const Clothes = () => {
+const Clothes = ({productType}) => {
+
     return (
-        <div className='clothes' >
-            <div data-test-id='clothes-women'>
-            <Catalog title="WOMEN’S"/>
-            <div className='clothes__wrap contain'>
-                <div className='clothes__grid contain'>
-                    {womenCatalog.map((item) => {
-                        return <Product item={item} key={item.id}/>
-                    })}
+        <div className='clothes'>
+            <div data-test-id={`clothes-${productType}`}>
+                <Catalog productType={productType}/>
+                <div className='clothes__wrap contain'>
+                    <div className='clothes__grid contain'>
+                        {PRODUCTS[productType].map((card) => {
+                            return <Cards card={card} key={card.id} productType={productType}/>
+                        })}
+                    </div>
+                    <button className='clothes__button' type="button">See All</button>
                 </div>
-                <button className='clothes__button' type="button">See All</button>
-            </div>
-            </div>
-            <div data-test-id='clothes-men'>
-            <Catalog title="MEN’S"/>
-            <div className='clothes__wrap contain'>
-                <div className='clothes__grid contain'>
-                    {menCatalog.map((item) => {
-                        return <Product item={item} key={item.id}/>
-                    })}
-                </div>
-                <button className='clothes__button' type="button">See All</button>
-            </div>
             </div>
         </div>
     );

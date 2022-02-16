@@ -1,4 +1,4 @@
-.product{
+.cards{
 
   &__item{  position: relative;
     &--sale{
@@ -66,8 +66,5 @@
     line-height: 16px;
     color: #121212;
   }
-  &__star{
-    padding-top: 12px;
-    padding-left: 3px;
-  }
+
 }

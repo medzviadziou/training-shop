@@ -2,9 +2,7 @@ import React from 'react';
 import './product-page.scss';
 import {Link} from "react-router-dom";
 import share from "../products-page/img/share.svg";
-import star from '../../components/product/img/ico/star_gold.svg'
-import Product from "../../components/product";
-import relatedCatalog from "../../data/related";
+import star from '../../components/cards/img/ico/star_gold.svg'
 import arrowLeft from './img/ico/-arrow.svg'
 import arrowRight from './img/ico/arrow-.svg'
 import Slider from "../../components/slider";
@@ -31,15 +29,21 @@ import pay4 from './img/pay/visa.png'
 import pay5 from './img/pay/mastercard.png'
 import pay6 from './img/pay/discover.png'
 import pay7 from './img/pay/express.png'
+import PRODUCTS from "../../data/products";
+import Cards from "../../components/cards";
 
-const ProductPage = (props) => {
+
+
+const ProductPage = (productType) => {
+
     return (
-        <div className='product-page' data-test-id={`product-page-${props.productType}`}>
+        <div className='product-page' data-test-id={`product-page-${productType}`}>
             <div className='product-page__top'>
                 <div className='product-page__header contain'>
                     <div className='product-page__link-list'>
                         <Link className='product-page__link' to='/'>Home</Link>
-                        <Link className='product-page__link product-page__link--next' to='/women'>Women</Link>
+                        <Link className='product-page__link product-page__link--next'
+                              to={`/${productType}`}>{productType}</Link>
                         <Link className='product-page__link product-page__link--next product-page__link--active' to='#'>Women's
                             tracksuit Q109</Link>
                     </div>
@@ -177,7 +181,7 @@ const ProductPage = (props) => {
                         </div>
                         <div className='product-page__review'>
                             <div className='product-page__review-title'>
-                                <span  className='product-page__text product-page__text--large product-page__text--bold'>Oleh Chabanov</span>
+                                <span className='product-page__text product-page__text--large product-page__text--bold'>Oleh Chabanov</span>
                                 <span className='product-page__stars'>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
@@ -186,12 +190,13 @@ const ProductPage = (props) => {
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                 </span>
                             </div>
-                            <p className='product-page__text product-page__text--large'>On the other hand, we denounce with righteous indignation and like men who are so
+                            <p className='product-page__text product-page__text--large'>On the other hand, we denounce
+                                with righteous indignation and like men who are so
                                 beguiled and demoralized by the charms of pleasure of the moment</p>
 
                         </div>
                         <div className='product-page__review product-page__review--next'>
-                            <div  className='product-page__review-title'>
+                            <div className='product-page__review-title'>
                                 <span className='product-page__text product-page__text--large product-page__text--bold'>ShAmAn design</span>
                                 <span className='product-page__stars'>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
@@ -201,7 +206,8 @@ const ProductPage = (props) => {
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                 </span>
                             </div>
-                            <p className='product-page__text product-page__text--large'>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                            <p className='product-page__text product-page__text--large'>At vero eos et accusamus et
+                                iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum deleniti</p>
                         </div>
                     </div>
@@ -216,8 +222,8 @@ const ProductPage = (props) => {
                     </span>
                 </div>
                 <div className='product-page__grid'>
-                    {relatedCatalog.map((item) => {
-                        return <Product item={item} key={item.id}/>
+                    {PRODUCTS[productType].map((card) => {
+                        return <Cards card={card} key={card.id} productType={productType}/>
                     })}
                 </div>
             </div>

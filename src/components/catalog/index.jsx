@@ -1,15 +1,13 @@
 import React from 'react';
 import './catalog.scss'
-import '../../data/womenCatalog'
 
 
-
-const Catalog = (props) => {
+const Catalog = ({productType}) => {
 
     return (
         <section className='catalog'>
             <div className='catalog__header contain'>
-                <h2 className='catalog__title'>{props.title}</h2>
+                <h2 className='catalog__title'>{productType}’S</h2>
                 <ul className='catalog__filter'>
                     <li className='catalog__sorting'>NEW ARRIVALS</li>
                     <li className='catalog__sorting'>SPECIALS</li>

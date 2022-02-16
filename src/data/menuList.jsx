@@ -1,13 +1,11 @@
-const menu = [
-    { id:"1", title:"About Us", path:"about"},
-    { id:"2", title:"Women", path:"women"},
-    { id:"3", title:"Men", path:"men"},
-    { id:"4", title:"Beauty", path:"beauty"},
-    { id:"5", title:"Accessories", path:"accessories"},
-    { id:"6", title:"Blog", path:"blog"},
-    { id:"7", title:"Contact", path:"contact"},
-
-
+const MENU = [
+    { id:1, name:"About Us", path:"about"},
+    { id:2, name:"Women", path:"women"},
+    { id:3, name:"Men", path:"men"},
+    { id:4, name:"Beauty", path:"beauty"},
+    { id:5, name:"Accessories", path:"accessories"},
+    { id:6, name:"Blog", path:"blog"},
+    { id:7, name:"Contact", path:"contact"},
 ]
 
-export  default menu;
+export  default MENU;
