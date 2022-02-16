@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "918746eb7bded960d77a7fcf3ce54e2e",
+    "revision": "90aabcd5e991892c7074706b26af91e0",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "7f08df6f3a2d47a076ba",
-    "url": "/training-shop/static/css/main.5634ea4c.chunk.css"
+    "revision": "5c7144e506815d781758",
+    "url": "/training-shop/static/css/main.25f2acf7.chunk.css"
   },
   {
-    "revision": "b4b095b7b1db0ab1d4e3",
-    "url": "/training-shop/static/js/2.a1a2449d.chunk.js"
+    "revision": "46da240b10c23f878a1e",
+    "url": "/training-shop/static/js/2.212aa529.chunk.js"
   },
   {
     "revision": "a90bb751b102ed9d8f9443a23ededd32",
-    "url": "/training-shop/static/js/2.a1a2449d.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.212aa529.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7f08df6f3a2d47a076ba",
-    "url": "/training-shop/static/js/main.a47b58ec.chunk.js"
+    "revision": "5c7144e506815d781758",
+    "url": "/training-shop/static/js/main.88ee4898.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -32,92 +32,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/1.02980ff8.jpg"
   },
   {
-    "revision": "9bb6b5044c6fb00d3a0322636086dc25",
-    "url": "/training-shop/static/media/1.9bb6b504.jpg"
-  },
-  {
-    "revision": "9c1acbe15aaf35bb845a7072e9c79dc7",
-    "url": "/training-shop/static/media/1.9c1acbe1.jpg"
-  },
-  {
-    "revision": "c1f131f975b453bad5489859aedde13d",
-    "url": "/training-shop/static/media/1.c1f131f9.jpg"
-  },
-  {
-    "revision": "0dcfb7dacece93d4aae9c2ec621b82df",
-    "url": "/training-shop/static/media/2.0dcfb7da.jpg"
-  },
-  {
     "revision": "35f548783eeea4d68e0a9f6a89b4e567",
     "url": "/training-shop/static/media/2.35f54878.jpg"
   },
   {
-    "revision": "48ce88909d81bb68b7556b75f0c543a6",
-    "url": "/training-shop/static/media/2.48ce8890.jpg"
-  },
-  {
-    "revision": "a314226e074158e2a2c05695a0f3d284",
-    "url": "/training-shop/static/media/2.a314226e.jpg"
-  },
-  {
-    "revision": "6254640ba06450967862ca03fe550f9e",
-    "url": "/training-shop/static/media/3.6254640b.jpg"
-  },
-  {
-    "revision": "ab379cec317b4f65dc5054a0083bbc59",
-    "url": "/training-shop/static/media/3.ab379cec.jpg"
-  },
-  {
-    "revision": "b2e69c60eec7b49dec6257987e0ac636",
-    "url": "/training-shop/static/media/3.b2e69c60.jpg"
-  },
-  {
     "revision": "c9c80c0ddb08c569730e2509216370c3",
     "url": "/training-shop/static/media/3.c9c80c0d.jpg"
-  },
-  {
-    "revision": "16c1064870cf373e333589ff283eec52",
-    "url": "/training-shop/static/media/4.16c10648.jpg"
-  },
-  {
-    "revision": "39ed0835b340bd7e0d619e6c390a09c6",
-    "url": "/training-shop/static/media/4.39ed0835.jpg"
-  },
-  {
-    "revision": "624749de84af231a43db7fe2e71f1d63",
-    "url": "/training-shop/static/media/4.624749de.jpg"
-  },
-  {
-    "revision": "747896832984bb92f6dd6e3c12975d30",
-    "url": "/training-shop/static/media/5.74789683.jpg"
-  },
-  {
-    "revision": "d8dfbdd50f755b48c520e9063cf9bf53",
-    "url": "/training-shop/static/media/5.d8dfbdd5.jpg"
-  },
-  {
-    "revision": "7b07c879f305a977e0066619fc734d91",
-    "url": "/training-shop/static/media/6.7b07c879.jpg"
-  },
-  {
-    "revision": "b0f165bf073151c6ef7091a25646e746",
-    "url": "/training-shop/static/media/6.b0f165bf.jpg"
-  },
-  {
-    "revision": "8a950dcf1a5e38302544f9eb670aa065",
-    "url": "/training-shop/static/media/7.8a950dcf.jpg"
-  },
-  {
-    "revision": "fbe0d2b8520e9998509d400292259a28",
-    "url": "/training-shop/static/media/7.fbe0d2b8.jpg"
-  },
-  {
-    "revision": "b5c3660d16da401160f1052f169804f8",
-    "url": "/training-shop/static/media/8.b5c3660d.jpg"
-  },
-  {
-    "revision": "ca34ad10c46a326e0ca0a519210cfacf",
-    "url": "/training-shop/static/media/8.ca34ad10.jpg"
   },
   {
     "revision": "2326ef6b2d6f7b51d338b9e116b7cad5",
