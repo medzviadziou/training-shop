@@ -34,7 +34,7 @@ import Cards from "../../components/cards";
 
 
 
-const ProductPage = (productType) => {
+const ProductPage = ({productType}) => {
 
     return (
         <div className='product-page' data-test-id={`product-page-${productType}`}>
