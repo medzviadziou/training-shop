@@ -353,6 +353,11 @@
     display: flex;
     justify-content: space-between;
   }
+  &__annotation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__review-title {
     margin-bottom: 12px;
