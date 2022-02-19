@@ -22,9 +22,10 @@
     margin-top: 21px;
     margin-bottom: 6px;
     margin-left: 21px;
-    @media (max-width: 576px) {
+     @media (max-width: 576px) {
       margin-top: 0;
-      margin-right: 21px;
+      margin-right: 10px;
+      margin-left:10px;
     }
   }
 
@@ -70,9 +71,7 @@
       z-index: 999;
     }
     @media (max-width: 576px) {
-      margin-top: 0;
-      margin-right: 21px;
-      margin-bottom: 16px;
+      margin: 0 10px 16px;
     }
 
     &:before {
