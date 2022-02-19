@@ -4,13 +4,13 @@ import {Link} from "react-router-dom";
 import MENU from "../../data/menuList";
 import classNames from "classnames";
 
-const Nav = () => {
+const Nav = (props) => {
 
 
     return (
         <nav className='nav'>
-            <div className={classNames('nav__overlay', {'nav__overlay--open':false})}></div>
-            <ul className={classNames('nav__list', {'nav__list--open':false})} data-test-id='menu'>
+            <div className={classNames('nav__overlay', {'nav__overlay--open':props.isMenuOpen})}> </div>
+            <ul className={classNames('nav__list', {'nav__list--open':props.isMenuOpen})} data-test-id='menu'>
                 {MENU.map(({id,name,path}) => {
                     return <li className='nav__item'><Link key={id} to={`/${path}`} data-test-id={`menu-link-${path}`}>{name}</Link></li>
                 })}
