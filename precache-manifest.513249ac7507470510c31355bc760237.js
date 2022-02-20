@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e9fed74d81de73387370bfa1d8bcf84e",
+    "revision": "8c1eb2720cc0e81a919ed4556c175840",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "a605d0bc24005165331d",
-    "url": "/training-shop/static/css/main.1760defb.chunk.css"
+    "revision": "b7db1d22ce5b21cbff02",
+    "url": "/training-shop/static/css/2.ddcd6bbb.chunk.css"
   },
   {
-    "revision": "8d6f8bc2c9d06da0344c",
-    "url": "/training-shop/static/js/2.f50614c9.chunk.js"
+    "revision": "5f01a8a9d632462f40f3",
+    "url": "/training-shop/static/css/main.89045dd4.chunk.css"
+  },
+  {
+    "revision": "b7db1d22ce5b21cbff02",
+    "url": "/training-shop/static/js/2.e0e013f8.chunk.js"
   },
   {
     "revision": "2fef175dda8e998324609df8a30ba72f",
-    "url": "/training-shop/static/js/2.f50614c9.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.e0e013f8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a605d0bc24005165331d",
-    "url": "/training-shop/static/js/main.e5a0b6d1.chunk.js"
+    "revision": "5f01a8a9d632462f40f3",
+    "url": "/training-shop/static/js/main.3418eac6.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -136,10 +140,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/new.034d3ec5.jpg"
   },
   {
-    "revision": "440b7628ff09259602cef2f320e136e2",
-    "url": "/training-shop/static/media/next.440b7628.svg"
-  },
-  {
     "revision": "5e7cf247242b3aba1afefcfdc586426c",
     "url": "/training-shop/static/media/phone.5e7cf247.svg"
   },
@@ -162,10 +162,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5bbb75e663be454d7bf2d31e61cab8b7",
     "url": "/training-shop/static/media/preview_women.5bbb75e6.jpg"
-  },
-  {
-    "revision": "ba2ba65b2a0535b9c3a6247046f89ec7",
-    "url": "/training-shop/static/media/previous.ba2ba65b.svg"
   },
   {
     "revision": "413a338fc4e4168516fb6ec15c68111f",
