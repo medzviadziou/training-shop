@@ -1,15 +1,19 @@
 import React from 'react';
-import './slider.scss'
-import next from './img/next.svg'
-import prev from './img/previous.svg'
+import { Swiper, SwiperSlide} from "swiper/react/swiper-react";
+import { Navigation} from "swiper";
+
+import 'swiper/swiper.scss'
+import 'swiper/modules/navigation/navigation.scss'
 
 const Slider = (props) => {
     return (
-        <div className='slider'>
-            <img className='slider__img' src={props.slider} alt="slider"/>
-            <button className='slider__arrow slider__arrow-prev'><img src={prev} alt="previous"/></button>
-            <button className='slider__arrow slider__arrow-next'><img src={next} alt="next"/></button>
-        </div>
+        <>
+            <Swiper className='mySwiper' navigation={true} modules={[Navigation]}>
+                <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
+                <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
+                <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
+            </Swiper>
+        </>
 
     );
 };

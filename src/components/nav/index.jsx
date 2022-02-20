@@ -12,7 +12,7 @@ const Nav = (props) => {
             <div className={classNames('nav__overlay', {'nav__overlay--open':props.isMenuOpen})}> </div>
             <ul className={classNames('nav__list', {'nav__list--open':props.isMenuOpen})} data-test-id='menu'>
                 {MENU.map(({id,name,path}) => {
-                    return <li className='nav__item'><Link key={id} to={`/${path}`} data-test-id={`menu-link-${path}`}>{name}</Link></li>
+                    return <li key={id} className='nav__item'><Link to={`/${path}`} data-test-id={`menu-link-${path}`}>{name}</Link></li>
                 })}
             </ul>
         </nav>

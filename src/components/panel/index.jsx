@@ -34,6 +34,8 @@ const Panel = () => {
     }
 
     return (
+
+
         <div className='panel contain' onClick={clickClose}>
             <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo} alt="CleverShop"/></Link>
             <Nav isMenuOpen={isMenuOpen}/>
