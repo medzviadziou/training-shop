@@ -171,17 +171,9 @@
     margin-right: 16px;
     max-width: 94px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
     @media (max-width: 768px) {
       display: none;
     }
-  }
-
-  &__control {
-    display: flex;
-    justify-content: space-between;
   }
 
   &__arrow {

@@ -16,31 +16,27 @@ const Panel = () => {
 
     const [isMenuOpen, toggleMenu] = useState(false)
 
-    function toggleMenuMode() {
-        toggleMenu(!isMenuOpen)
-    }
 
-    const panel = document.querySelector('div');
+   function toggleMenuMode() {
+       toggleMenu(!isMenuOpen)
+   }
 
-    panel.onclick = function (event) {
-        let target = event.target;
-        if (target.tagName === 'BUTTON' || "SPAN") {
-            if (!isMenuOpen) {
-                document.body.style.overflow = 'hidden';
-            }
+    const clickHandler = () => {
+        if(!isMenuOpen){
+            document.body.style.overflow = 'hidden';
+        }
+        toggleMenuMode();
+    };
+    const clickClose = () => {
+        if (isMenuOpen) {
+            document.body.style.overflow = '';
             toggleMenuMode();
         }
-        if (target.tagName !== 'BUTTON' || "SPAN") {
-            if (isMenuOpen) {
-                document.body.style.overflow = '';
-                toggleMenuMode();
-            }
-        }
-    };
+    }
 
     return (
 
-        <div className='panel contain'>
+        <div className='panel contain' onClick={clickClose} >
             <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo}
                                                               alt="CleverShop"/></Link>
             <Nav isMenuOpen={isMenuOpen}/>
@@ -50,7 +46,7 @@ const Panel = () => {
                 <li className='panel__ico'><img src={user} alt="user" width="24" height="24"/></li>
                 <li className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/></li>
                 <li className='panel__ico'>
-                    <button className='panel__menu-burger'>
+                    <button onClick={clickHandler} className='panel__menu-burger'>
                         <span className={classNames('panel__burger', {'panel__burger--1': isMenuOpen})}> </span>
                         <span className={classNames('panel__burger', {'panel__burger--2': isMenuOpen})}> </span>
                         <span className={classNames('panel__burger', {'panel__burger--3': isMenuOpen})}> </span>
@@ -59,6 +55,8 @@ const Panel = () => {
             </ul>
         </div>
     );
+
+
 };
 
 export default Panel;

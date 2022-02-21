@@ -11,7 +11,12 @@
   }
 
   &__slider {
-   min-width: 0;
+    max-width: 540px;
+    display: flex;
+    min-width: 0;
+    position: relative;
+    margin: 0 auto;
+
   }
 
   &__block {
@@ -66,19 +71,20 @@
     background-color: #FFFFFF;
     border-radius: 4px;
     z-index: 4;
-    &--slider{
+
+    &--slider {
       padding: 24px 32px;
-         }
+    }
   }
 
 
-
-  &__title{
+  &__title {
     font-size: 12px;
     line-height: 13px;
     opacity: 0.4;
   }
-  &__text{
+
+  &__text {
     padding-top: 14px;
     white-space: pre;
     font-size: 22px;

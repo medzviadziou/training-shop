@@ -12,6 +12,7 @@ const Slider = (props) => {
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
+                <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
             </Swiper>
         </>
 

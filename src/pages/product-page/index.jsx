@@ -7,10 +7,6 @@ import arrowLeft from './img/ico/-arrow.svg'
 import arrowRight from './img/ico/arrow-.svg'
 import Slider from "../../components/slider";
 import slider from './img/slider/slider.jpg'
-import q1 from './img/slider/Q109-1.jpg'
-import q2 from './img/slider/Q109-2.jpg'
-import q3 from './img/slider/Q109-3.jpg'
-import q4 from './img/slider/Q109-4.jpg'
 import color1 from './img/color/color-1.jpg'
 import color2 from './img/color/color-2.jpg'
 import color3 from './img/color/color-3.jpg'
@@ -76,14 +72,7 @@ const ProductPage = ({productType}) => {
             </div>
             <div className='product-page__block  contain'>
                 <div className='product-page__ribbon'>
-                    <span className='product-page__control'>
-                        <img className='product-page__arrow' src={arrowLeft} alt=""/>
-                        <img className='product-page__arrow' src={arrowRight} alt=""/>
-                    </span>
-                    <img src={q1} alt=""/>
-                    <img src={q2} alt=""/>
-                    <img src={q3} alt=""/>
-                    <img src={q4} alt=""/>
+                    <Slider slider={slider}/>
                 </div>
                 <div className='product-page__slider'>
                     <Slider slider={slider}/>
@@ -138,7 +127,6 @@ const ProductPage = ({productType}) => {
                         <img src={pay5} alt=""/>
                         <img src={pay6} alt=""/>
                         <img src={pay7} alt=""/>
-
                     </div>
                     <div className='product-page__chapter'>
                         <span className='product-page__text'>DESCRIPTION</span></div>
