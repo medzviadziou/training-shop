@@ -74,6 +74,9 @@
 
     &--slider {
       padding: 24px 32px;
+      @media (max-width: 576px) {
+        padding: 18px 20px;
+      }
     }
   }
 
@@ -89,6 +92,11 @@
     white-space: pre;
     font-size: 22px;
     line-height: 25px;
+    @media (max-width: 576px) {
+     white-space: initial;
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
 }

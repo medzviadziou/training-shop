@@ -46,7 +46,7 @@ const Panel = () => {
                 <li className='panel__ico'><img src={user} alt="user" width="24" height="24"/></li>
                 <li className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/></li>
                 <li className='panel__ico'>
-                    <button onClick={clickHandler} className='panel__menu-burger'>
+                    <button onClick={clickHandler} className='panel__menu-burger' data-test-id='burger-menu-btn'>
                         <span className={classNames('panel__burger', {'panel__burger--1': isMenuOpen})}> </span>
                         <span className={classNames('panel__burger', {'panel__burger--2': isMenuOpen})}> </span>
                         <span className={classNames('panel__burger', {'panel__burger--3': isMenuOpen})}> </span>
