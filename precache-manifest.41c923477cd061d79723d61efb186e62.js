@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95850baffc5ea4a1c402ab155aa52d91",
+    "revision": "f6b48eb0b2b358d3592b2996135c6ed9",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "8956c1fa2abf00d0c838",
+    "revision": "77ae778fdef59724b394",
     "url": "/training-shop/static/css/2.ddcd6bbb.chunk.css"
   },
   {
-    "revision": "3f7cd0d90031cdd4d309",
-    "url": "/training-shop/static/css/main.473519fb.chunk.css"
+    "revision": "878d5f7572a154c5737c",
+    "url": "/training-shop/static/css/main.1d309d40.chunk.css"
   },
   {
-    "revision": "8956c1fa2abf00d0c838",
-    "url": "/training-shop/static/js/2.edfc3dec.chunk.js"
+    "revision": "77ae778fdef59724b394",
+    "url": "/training-shop/static/js/2.33f89cb1.chunk.js"
   },
   {
     "revision": "2fef175dda8e998324609df8a30ba72f",
-    "url": "/training-shop/static/js/2.edfc3dec.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.33f89cb1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3f7cd0d90031cdd4d309",
-    "url": "/training-shop/static/js/main.758cc5f0.chunk.js"
+    "revision": "878d5f7572a154c5737c",
+    "url": "/training-shop/static/js/main.9fd1147f.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -42,18 +42,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c9c80c0ddb08c569730e2509216370c3",
     "url": "/training-shop/static/media/3.c9c80c0d.jpg"
-  },
-  {
-    "revision": "2326ef6b2d6f7b51d338b9e116b7cad5",
-    "url": "/training-shop/static/media/Q109-1.2326ef6b.jpg"
-  },
-  {
-    "revision": "ec19c1649066a40981c1000834d26bc5",
-    "url": "/training-shop/static/media/Q109-2.ec19c164.jpg"
-  },
-  {
-    "revision": "7769d8b865ca99ccef915c5e046cb803",
-    "url": "/training-shop/static/media/Q109-3.7769d8b8.jpg"
   },
   {
     "revision": "2ed28b96ea3477f102f04b207d8b662d",
