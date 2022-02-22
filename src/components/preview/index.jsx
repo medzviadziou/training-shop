@@ -12,8 +12,8 @@ const Preview = () => {
     return (
         <div className='preview'>
             <div className='preview__wrap contain'>
-                <div className='preview__slider'>
-                    <Slider slider={slider} data-test-id="main-slider"/>
+                <div className='preview__slider' data-test-id="main-slider">
+                    <Slider slider={slider}/>
                     <div className="preview__banner preview__banner--slider">
                         <h3 className="preview__title">BANNER</h3>
                         <p className="preview__text">YOUR TITLE TEXT</p>
