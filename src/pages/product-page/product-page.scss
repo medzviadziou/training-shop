@@ -166,11 +166,14 @@
       justify-content: space-around;
     }
   }
+  &__slider-wrap{
+    display: flex;
 
+  }
   &__ribbon {
     margin-right: 16px;
     width: 94px;
-    min-height: 0;
+
       @media (max-width: 768px) {
       display: none;
     }
@@ -387,6 +390,18 @@
   height: auto !important;
 }
 
+
+// да, все что ниже должно быть не здесь
+
 .ribbon__next img,.ribbon__prev img{
   transform: rotate(90deg);
 }
+
+.swiper-slide-visible{
+  filter: opacity(0.4);
+}
+
+.swiper-slide-thumb-active{
+  filter: opacity(1);
+}
+

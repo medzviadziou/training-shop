@@ -29,7 +29,7 @@ import Cards from "../../components/cards";
 
 //Swiper
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
-import {Controller, FreeMode, Navigation} from "swiper";
+import {Controller, FreeMode, Navigation, Thumbs} from "swiper";
 
 import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
@@ -40,8 +40,7 @@ import sliderPrev from '../../components/slider/img/previous.svg'
 
 const ProductPage = ({productType}) => {
 
-    const [firstSwiper, setFirstSwiper] = useState(null);
-    const [secondSwiper, setSecondSwiper] = useState(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     return (
         <div className='product-page' data-test-id={`product-page-${productType}`}>
@@ -84,40 +83,40 @@ const ProductPage = ({productType}) => {
             </div>
             <div className='product-page__block  contain'>
 
+                <div  className='product-page__slider-wrap' data-test-id='product-slider'>
+                    <div className='product-page__ribbon'>
 
-                <div className='product-page__ribbon'>
+                        <span className='ribbon__next'><img src={sliderNext} alt=""/></span>
+                        <span className='ribbon__prev'><img src={sliderPrev} alt=""/></span>
+                        <Swiper
+                            direction='vertical'
+                            slidesPerView={4}
+                            watchSlidesProgress
+                            spaceBetween={16}
+                            navigation={{nextEl: '.ribbon__next', prevEl: '.ribbon__prev'}}
+                            onSwiper={setThumbsSwiper}
+                            modules={[FreeMode, Navigation, Controller, Thumbs]}
+                            className="mySwiper">
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        </Swiper>
+                    </div>
+                    <div className='product-page__slider'>
 
-                    <span className='ribbon__next'><img src={sliderNext} alt=""/></span>
-                    <span className='ribbon__prev'><img src={sliderPrev} alt=""/></span>
-                    <Swiper
-                        direction='vertical' //вертикально
-                        slidesPerView={4}  //показывать по 4
-                        spaceBetween={16}
-                        navigation={{ nextEl: '.ribbon__next', prevEl: '.ribbon__prev' }}
-                        onSwiper={setFirstSwiper}
-                        controller={{control: secondSwiper}}
-                        watchSlidesProgress={true}
-                        modules={[FreeMode, Navigation, Controller]}
-                        className="mySwiper">
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                    </Swiper>
+                        <Swiper
+                            thumbs={{swiper: thumbsSwiper}}
+                            navigation={true}
+                            modules={[FreeMode, Navigation, Controller, Thumbs]} className="mySwiper2">
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                            <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        </Swiper>
+                    </div>
                 </div>
-                <div className='product-page__slider'>
 
-                    <Swiper
-                        onSwiper={setSecondSwiper}
-                        controller={{control: firstSwiper}}
-                        navigation={true}
-                        modules={[FreeMode, Navigation, Controller]} className="mySwiper2">
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
-                    </Swiper>
-                </div>
 
                 <div className='product-page__order'>
                     <div className='product-page__color'>
