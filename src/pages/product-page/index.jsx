@@ -82,15 +82,17 @@ const ProductPage = ({productType}) => {
 
                 <div className='product-page__slider-wrap' data-test-id='product-slider'>
                     <div className='product-page__ribbon'>
-
-                        <span className='ribbon__next'><img src={sliderNext} alt=""/></span>
-                        <span className='ribbon__prev'><img src={sliderPrev} alt=""/></span>
+                        <div className='product-page__ribbon-arrow'>
+                            <span className='product-page__slider-prev'><img className='product-page__rotate'
+                                                                             src={sliderPrev} alt=""/></span>
+                            <span className='product-page__slider-next'><img className='product-page__rotate'
+                                                                             src={sliderNext} alt=""/></span>
+                        </div>
                         <Swiper
                             direction='vertical'
                             slidesPerView={4}
                             watchSlidesProgress
                             spaceBetween={16}
-                            navigation={{nextEl: '.ribbon__next', prevEl: '.ribbon__prev'}}
                             onSwiper={setThumbsSwiper}
                             modules={[FreeMode, Navigation, Controller, Thumbs]}
                             className="mySwiper">
@@ -101,10 +103,13 @@ const ProductPage = ({productType}) => {
                         </Swiper>
                     </div>
                     <div className='product-page__slider'>
-
+                        <span className='product-page__prev'><img className='product-page__slider-prev' src={sliderPrev}
+                                                                  alt=""/></span>
+                        <span className='product-page__next'><img className='product-page__slider-next' src={sliderNext}
+                                                                  alt=""/></span>
                         <Swiper
                             thumbs={{swiper: thumbsSwiper}}
-                            navigation={true}
+                            navigation={{nextEl: '.product-page__slider-next', prevEl: '.product-page__slider-prev'}}
                             modules={[FreeMode, Navigation, Controller, Thumbs]} className="mySwiper2">
                             <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
                             <SwiperSlide><img src={slider} alt=''/></SwiperSlide>

@@ -11,6 +11,8 @@ import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 
 const Related = ({productType}) => {
+
+
     return (
         <>
             <div className='related__name'>
@@ -22,8 +24,31 @@ const Related = ({productType}) => {
             </div>
             <div className='related__slider'>
                 <Swiper
-                    slidesPerView={4}
-                    spaceBetween={30}
+                    slidesPerView={1}
+                    spaceBetween={15}
+                    breakpointsInverse={true}
+                    breakpoints={{
+                        // when window width is >= 320px
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 15,
+                        },
+                        // when window width is >= 480px
+                        480: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        // when window width is >= 576px
+                        576: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        // when window width is >= 992px
+                        992: {
+                            slidesPerView: 4,
+                            spaceBetween: 30,
+                        }
+                    }}
                     navigation={{nextEl: '.related__arrowLeft', prevEl: '.related__arrowRight'}}
                     modules={[Navigation]}
                     className="mySwiper3">
