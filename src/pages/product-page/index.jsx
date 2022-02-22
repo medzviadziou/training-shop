@@ -3,8 +3,6 @@ import './product-page.scss';
 import {Link} from "react-router-dom";
 import share from "../products-page/img/share.svg";
 import star from '../../components/cards/img/ico/star_gold.svg'
-import arrowLeft from './img/ico/-arrow.svg'
-import arrowRight from './img/ico/arrow-.svg'
 import slider from './img/slider/slider.jpg'
 import color1 from './img/color/color-1.jpg'
 import color2 from './img/color/color-2.jpg'
@@ -24,8 +22,6 @@ import pay4 from './img/pay/visa.png'
 import pay5 from './img/pay/mastercard.png'
 import pay6 from './img/pay/discover.png'
 import pay7 from './img/pay/express.png'
-import PRODUCTS from "../../data/products";
-import Cards from "../../components/cards";
 
 //Swiper
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
@@ -37,6 +33,7 @@ import 'swiper/modules/pagination/pagination.scss'
 import 'swiper/modules/free-mode/free-mode.scss'
 import sliderNext from '../../components/slider/img/next.svg'
 import sliderPrev from '../../components/slider/img/previous.svg'
+import Related from "../../components/related";
 
 const ProductPage = ({productType}) => {
 
@@ -83,7 +80,7 @@ const ProductPage = ({productType}) => {
             </div>
             <div className='product-page__block  contain'>
 
-                <div  className='product-page__slider-wrap' data-test-id='product-slider'>
+                <div className='product-page__slider-wrap' data-test-id='product-slider'>
                     <div className='product-page__ribbon'>
 
                         <span className='ribbon__next'><img src={sliderNext} alt=""/></span>
@@ -245,19 +242,8 @@ const ProductPage = ({productType}) => {
                     </div>
                 </div>
             </div>
-            <div className='product-page__related contain'>
-                <div className='product-page__name'>
-                    <span className='product-page__h2'>RELATED PRODUCTS</span>
-                    <span>
-                        <img src={arrowLeft} alt=""/>
-                        <img src={arrowRight} alt=""/>
-                    </span>
-                </div>
-                <div className='product-page__grid'>
-                    {PRODUCTS[productType].map((card) => {
-                        return <Cards card={card} key={card.id} productType={productType}/>
-                    })}
-                </div>
+            <div className='product-page__related contain' data-test-id='related-slider'>
+                <Related productType={productType}/>
             </div>
         </div>
     )

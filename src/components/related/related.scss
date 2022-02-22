@@ -1,0 +1,21 @@
+.related {
+  &__name {
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 25px;
+    align-items: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  &__slider{
+    min-width: 0;
+    height: 378px;
+  }
+}

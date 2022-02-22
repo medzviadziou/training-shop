@@ -13,8 +13,13 @@ const Clothes = ({productType}) => {
                 <Catalog productType={productType}/>
                 <div className='clothes__wrap contain'>
                     <div className='clothes__grid contain'>
-                        {PRODUCTS[productType].map((card) => {
-                            return <Cards card={card} key={card.id} productType={productType}/>
+                        {PRODUCTS[productType].map((card, index) => {
+                            if(index<8){
+                                return <Cards card={card} key={card.id} productType={productType} index={index}/>
+                            } else {
+                                return console.log('Ok')
+                            }
+
                         })}
                     </div>
                     <button className='clothes__button' type="button">See All</button>
