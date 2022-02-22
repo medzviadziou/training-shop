@@ -11,8 +11,7 @@ const Slider = (props) => {
         <>
             <Swiper className='mySwiper'
                     navigation={true}
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-            >
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}>
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>
                 <SwiperSlide><img src={props.slider} alt="slider"/></SwiperSlide>

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './product-page.scss';
 import {Link} from "react-router-dom";
 import share from "../products-page/img/share.svg";
 import star from '../../components/cards/img/ico/star_gold.svg'
 import arrowLeft from './img/ico/-arrow.svg'
 import arrowRight from './img/ico/arrow-.svg'
-import Slider from "../../components/slider";
 import slider from './img/slider/slider.jpg'
 import color1 from './img/color/color-1.jpg'
 import color2 from './img/color/color-2.jpg'
@@ -28,9 +27,21 @@ import pay7 from './img/pay/express.png'
 import PRODUCTS from "../../data/products";
 import Cards from "../../components/cards";
 
+//Swiper
+import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
+import {Controller, FreeMode, Navigation} from "swiper";
 
+import 'swiper/swiper.scss'
+import 'swiper/modules/navigation/navigation.scss'
+import 'swiper/modules/pagination/pagination.scss'
+import 'swiper/modules/free-mode/free-mode.scss'
+import sliderNext from '../../components/slider/img/next.svg'
+import sliderPrev from '../../components/slider/img/previous.svg'
 
 const ProductPage = ({productType}) => {
+
+    const [firstSwiper, setFirstSwiper] = useState(null);
+    const [secondSwiper, setSecondSwiper] = useState(null);
 
     return (
         <div className='product-page' data-test-id={`product-page-${productType}`}>
@@ -40,7 +51,8 @@ const ProductPage = ({productType}) => {
                         <Link className='product-page__link' to='/'>Home</Link>
                         <Link className='product-page__link product-page__link--next'
                               to={`/${productType}`}>{productType}</Link>
-                        <Link className='product-page__link product-page__link--next product-page__link--active' to='#'>Women's
+                        <Link className='product-page__link product-page__link--next product-page__link--active'
+                              to='#'>Women's
                             tracksuit Q109</Link>
                     </div>
                     <span className='product-page__share product-page__link'><img className='product-page__img'
@@ -71,12 +83,42 @@ const ProductPage = ({productType}) => {
                 </div>
             </div>
             <div className='product-page__block  contain'>
+
+
                 <div className='product-page__ribbon'>
-                    <Slider slider={slider}/>
+
+                    <span className='ribbon__next'><img src={sliderNext} alt=""/></span>
+                    <span className='ribbon__prev'><img src={sliderPrev} alt=""/></span>
+                    <Swiper
+                        direction='vertical' //вертикально
+                        slidesPerView={4}  //показывать по 4
+                        spaceBetween={16}
+                        navigation={{ nextEl: '.ribbon__next', prevEl: '.ribbon__prev' }}
+                        onSwiper={setFirstSwiper}
+                        controller={{control: secondSwiper}}
+                        watchSlidesProgress={true}
+                        modules={[FreeMode, Navigation, Controller]}
+                        className="mySwiper">
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                    </Swiper>
                 </div>
                 <div className='product-page__slider'>
-                    <Slider slider={slider}/>
+
+                    <Swiper
+                        onSwiper={setSecondSwiper}
+                        controller={{control: firstSwiper}}
+                        navigation={true}
+                        modules={[FreeMode, Navigation, Controller]} className="mySwiper2">
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                        <SwiperSlide><img src={slider} alt=''/></SwiperSlide>
+                    </Swiper>
                 </div>
+
                 <div className='product-page__order'>
                     <div className='product-page__color'>
                         <span className='product-page__text'>COLOR:</span>
@@ -169,7 +211,8 @@ const ProductPage = ({productType}) => {
                         </div>
                         <div className='product-page__review'>
                             <div className='product-page__review-title'>
-                                <span className='product-page__text product-page__text--large product-page__text--bold'>Oleh Chabanov</span>
+                                    <span
+                                        className='product-page__text product-page__text--large product-page__text--bold'>Oleh Chabanov</span>
                                 <span className='product-page__stars'>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
@@ -178,14 +221,16 @@ const ProductPage = ({productType}) => {
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                 </span>
                             </div>
-                            <p className='product-page__text product-page__text--large'>On the other hand, we denounce
+                            <p className='product-page__text product-page__text--large'>On the other hand, we
+                                denounce
                                 with righteous indignation and like men who are so
                                 beguiled and demoralized by the charms of pleasure of the moment</p>
 
                         </div>
                         <div className='product-page__review product-page__review--next'>
                             <div className='product-page__review-title'>
-                                <span className='product-page__text product-page__text--large product-page__text--bold'>ShAmAn design</span>
+                                    <span
+                                        className='product-page__text product-page__text--large product-page__text--bold'>ShAmAn design</span>
                                 <span className='product-page__stars'>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
                     <img className='product-page__star' src={star} alt="" width='10' height='10'/>
@@ -216,7 +261,8 @@ const ProductPage = ({productType}) => {
                 </div>
             </div>
         </div>
-    );
+    )
+        ;
 };
 
 export default ProductPage;
