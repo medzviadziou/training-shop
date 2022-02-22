@@ -26,7 +26,6 @@ const Related = ({productType}) => {
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={15}
-                    breakpointsInverse={true}
                     breakpoints={{
                         // when window width is >= 320px
                         320: {
