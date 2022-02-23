@@ -1,32 +1,31 @@
 import React, {useState} from 'react';
 import {Link,} from "react-router-dom";
+import Nav from "../nav";
+import classNames from "classnames";
 import './panel.scss'
-
+//img
 import logo from "./img/logo.svg";
 import search from "./img/search.svg";
 import globe from "./img/globe.svg";
 import user from "./img/user.svg";
 import cart from "./img/cart.svg";
 
-import Nav from "../nav";
-import classNames from "classnames";
-
 
 const Panel = () => {
 
     const [isMenuOpen, toggleMenu] = useState(false)
 
-
-   function toggleMenuMode() {
-       toggleMenu(!isMenuOpen)
-   }
+    function toggleMenuMode() {
+        toggleMenu(!isMenuOpen)
+    }
 
     const clickHandler = () => {
-        if(!isMenuOpen){
+        if (!isMenuOpen) {
             document.body.style.overflow = 'hidden';
         }
         toggleMenuMode();
     };
+
     const clickClose = () => {
         if (isMenuOpen) {
             document.body.style.overflow = '';
@@ -36,7 +35,7 @@ const Panel = () => {
 
     return (
 
-        <div className='panel contain' onClick={clickClose} >
+        <div className='panel contain' onClick={clickClose}>
             <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo}
                                                               alt="CleverShop"/></Link>
             <Nav isMenuOpen={isMenuOpen}/>

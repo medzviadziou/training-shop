@@ -1,14 +1,15 @@
 import React from 'react';
+import Slider from "../slider";
 import './preview.scss'
-
+//img
 import women from './img/preview_women.jpg'
 import men from './img/preview_men.jpg'
 import accessories from './img/preview_accessories.jpg'
-
-import Slider from "../slider";
 import slider from '../../components/slider/img/slider.jpg'
 
+
 const Preview = () => {
+
     return (
         <div className='preview'>
             <div className='preview__wrap contain'>
@@ -22,9 +23,9 @@ const Preview = () => {
                 <div className='preview__block'>
                     <div className='preview__list'>
                         <div className='preview__item'>
-                        <img className='preview__img' src={women} alt="women"/>
-                        <span className="preview__banner">Women</span>
-                    </div>
+                            <img className='preview__img' src={women} alt="women"/>
+                            <span className="preview__banner">Women</span>
+                        </div>
                         <div className='preview__item'>
                             <img className='preview__img' src={men} alt="men"/>
                             <span className="preview__banner">Men</span>

@@ -1,23 +1,24 @@
 import React from 'react';
+import Cards from "../cards";
+import PRODUCTS from "../../data/products";
+import './related.scss'
+//img
 import arrowLeft from "../../pages/product-page/img/ico/-arrow.svg";
 import arrowRight from "../../pages/product-page/img/ico/arrow-.svg";
-import PRODUCTS from "../../data/products";
-import Cards from "../cards";
-import './related.scss'
-
+//swiper
 import {Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
 import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 
-const Related = ({productType}) => {
 
+const Related = ({productType}) => {
 
     return (
         <>
             <div className='related__name'>
                 <span className='related__h2'>RELATED PRODUCTS</span>
-                <div>
+                <div className='related__arrow'>
                     <img className='related__arrowLeft' src={arrowLeft} alt=""/>
                     <img className='related__arrowRight' src={arrowRight} alt=""/>
                 </div>

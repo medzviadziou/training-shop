@@ -9,16 +9,15 @@ import Blog from "../../components/blog";
 
 const MainPage = () => {
     return (
-            <main className='main-page'>
-                <Preview/>
-                <Advantage/>
-                <Clothes productType="women"/>
-                <Clothes  productType="men"/>
-                <Promo/>
-                <Subscribe/>
-                <Blog/>
-            </main>
-
+        <main className='main-page'>
+            <Preview/>
+            <Advantage/>
+            <Clothes productType="women"/>
+            <Clothes productType="men"/>
+            <Promo/>
+            <Subscribe/>
+            <Blog/>
+        </main>
     );
 };
 

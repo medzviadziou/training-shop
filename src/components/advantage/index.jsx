@@ -1,6 +1,7 @@
 import React from 'react';
+//css
 import './advantage.scss'
-
+//img
 import truck from './img/truck.svg'
 import refresh from './img/refresh.svg'
 import support from './img/support.svg'

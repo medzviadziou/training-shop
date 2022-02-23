@@ -1,8 +1,10 @@
 import React from 'react';
-import './contacts.scss'
 import Social from "../social";
+import './contacts.scss'
+
 
 const Contacts = () => {
+
     return (
         <div className='contacts'>
             <div className='contacts__wrap contain'>
@@ -11,9 +13,8 @@ const Contacts = () => {
                     <input className='contacts__input' placeholder="Enter your email"/>
                     <button className='contacts__button' type='reset'>Join Us</button>
                 </form>
-                <div className='contacts__social' ><Social size='18'/></div>
+                <div className='contacts__social'><Social size='18'/></div>
             </div>
-
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import './rating.scss'
+//img
 import starGray from "../cards/img/ico/star_gray.svg";
 import starGold from "../cards/img/ico/star_gold.svg";
 

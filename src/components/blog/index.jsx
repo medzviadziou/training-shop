@@ -1,10 +1,7 @@
 import React from 'react';
-import './blog.scss'
 import Article from "../article";
+import './blog.scss'
 import articles from "../../data/articles";
-
-
-
 
 
 const Blog = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './visit.scss'
-
+//img
 import phone from "./img/phone.svg"
 import location from "./img/location.svg"
 import clock from "./img/clock.svg"

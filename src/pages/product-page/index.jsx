@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import './product-page.scss';
+import Related from "../../components/related";
 import {Link} from "react-router-dom";
+import './product-page.scss';
+//img
 import share from "../products-page/img/share.svg";
 import star from '../../components/cards/img/ico/star_gold.svg'
 import slider from './img/slider/slider.jpg'
@@ -26,14 +28,13 @@ import pay7 from './img/pay/express.png'
 //Swiper
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
 import {Controller, FreeMode, Navigation, Thumbs} from "swiper";
-
 import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 import 'swiper/modules/pagination/pagination.scss'
 import 'swiper/modules/free-mode/free-mode.scss'
 import sliderNext from '../../components/slider/img/next.svg'
 import sliderPrev from '../../components/slider/img/previous.svg'
-import Related from "../../components/related";
+
 
 const ProductPage = ({productType}) => {
 
@@ -251,8 +252,7 @@ const ProductPage = ({productType}) => {
                 <Related productType={productType}/>
             </div>
         </div>
-    )
-        ;
+    );
 };
 
 export default ProductPage;

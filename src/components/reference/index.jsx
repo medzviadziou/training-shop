@@ -1,6 +1,6 @@
 import React from 'react';
 import './reference.scss'
-
+//img
 import partner1 from './img/1.png'
 import partner2 from './img/2.png'
 import partner3 from './img/3.png'
@@ -23,7 +23,7 @@ const Reference = () => {
                     <img className='reference__img' src={partner6} alt="discover network"/>
                     <img className='reference__img' src={partner7} alt="american express"/>
                 </div>
-                <span  className='reference__text reference__text--underline' >Clevertec.ru/training</span>
+                <span className='reference__text reference__text--underline'>Clevertec.ru/training</span>
 
             </div>
         </div>

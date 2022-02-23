@@ -1,7 +1,7 @@
 import React from 'react';
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
 import {A11y, Navigation, Pagination, Scrollbar} from "swiper";
-
+//scss
 import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 import './slider.scss'

@@ -1,10 +1,11 @@
 import React from 'react';
 import './subscribe.scss'
-
+//img
 import women from './img/women_left.png'
 import men from './img/men_right.png'
 
 const Subscribe = () => {
+
     return (
         <div className='subscribe'>
             <div className='subscribe__wrap contain'>

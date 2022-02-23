@@ -1,6 +1,6 @@
 import React from 'react';
 import "./social.scss"
-
+//img
 import facebook from "./img/facebook.svg"
 import twitter from "./img/twitter.svg"
 import instagram from "./img/instagram.svg"

@@ -172,6 +172,13 @@
 align-items: flex-start;
   }
 
+  &__slider-prev.swiper-button-disabled{
+    filter: opacity(0.2) !important;
+  }
+  &__slider-next.swiper-button-disabled{
+    filter: opacity(0.2) !important;
+  }
+
   &__ribbon {
     margin-right: 16px;
     width: 94px;
@@ -227,6 +234,9 @@ align-items: flex-start;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    @media (max-width: 992px) {
+      margin-left: 0;
+    }
 
   }
 

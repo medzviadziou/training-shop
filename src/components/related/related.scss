@@ -16,6 +16,15 @@
 
   &__slider{
     min-width: 0;
-
+  }
+  &__arrow{
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__arrowRight.swiper-button-disabled{
+    filter: opacity(0.2);
+  }
+  &__arrowLeft.swiper-button-disabled{
+    filter: opacity(0.2) !important;
   }
 }

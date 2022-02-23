@@ -1,10 +1,11 @@
 import React from 'react';
-import "./top-bar.scss"
-
 import Visit from "../visit";
 import Social from "../social";
+import "./top-bar.scss"
+
 
 const TopBar = () => {
+
     return (
         <div className='top-bar'>
             <div className='top-bar__wrap contain'>
