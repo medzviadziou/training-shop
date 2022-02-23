@@ -3,8 +3,8 @@ import Cards from "../cards";
 import PRODUCTS from "../../data/products";
 import './related.scss'
 //img
-import arrowLeft from "../../pages/product-page/img/ico/-arrow.svg";
-import arrowRight from "../../pages/product-page/img/ico/arrow-.svg";
+import arrowLeft from "../order/img/ico/-arrow.svg";
+import arrowRight from "../order/img/ico/arrow-.svg";
 //swiper
 import {Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react";

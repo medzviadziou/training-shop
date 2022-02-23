@@ -1,0 +1,77 @@
+.thumbs-swiper{
+  &__slider-wrap {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__ribbon {
+    margin-right: 16px;
+    width: 94px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  &__slider-prev.swiper-button-disabled{
+    filter: opacity(0.2) !important;
+  }
+  &__slider-next.swiper-button-disabled{
+    filter: opacity(0.2) !important;
+  }
+  &__ribbon-arrow{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__rotate {
+    transform: rotate(90deg);
+  }
+  &__slider {
+    position: relative;
+    max-width: 448px;
+    @media (max-width: 992px) {
+      padding-bottom: 30px;
+    }
+    @media (max-width: 576px) {
+      max-width: 330px;
+    }
+
+  }
+  &__prev {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 44px;
+    z-index: 99;
+  }
+  &__next {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: 4px;
+    z-index: 99;
+  }
+}
+
+// да, все что ниже должно быть не здесь
+.swiper-vertical {
+  width: 94px;
+}
+
+.swiper-slide {
+  height: auto !important;
+}
+
+.ribbon__next img, .ribbon__prev img {
+  transform: rotate(90deg);
+}
+
+.swiper-slide-visible {
+  filter: opacity(0.4);
+}
+
+.swiper-slide-thumb-active {
+  filter: opacity(1);
+}
