@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/training-shop/static/css/main.98208c13.chunk.css",
-    "main.js": "/training-shop/static/js/main.09ee7e23.chunk.js",
-    "main.js.map": "/training-shop/static/js/main.09ee7e23.chunk.js.map",
+    "main.css": "/training-shop/static/css/main.21ecec83.chunk.css",
+    "main.js": "/training-shop/static/js/main.b04a8a5e.chunk.js",
+    "main.js.map": "/training-shop/static/js/main.b04a8a5e.chunk.js.map",
     "runtime-main.js": "/training-shop/static/js/runtime-main.461599c6.js",
     "runtime-main.js.map": "/training-shop/static/js/runtime-main.461599c6.js.map",
-    "static/css/2.dae619b1.chunk.css": "/training-shop/static/css/2.dae619b1.chunk.css",
-    "static/js/2.39e2030f.chunk.js": "/training-shop/static/js/2.39e2030f.chunk.js",
-    "static/js/2.39e2030f.chunk.js.map": "/training-shop/static/js/2.39e2030f.chunk.js.map",
+    "static/css/2.ddcd6bbb.chunk.css": "/training-shop/static/css/2.ddcd6bbb.chunk.css",
+    "static/js/2.64edda68.chunk.js": "/training-shop/static/js/2.64edda68.chunk.js",
+    "static/js/2.64edda68.chunk.js.map": "/training-shop/static/js/2.64edda68.chunk.js.map",
     "index.html": "/training-shop/index.html",
-    "precache-manifest.90067e0404b6b31ce86df4d651a8d16a.js": "/training-shop/precache-manifest.90067e0404b6b31ce86df4d651a8d16a.js",
+    "precache-manifest.2e2738bc1f804ff232b478b20bbea172.js": "/training-shop/precache-manifest.2e2738bc1f804ff232b478b20bbea172.js",
     "service-worker.js": "/training-shop/service-worker.js",
-    "static/css/2.dae619b1.chunk.css.map": "/training-shop/static/css/2.dae619b1.chunk.css.map",
-    "static/css/main.98208c13.chunk.css.map": "/training-shop/static/css/main.98208c13.chunk.css.map",
-    "static/js/2.39e2030f.chunk.js.LICENSE.txt": "/training-shop/static/js/2.39e2030f.chunk.js.LICENSE.txt",
+    "static/css/2.ddcd6bbb.chunk.css.map": "/training-shop/static/css/2.ddcd6bbb.chunk.css.map",
+    "static/css/main.21ecec83.chunk.css.map": "/training-shop/static/css/main.21ecec83.chunk.css.map",
+    "static/js/2.64edda68.chunk.js.LICENSE.txt": "/training-shop/static/js/2.64edda68.chunk.js.LICENSE.txt",
     "static/media/-arrow.svg": "/training-shop/static/media/-arrow.ba2ba65b.svg",
     "static/media/1.jpg": "/training-shop/static/media/1.02980ff8.jpg",
     "static/media/2.jpg": "/training-shop/static/media/2.35f54878.jpg",
@@ -61,9 +61,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.461599c6.js",
-    "static/css/2.dae619b1.chunk.css",
-    "static/js/2.39e2030f.chunk.js",
-    "static/css/main.98208c13.chunk.css",
-    "static/js/main.09ee7e23.chunk.js"
+    "static/css/2.ddcd6bbb.chunk.css",
+    "static/js/2.64edda68.chunk.js",
+    "static/css/main.21ecec83.chunk.css",
+    "static/js/main.b04a8a5e.chunk.js"
   ]
 }
