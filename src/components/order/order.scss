@@ -6,6 +6,32 @@
     @media (max-width: 992px) {
       margin-left: 0;
     }
+  &__item {
+    padding-bottom: 6px;
+    display: flex;
+    gap: 2px;
+  }
+
+  &__text {
+    padding-right: 2px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #121212;
+    opacity: 0.6;
+
+    &--bold {
+      font-weight: bold;
+      opacity: 1;
+    }
+
+    &--large {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
 
   &__choice {
     margin-top: 16px;
