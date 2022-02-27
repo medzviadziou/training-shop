@@ -11,6 +11,7 @@ import square from './img/square-loading.png'
 import './products-page.scss'
 //data
 import PRODUCTS from "../../data/products";
+import Filter from "../../components/filter";
 
 
 const ProductsPage = ({productType}) => {
@@ -41,6 +42,7 @@ const ProductsPage = ({productType}) => {
                 })}
             </div>
             <div className='products-page__square'><img src={square} alt=""/></div>
+            <Filter productType={productType} />
         </div>
     );
 };
