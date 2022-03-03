@@ -1,11 +1,16 @@
 import React from 'react';
 import PRODUCTS from "../../data/products";
+import adjustments from "../../pages/products-page/img/adjustments.svg";
+import list from "../../pages/products-page/img/view-list.svg";
+import grid from "../../pages/products-page/img/view-grid.svg";
+import check from "./img/check.svg"
+import './filter.scss'
 
 
 let setColor = new Set()
 let setSizes = new Set()
 let setBrand = new Set()
-let setPrice = new Set()
+let arrPrice = ['$300', '$200-$300', '$100-$200', '$50-$100', '$20-$50', '$10-$20', '<$10']
 
 function createFilterList(card) {
 
@@ -16,29 +21,86 @@ function createFilterList(card) {
         setSizes.add(card.sizes[i - 1])
     }
     setBrand.add(card.brand)
-    setPrice.add(card.price)
-
 }
+
 
 const Filter = ({productType}) => {
 
-
     PRODUCTS[productType].map((card) => {
-        createFilterList(card)
+        return createFilterList(card)
     })
-
-    console.log(setColor)
-    console.log(setSizes)
-    console.log(setBrand)
-    console.log(setPrice)
 
     return (
 
-        <div>
-
+        <div className='filter contain'>
+            <div className='filter__top '>
+                <div className='filter__text'><img src={adjustments} alt=""/><span>Filter</span></div>
+                <div className='filter__ico'>
+                    <img src={list} alt=""/>
+                    <img src={grid} alt=""/>
+                </div>
+            </div>
+            <div className='filter__list'>
+                <div className='filter__item'>
+                    <form className='filter__form'>
+                        <fieldset className='filter__fieldset'>
+                            <legend className='filter__legend'>Color</legend>
+                            <div className='filter__wrap'>
+                                {Array.from(setColor).sort().map((color, index) => {
+                                    return <label key={index} className='filter__label' htmlFor={color}><input
+                                        className='filter__check-input' type="checkbox" id={color}/><span
+                                        className='filter__check-box'><img className='filter__check' src={check}
+                                                                           alt=""/></span><span
+                                        className='filter__point'>{color}</span></label>
+                                })}
+                            </div>
+                        </fieldset>
+                        <fieldset className='filter__fieldset'>
+                            <legend className='filter__legend'>Sizes</legend>
+                            <div className='filter__wrap'>
+                                {Array.from(setSizes).sort().map((size, index) => {
+                                    return <label key={index} className='filter__label' htmlFor={size}><input
+                                        className='filter__check-input' type="checkbox" id={size}/><span
+                                        className='filter__check-box'><img className='filter__check' src={check}
+                                                                           alt=""/></span><span
+                                        className='filter__point'>{size}</span></label>
+                                })}
+                            </div>
+                        </fieldset>
+                        <fieldset className='filter__fieldset'>
+                            <legend className='filter__legend'>Brand</legend>
+                            <div className='filter__wrap'>
+                                {Array.from(setBrand).sort().map((brand, index) => {
+                                    return <label key={index} className='filter__label' htmlFor={brand}><input
+                                        className='filter__check-input' type="checkbox" id={brand}/><span
+                                        className='filter__check-box'><img className='filter__check' src={check}
+                                                                           alt=""/></span><span
+                                        className='filter__point'>{brand}</span></label>
+                                })}
+                            </div>
+                        </fieldset>
+                        <fieldset className='filter__fieldset'>
+                            <legend className='filter__legend'>Price</legend>
+                            <div className='filter__wrap'>
+                                {arrPrice.map((price, index) => {
+                                    return <label key={index} className='filter__label' htmlFor={price}><input
+                                        className='filter__check-input' type="checkbox" id={price}/><span
+                                        className='filter__check-box'><img className='filter__check' src={check}
+                                                                           alt=""/></span><span
+                                        className='filter__point'>{price}</span></label>
+                                })}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 
 };
 
 export default Filter;
+
+
+
+

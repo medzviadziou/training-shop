@@ -1,17 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Cards from "../../components/cards";
+import Filter from "../../components/filter";
 //img
 import share from './img/share.svg'
-import list from './img/view-list.svg'
-import grid from './img/view-grid.svg'
-import adjustments from './img/adjustments.svg'
 import square from './img/square-loading.png'
 //css
 import './products-page.scss'
 //data
 import PRODUCTS from "../../data/products";
-import Filter from "../../components/filter";
+
 
 
 const ProductsPage = ({productType}) => {
@@ -29,20 +27,14 @@ const ProductsPage = ({productType}) => {
                 </div>
                 <h1 className='products-page__title'>{productType}</h1>
             </div>
-            <div className='products-page__filter contain'>
-                <div className='products-page__text'><img src={adjustments} alt=""/><span>Filter</span></div>
-                <div className='products-page__ico'>
-                    <img src={list} alt=""/>
-                    <img src={grid} alt=""/>
-                </div>
-            </div>
+            <Filter productType={productType} />
             <div className='products-page__grid contain'>
                 {PRODUCTS[productType].map((card) => {
                     return <Cards card={card} key={card.id} productType={productType}/>
                 })}
             </div>
             <div className='products-page__square'><img src={square} alt=""/></div>
-            <Filter productType={productType} />
+
         </div>
     );
 };

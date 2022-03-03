@@ -1,0 +1,118 @@
+.filter {
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+    opacity: 0.6;
+  }
+
+  &__ico {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__form {
+    margin-bottom: 32px;
+    padding: 24px 42px;
+    background: #F8F8F8;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  &__fieldset {
+            border: none;
+  }
+
+  &__wrap{
+    max-height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    /*  Firefox */
+    scrollbar-width: thin;
+    scrollbar-color:   #8D8B8B #E6E6E6 ;
+    /* Chrome, Edge, and Safari */
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #E6E6E6;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #8D8B8B;    /* color of the scroll thumb */
+    }
+  }
+
+  &__legend {
+    margin-bottom: 18px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  &__label{
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__check-box {
+    max-width: 18px;
+    max-height: 18px;
+    display: inline-block;
+    border: 1px solid #E6E6E6;
+    background-color: #FFFFFF;
+  }
+
+  &__check {
+    opacity: 0;
+  }
+
+  &__check-input {
+    width: 0;
+    height: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    opacity: 0;
+
+    &:checked + .filter__check-box img {
+      opacity: 1;
+    }
+  }
+
+  &__point{
+    padding-left: 8px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 34px;
+    color: #121212;
+    opacity: 0.8;
+  }
+}
+
+

@@ -1,5 +1,48 @@
 .clothes{
-
+  &__top{
+    margin-top: 96px;
+    margin-bottom: 50px;}
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
+  }
+  &__title{
+    font-family:var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 25px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+  }
+  &__filter{
+    display: flex;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
+  }
+  &__sorting{
+    padding-top: 9px;
+    padding-left: 32px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.06em;
+    color: #121212;
+    opacity: 0.6;
+    list-style-type: none;
+    cursor: pointer;
+    &--active{
+      opacity: 1;
+      font-weight: 500;
+    }
+  }
   &__grid{
     padding: 0;
     display: grid;
@@ -28,3 +71,5 @@
    opacity: 0.8;
   }
 }
+
+
