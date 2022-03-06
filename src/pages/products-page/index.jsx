@@ -9,10 +9,12 @@ import square from './img/square-loading.png'
 import './products-page.scss'
 //data
 import PRODUCTS from "../../data/products";
+import {useParams} from "react-router-dom";
 
 
 
-const ProductsPage = ({productType}) => {
+const ProductsPage = () => {
+    const {productType} = useParams();
     return (
         <div data-test-id={`products-page-${productType}`}>
             <div className='products-page__top'>

@@ -16,11 +16,9 @@ function App() {
             <Header/>
             <Routes>
                 <Route index element={<MainPage/>}/>
-                <Route path='/women' element={<ProductsPage productType='women'/>}/>
-                <Route path='/men' element={<ProductsPage productType='men'/>}/>
-                <Route path='/women/:id' element={<ProductPage productType="women"/>}/>
-                <Route path='/men/:id' element={<ProductPage productType="men"/>}/>
-                <Route path="*" element={ <main style={{padding: '100px 0', textAlign: 'center',  fontSize: '72px'}}> <p>There's nothing here!</p></main>}/>
+                <Route path=':productType' element={<ProductsPage />}/>
+                <Route path=':productType/:id' element={<ProductPage />}/>
+                <Route  element={ <main style={{padding: '100px 0', textAlign: 'center',  fontSize: '72px'}}> <p>There's nothing here!</p></main>}/>
             </Routes>
             <Footer/>
         </section>

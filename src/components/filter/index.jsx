@@ -1,40 +1,50 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PRODUCTS from "../../data/products";
-import adjustments from "../../pages/products-page/img/adjustments.svg";
+import adjustments from "./img/adjustments.svg";
+import close from "./img/close.svg"
 import list from "../../pages/products-page/img/view-list.svg";
 import grid from "../../pages/products-page/img/view-grid.svg";
 import check from "./img/check.svg"
 import './filter.scss'
+import classNames from "classnames";
 
-
-let setColor = new Set()
-let setSizes = new Set()
-let setBrand = new Set()
-let arrPrice = ['$300', '$200-$300', '$100-$200', '$50-$100', '$20-$50', '$10-$20', '<$10']
-
-function createFilterList(card) {
-
-    for (let i = card.images.length; i > 0; i--) {
-        setColor.add(card.images[i - 1].color)
-    }
-    for (let i = card.sizes.length; i > 0; i--) {
-        setSizes.add(card.sizes[i - 1])
-    }
-    setBrand.add(card.brand)
-}
 
 
 const Filter = ({productType}) => {
+
+    //crate FilterList
+    let setColor = new Set()
+    let setSizes = new Set()
+    let setBrand = new Set()
+    let arrPrice = ['$300', '$200-$300', '$100-$200', '$50-$100', '$20-$50', '$10-$20', '<$10']
+
+    function createFilterList(card) {
+
+        for (let i = card.images.length; i > 0; i--) {
+            setColor.add(card.images[i - 1].color)
+        }
+        for (let i = card.sizes.length; i > 0; i--) {
+            setSizes.add(card.sizes[i - 1])
+        }
+        setBrand.add(card.brand)
+    }
 
     PRODUCTS[productType].map((card) => {
         return createFilterList(card)
     })
 
+
+    //
+    const [isFilterClose, toggleFilter] = useState(true)
+    const clickFilter = () => {
+        toggleFilter(!isFilterClose)
+    };
+
     return (
 
         <div className='filter contain'>
             <div className='filter__top '>
-                <div className='filter__text'><img src={adjustments} alt=""/><span>Filter</span></div>
+                <div className='filter__text filter__text--pointer' onClick={clickFilter}><img src={isFilterClose?adjustments:close} alt=""/><span>Filter</span></div>
                 <div className='filter__ico'>
                     <img src={list} alt=""/>
                     <img src={grid} alt=""/>
@@ -42,7 +52,7 @@ const Filter = ({productType}) => {
             </div>
             <div className='filter__list'>
                 <div className='filter__item'>
-                    <form className='filter__form'>
+                    <form  className={classNames('filter__form', {'filter__form--close': isFilterClose})}>
                         <fieldset className='filter__fieldset'>
                             <legend className='filter__legend'>Color</legend>
                             <div className='filter__wrap'>

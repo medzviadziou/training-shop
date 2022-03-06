@@ -4,16 +4,21 @@ import ProductTop from "../../components/product-top";
 import ThumbsSwiper from "../../components/thumbs-swiper";
 import './product-page.scss';
 import Order from "../../components/order";
+import {useParams} from "react-router-dom";
+import PRODUCTS from "../../data/products";
 
 
-const ProductPage = ({productType}) => {
+const ProductPage = () => {
+    const {id, productType} = useParams();
+
+    const product = PRODUCTS[productType].filter((product) => product.id===id)
 
     return (
         <div className='product-page' data-test-id={`product-page-${productType}`}>
-            <ProductTop productType={productType} />
+            <ProductTop productType={productType} product={product[0]}/>
             <div className='product-page__block  contain'>
-                <ThumbsSwiper />
-                <Order/>
+                <ThumbsSwiper product={product[0]} />
+                <Order product={product[0]}/>
             </div>
             <div className='product-page__related contain' data-test-id='related-slider'>
                 <Related productType={productType}/>

@@ -29,6 +29,7 @@
   &__info {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     @media (max-width: 768px) {
       flex-direction: column;
     }

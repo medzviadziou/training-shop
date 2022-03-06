@@ -4,9 +4,9 @@ import './rating.scss'
 import starGray from "../cards/img/ico/star_gray.svg";
 import starGold from "../cards/img/ico/star_gold.svg";
 
-const Rating = ({rating}) => {
+const Rating = (props) => {
     const star = [starGray, starGray, starGray, starGray, starGray,]
-    let i = rating
+    let i = props.rating
     while (i > 0) {
         star.push(starGold)
         star.shift()
@@ -15,11 +15,11 @@ const Rating = ({rating}) => {
 
     return (
         <div className='rating'>
-            <img className='rating__star' src={star[4]} alt=""/>
-            <img className='rating__star' src={star[3]} alt=""/>
-            <img className='rating__star' src={star[2]} alt=""/>
-            <img className='rating__star' src={star[1]} alt=""/>
-            <img className='rating__star' src={star[0]} alt=""/>
+            <img className='rating__star' src={star[4]} alt="" width={props.size} height={props.size}/>
+            <img className='rating__star' src={star[3]} alt="" width={props.size} height={props.size}/>
+            <img className='rating__star' src={star[2]} alt="" width={props.size} height={props.size}/>
+            <img className='rating__star' src={star[1]} alt="" width={props.size} height={props.size}/>
+            <img className='rating__star' src={star[0]} alt="" width={props.size} height={props.size}/>
         </div>
     );
 };
