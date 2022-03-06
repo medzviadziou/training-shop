@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c36f836ec91632e85a0513f58d4f8399",
+    "revision": "54f7d1e858b80eb88c826de70bd870fc",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "4174b614c4fcc781e5e4",
+    "revision": "66ef1a73e661144f5279",
     "url": "/training-shop/static/css/2.ddcd6bbb.chunk.css"
   },
   {
-    "revision": "bcb632cf2d62dbbcd163",
-    "url": "/training-shop/static/css/main.0f98e157.chunk.css"
+    "revision": "874021943c7c132a29dd",
+    "url": "/training-shop/static/css/main.93b3d3ed.chunk.css"
   },
   {
-    "revision": "4174b614c4fcc781e5e4",
-    "url": "/training-shop/static/js/2.7625c4c1.chunk.js"
+    "revision": "66ef1a73e661144f5279",
+    "url": "/training-shop/static/js/2.de5b2075.chunk.js"
   },
   {
     "revision": "2fef175dda8e998324609df8a30ba72f",
-    "url": "/training-shop/static/js/2.7625c4c1.chunk.js.LICENSE.txt"
+    "url": "/training-shop/static/js/2.de5b2075.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bcb632cf2d62dbbcd163",
-    "url": "/training-shop/static/js/main.6bc84c2b.chunk.js"
+    "revision": "874021943c7c132a29dd",
+    "url": "/training-shop/static/js/main.62535be5.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
@@ -72,16 +72,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/training-shop/static/media/clock.f2424f95.svg"
   },
   {
-    "revision": "55093799b7f60077917d17fe425bd6d2",
-    "url": "/training-shop/static/media/color-1.55093799.jpg"
-  },
-  {
-    "revision": "3c0aa818b9e884c10731ef2d7064b4d5",
-    "url": "/training-shop/static/media/color-3.3c0aa818.jpg"
-  },
-  {
-    "revision": "e074b7a8760b79788192ecf6182534a7",
-    "url": "/training-shop/static/media/color-4.e074b7a8.jpg"
+    "revision": "ea5ad48ad90544e66ab85381b1f528d1",
+    "url": "/training-shop/static/media/close.ea5ad48a.svg"
   },
   {
     "revision": "9dc99b20a10f427562e1f0cc2b863493",
@@ -190,10 +182,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0e00750f921c886d5362e89b73dd3eb4",
     "url": "/training-shop/static/media/slider.0e00750f.jpg"
-  },
-  {
-    "revision": "592ae28ebc183f26d51138fc17931e0f",
-    "url": "/training-shop/static/media/slider.592ae28e.jpg"
   },
   {
     "revision": "225dbf35ddca27f4d3237733c2e9d227",
