@@ -26,8 +26,8 @@
   }
   &__slider {
     position: relative;
-    max-width: 448px;
-    @media (max-width: 992px) {
+    width: 448px;
+        @media (max-width: 992px) {
       padding-bottom: 30px;
     }
     @media (max-width: 576px) {

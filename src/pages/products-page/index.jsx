@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Cards from "../../components/cards";
 import Filter from "../../components/filter";
 //img
 import share from './img/share.svg'
@@ -8,9 +7,7 @@ import square from './img/square-loading.png'
 //css
 import './products-page.scss'
 //data
-import PRODUCTS from "../../data/products";
 import {useParams} from "react-router-dom";
-
 
 
 const ProductsPage = () => {
@@ -29,14 +26,8 @@ const ProductsPage = () => {
                 </div>
                 <h1 className='products-page__title'>{productType}</h1>
             </div>
-            <Filter productType={productType} />
-            <div className='products-page__grid contain'>
-                {PRODUCTS[productType].map((card) => {
-                    return <Cards card={card} key={card.id} productType={productType}/>
-                })}
-            </div>
+            <Filter productType={productType}/>
             <div className='products-page__square'><img src={square} alt=""/></div>
-
         </div>
     );
 };
