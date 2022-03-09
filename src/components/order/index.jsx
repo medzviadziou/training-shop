@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames";
 import Rating from "../rating";
 import './order.scss';
@@ -39,6 +39,10 @@ const Order = (props) => {
         setSizeChose(e.target.id)
     }
 
+    useEffect(()=>{
+        setColorChose(props.product.images[0].color)
+        setSizeChose(Array.from(setSize).sort()[0])
+            },[props])
 
     return (
         <div className='order'>
