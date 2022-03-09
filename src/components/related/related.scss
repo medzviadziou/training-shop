@@ -27,4 +27,8 @@
   &__arrowLeft.swiper-button-disabled{
     filter: opacity(0.2) !important;
   }
+  &__arrow{
+    display: flex;
+    justify-content: flex-end;
+  }
 }

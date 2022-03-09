@@ -16,12 +16,13 @@ const Filter = ({productType}) => {
     let setColor = new Set()
     let setSizes = new Set()
     let setBrand = new Set()
-    let arrPrice = ['$300', '$200-$300', '$100-$200', '$50-$100', '$20-$50', '$10-$20', '<$10']
+    let setPrice = new Set([ '$200-$300', '$100-$200', '$50-$100', '$20-$50',])
 
     function createFilterList(card) {
         for (let i = card.images.length; i > 0; i--) {
             setColor.add(card.images[i - 1].color)
         }
+
         for (let i = card.sizes.length; i > 0; i--) {
             setSizes.add(card.sizes[i - 1])
         }
@@ -40,55 +41,100 @@ const Filter = ({productType}) => {
     };
 
     //// собираю значения зачекнутых импутов
-    let setFilterColor = new Set(['Blue'])
-    let setFilterSize = new Set()
-    let setFilterBrand = new Set()
-    let setFilterPrice = new Set()
+    let [setFilterColor, setSetFilterColor] = useState(new Set())
+    let [setFilterSize, setSetFilterSize] = useState(new Set())
+    let [setFilterBrand, setSetFilterBrand] = useState(new Set())
+    let [setFilterPrice, setSetFilterPrice] = useState(new Set())
 
-    const clickColorInputChange = (e) => {
+    const onChangeColorInput = (e) => {
         if (e.target.checked) {
-            setFilterColor.add(e.target.id)
+            setSetFilterColor(setFilterColor.add(e.target.id))
         }
         if (!e.target.checked) {
             setFilterColor.delete(e.target.id)
+            setSetFilterColor(setFilterColor)
         }
         console.log(setFilterColor)
     }
-    const clickSizeInputChange = (e) => {
+    const onChangeSizeInput = (e) => {
         if (e.target.checked) {
-            setFilterSize.add(e.target.id)
+            setSetFilterSize(setFilterSize.add(e.target.id))
         }
         if (!e.target.checked) {
             setFilterSize.delete(e.target.id)
+            setSetFilterSize(setFilterSize)
+
         }
-        console.log(setFilterSize)
+        console.log(setFilterSize, "это поиск")
     }
-    const clickBrandInputChange = (e) => {
+    const onChangeBrandInput = (e) => {
         if (e.target.checked) {
-            setFilterBrand.add(e.target.id)
+            setSetFilterBrand(setFilterBrand.add(e.target.id))
         }
         if (!e.target.checked) {
             setFilterBrand.delete(e.target.id)
+            setSetFilterBrand(setFilterBrand)
         }
         console.log(setFilterBrand)
     }
-    const clickPriceInputChange = (e) => {
+    const onChangePriceInput = (e) => {
         if (e.target.checked) {
-            setFilterPrice.add(e.target.id)
+            setSetFilterPrice(setFilterPrice.add(e.target.id))
         }
         if (!e.target.checked) {
             setFilterPrice.delete(e.target.id)
+            setSetFilterPrice(setFilterPrice)
         }
         console.log(setFilterPrice)
     }
 
     //сравниваю, есть ли значение в коллекции выбраных импутов
     let hasColor = (item) => {
-        for (let i = item.images.length; i > 0; i-1) {
+        for (let i = item.images.length; i > 0; i - 1) {
             return setFilterColor.has(item.images[i - 1].color)
         }
     }
+    let hasSize = (item) => {
+        for (let i = item.sizes.length; i > 0; i--) {
+            console.log(item.sizes.length, i, item.sizes[i - 1])
+            if (setFilterSize.has(item.sizes[i - 1])) {
+                return true
+            }
+        }
 
+    }
+    let hasBrand = (item) => {
+        for (let i = item.brand.length; i > 0; i - 1) {
+            return setFilterBrand.has(item.brand)
+        }
+    }
+    let hasPrice = (item) => {
+        let cost = Math.round(item.price + (parseInt(item.discount ?? 0) * (item.price / 100)))
+        if (setFilterPrice.has('$20-$50')){
+           if (cost>=20&&cost<=50){
+               return true
+           }
+        }
+        if (setFilterPrice.has('$50-$100')){
+            if (cost>=50&&cost<=100){
+                return true
+            }
+        }
+        if (setFilterPrice.has('$100-$200')){
+            if (cost>=100&&cost<=200){
+                return true
+            }
+        }
+        if (setFilterPrice.has('$200-$300')){
+            if (cost>=200&&cost<=300){
+                return true
+            }
+        }
+
+
+
+
+    }
 
     return (
         <>
@@ -106,19 +152,20 @@ const Filter = ({productType}) => {
                         <form className={classNames('filter__form', {'filter__form--close': isFilterClose})}>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Color</legend>
-                                <div className='filter__wrap' onChange={clickColorInputChange}>
+                                <div className='filter__wrap' onChange={onChangeColorInput}>
                                     {Array.from(setColor).sort().map((color, index) => {
-                                        return <label key={index} className='filter__label' htmlFor={color}><input
-                                            className='filter__check-input' type="checkbox" id={color}/><span
-                                            className='filter__check-box'><img className='filter__check' src={check}
-                                                                               alt=""/></span><span
-                                            className='filter__point'>{color}</span></label>
+                                        return <label key={index} className='filter__label' htmlFor={color}>
+                                            <input className='filter__check-input' type="checkbox" id={color}/>
+                                            <span className='filter__check-box'><img className='filter__check'
+                                                                                     src={check} alt=""/></span>
+                                            <span className='filter__point'>{color}</span>
+                                        </label>
                                     })}
                                 </div>
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Sizes</legend>
-                                <div className='filter__wrap' onChange={clickSizeInputChange}>
+                                <div className='filter__wrap' onChange={onChangeSizeInput}>
                                     {Array.from(setSizes).sort().map((size, index) => {
                                         return <label key={index} className='filter__label' htmlFor={size}>
                                             <input className='filter__check-input' type="checkbox" id={size}/>
@@ -131,7 +178,7 @@ const Filter = ({productType}) => {
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Brand</legend>
-                                <div className='filter__wrap' onChange={clickBrandInputChange}>
+                                <div className='filter__wrap' onChange={onChangeBrandInput}>
                                     {Array.from(setBrand).sort().map((brand, index) => {
                                         return <label key={index} className='filter__label' htmlFor={brand}><input
                                             className='filter__check-input' type="checkbox" id={brand}/><span
@@ -143,8 +190,8 @@ const Filter = ({productType}) => {
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Price</legend>
-                                <div className='filter__wrap' onChange={clickPriceInputChange}>
-                                    {arrPrice.map((price, index) => {
+                                <div className='filter__wrap' onChange={onChangePriceInput}>
+                                    {Array.from(setPrice).map((price, index) => {
                                         return <label key={index} className='filter__label' htmlFor={price}><input
                                             className='filter__check-input' type="checkbox" id={price}/><span
                                             className='filter__check-box'><img className='filter__check' src={check}
@@ -157,8 +204,15 @@ const Filter = ({productType}) => {
                     </div>
                 </div>
             </div>
+            <div className='filter__found'>
+                <span className='filter__found'>{"?"} items Found</span>
+                <span className='filter__found'>Color:{setFilterColor}</span>
+                <span className='filter__found'>Size:{setFilterSize}</span>
+                <span className='filter__found'>Brand:{setFilterBrand}</span>
+                <span className='filter__found'>Price:{setFilterPrice}</span>
+            </div>
             <div className='filter__grid contain'>
-                {PRODUCTS[productType].filter((item) => setFilterColor.size === 0 || hasColor(item)).map((card) => {
+                {PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)).map((card) => {
                     return <Cards card={card} key={card.id} productType={productType}/>
                 })}
             </div>
