@@ -16,13 +16,12 @@ const Filter = ({productType}) => {
     let setColor = new Set()
     let setSizes = new Set()
     let setBrand = new Set()
-    let setPrice = new Set([ '$200-$300', '$100-$200', '$50-$100', '$20-$50',])
+    let setPrice = new Set(['$200-$300', '$100-$200', '$50-$100', '$20-$50',])
 
     function createFilterList(card) {
         for (let i = card.images.length; i > 0; i--) {
-            setColor.add(card.images[i - 1].color)
+            card.images.map((item) => setColor.add(item.color))
         }
-
         for (let i = card.sizes.length; i > 0; i--) {
             setSizes.add(card.sizes[i - 1])
         }
@@ -32,7 +31,6 @@ const Filter = ({productType}) => {
     PRODUCTS[productType].map((card) => {
         return createFilterList(card)
     })
-
 
     //Open Filter
     const [isFilterClose, toggleFilter] = useState(true)
@@ -54,7 +52,8 @@ const Filter = ({productType}) => {
             setFilterColor.delete(e.target.id)
             setSetFilterColor(setFilterColor)
         }
-        console.log(setFilterColor)
+        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)))
+
     }
     const onChangeSizeInput = (e) => {
         if (e.target.checked) {
@@ -65,7 +64,8 @@ const Filter = ({productType}) => {
             setSetFilterSize(setFilterSize)
 
         }
-        console.log(setFilterSize, "это поиск")
+        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)))
+
     }
     const onChangeBrandInput = (e) => {
         if (e.target.checked) {
@@ -75,7 +75,8 @@ const Filter = ({productType}) => {
             setFilterBrand.delete(e.target.id)
             setSetFilterBrand(setFilterBrand)
         }
-        console.log(setFilterBrand)
+        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)))
+
     }
     const onChangePriceInput = (e) => {
         if (e.target.checked) {
@@ -85,18 +86,21 @@ const Filter = ({productType}) => {
             setFilterPrice.delete(e.target.id)
             setSetFilterPrice(setFilterPrice)
         }
-        console.log(setFilterPrice)
+        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)))
     }
 
     //сравниваю, есть ли значение в коллекции выбраных импутов
     let hasColor = (item) => {
-        for (let i = item.images.length; i > 0; i - 1) {
-            return setFilterColor.has(item.images[i - 1].color)
+        for (let i = item.images.length; i > 0; i--) {
+            if (item.images.some(function (step) {
+                return setFilterColor.has(step.color)
+            })) {
+                return true
+            }
         }
     }
     let hasSize = (item) => {
         for (let i = item.sizes.length; i > 0; i--) {
-            console.log(item.sizes.length, i, item.sizes[i - 1])
             if (setFilterSize.has(item.sizes[i - 1])) {
                 return true
             }
@@ -104,43 +108,42 @@ const Filter = ({productType}) => {
 
     }
     let hasBrand = (item) => {
-        for (let i = item.brand.length; i > 0; i - 1) {
-            return setFilterBrand.has(item.brand)
+        if (setFilterBrand.has(item.brand)) {
+            return true
         }
     }
     let hasPrice = (item) => {
         let cost = Math.round(item.price + (parseInt(item.discount ?? 0) * (item.price / 100)))
-        if (setFilterPrice.has('$20-$50')){
-           if (cost>=20&&cost<=50){
-               return true
-           }
-        }
-        if (setFilterPrice.has('$50-$100')){
-            if (cost>=50&&cost<=100){
+        if (setFilterPrice.has('$20-$50')) {
+            if (cost >= 20 && cost <= 50) {
                 return true
             }
         }
-        if (setFilterPrice.has('$100-$200')){
-            if (cost>=100&&cost<=200){
+        if (setFilterPrice.has('$50-$100')) {
+            if (cost >= 50 && cost <= 100) {
                 return true
             }
         }
-        if (setFilterPrice.has('$200-$300')){
-            if (cost>=200&&cost<=300){
+        if (setFilterPrice.has('$100-$200')) {
+            if (cost >= 100 && cost <= 200) {
                 return true
             }
         }
-
-
-
-
+        if (setFilterPrice.has('$200-$300')) {
+            if (cost >= 200 && cost <= 300) {
+                return true
+            }
+        }
     }
+
+    const [renderFilter, setRenderFilter] = useState(PRODUCTS[productType])
+    let count = 0
 
     return (
         <>
             <div className='filter contain'>
                 <div className='filter__top '>
-                    <div className='filter__text filter__text--pointer' onClick={clickFilter}><img
+                    <div className='filter__text filter__text--pointer' onClick={clickFilter} data-test-id='filter-button'><img
                         src={isFilterClose ? adjustments : close} alt=""/><span>Filter</span></div>
                     <div className='filter__ico'>
                         <img src={list} alt=""/>
@@ -148,14 +151,14 @@ const Filter = ({productType}) => {
                     </div>
                 </div>
                 <div className='filter__list'>
-                    <div className='filter__item'>
+                    <div className='filter__item' data-test-id={`filters-${productType}`}>
                         <form className={classNames('filter__form', {'filter__form--close': isFilterClose})}>
-                            <fieldset className='filter__fieldset'>
-                                <legend className='filter__legend'>Color</legend>
-                                <div className='filter__wrap' onChange={onChangeColorInput}>
+                            <fieldset  className='filter__fieldset'>
+                                <legend className='filter__legend' >Color</legend>
+                                <div className='filter__wrap' onChange={onChangeColorInput} data-test-id='filters-color'>
                                     {Array.from(setColor).sort().map((color, index) => {
                                         return <label key={index} className='filter__label' htmlFor={color}>
-                                            <input className='filter__check-input' type="checkbox" id={color}/>
+                                            <input data-test-id={`filter-color-${color}`} className='filter__check-input' type="checkbox" id={color}/>
                                             <span className='filter__check-box'><img className='filter__check'
                                                                                      src={check} alt=""/></span>
                                             <span className='filter__point'>{color}</span>
@@ -163,12 +166,12 @@ const Filter = ({productType}) => {
                                     })}
                                 </div>
                             </fieldset>
-                            <fieldset className='filter__fieldset'>
+                            <fieldset  className='filter__fieldset'>
                                 <legend className='filter__legend'>Sizes</legend>
-                                <div className='filter__wrap' onChange={onChangeSizeInput}>
+                                <div className='filter__wrap' onChange={onChangeSizeInput} data-test-id='filters-size'>
                                     {Array.from(setSizes).sort().map((size, index) => {
                                         return <label key={index} className='filter__label' htmlFor={size}>
-                                            <input className='filter__check-input' type="checkbox" id={size}/>
+                                            <input data-test-id={`filter-size-${size}`} className='filter__check-input' type="checkbox" id={size}/>
                                             <span className='filter__check-box'><img className='filter__check'
                                                                                      src={check} alt=""/></span>
                                             <span className='filter__point'>{size}</span>
@@ -178,9 +181,9 @@ const Filter = ({productType}) => {
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Brand</legend>
-                                <div className='filter__wrap' onChange={onChangeBrandInput}>
+                                <div className='filter__wrap' onChange={onChangeBrandInput} data-test-id='filters-brand'>
                                     {Array.from(setBrand).sort().map((brand, index) => {
-                                        return <label key={index} className='filter__label' htmlFor={brand}><input
+                                        return <label key={index} className='filter__label' htmlFor={brand}><input data-test-id={`filter-brand-${brand}`}
                                             className='filter__check-input' type="checkbox" id={brand}/><span
                                             className='filter__check-box'><img className='filter__check' src={check}
                                                                                alt=""/></span><span
@@ -204,15 +207,16 @@ const Filter = ({productType}) => {
                     </div>
                 </div>
             </div>
-            <div className='filter__found'>
-                <span className='filter__found'>{"?"} items Found</span>
-                <span className='filter__found'>Color:{setFilterColor}</span>
-                <span className='filter__found'>Size:{setFilterSize}</span>
-                <span className='filter__found'>Brand:{setFilterBrand}</span>
-                <span className='filter__found'>Price:{setFilterPrice}</span>
+            <div className='filter__found contain'>
+                <span className={classNames('filter__count', {'filter__count--close': setFilterColor.size===0&&setFilterSize.size===0&&setFilterBrand.size===0&&setFilterPrice.size===0})}>{count} items Found</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterColor.size===0})}>Color: {Array.from(setFilterColor).join()}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterSize.size===0})}>Size: {Array.from(setFilterSize).join()}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterBrand.size===0})}>Brand: {Array.from(setFilterBrand).join()}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterPrice.size===0})} >Price: {Array.from(setFilterPrice).join()}</span>
             </div>
             <div className='filter__grid contain'>
-                {PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)).map((card) => {
+                {renderFilter.map((card, index) => {
+                    count = index + 1
                     return <Cards card={card} key={card.id} productType={productType}/>
                 })}
             </div>

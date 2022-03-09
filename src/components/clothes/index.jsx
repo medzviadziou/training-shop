@@ -22,7 +22,7 @@ const Clothes = ({productType}) => {
                         <h2 className='clothes__title'>{productType}’S</h2>
                         <ul className='clothes__filter' onClick={clickFilter}>
                             {MAIM_CLOTHES_BLOCK_MENU.map((item, index) => {
-                                return <li key={index} id={item.particularName}
+                                return <li key={index} data-test-id={`clothes-${productType}-${item.particularName}`} id={item.particularName}
                                            className={classNames('clothes__sorting', {'clothes__sorting--active': (filter === item.particularName)})}>{item.name}</li>
                             })}
                         </ul>

@@ -34,7 +34,7 @@ const Order = (props) => {
     for (let i = props.product.sizes.length; i > 0; i--) {
         setSize.add(props.product.sizes[i - 1])
     }
-    const [sizeChose, setSizeChose] = useState(Array.from(setSize)[0])
+    const [sizeChose, setSizeChose] = useState(Array.from(setSize).sort()[0])
     const choseSize = (e) => {
         setSizeChose(e.target.id)
     }
