@@ -38,11 +38,13 @@ const Order = (props) => {
     const choseSize = (e) => {
         setSizeChose(e.target.id)
     }
-
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(()=>{
         setColorChose(props.product.images[0].color)
         setSizeChose(Array.from(setSize).sort()[0])
             },[props])
+    /* eslint-enable react-hooks/exhaustive-deps */
+
 
     return (
         <div className='order'>

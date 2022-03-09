@@ -140,7 +140,7 @@ const Filter = ({productType}) => {
     const [renderFilter, setRenderFilter] = useState(PRODUCTS[productType])
 
     let count = renderFilter.length
-
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(()=>{
         toggleFilter(true)
         setSetFilterColor(setFilterColor=new Set())
@@ -149,6 +149,8 @@ const Filter = ({productType}) => {
         setSetFilterPrice(setFilterPrice=new Set())
         setRenderFilter(PRODUCTS[productType])
     },[productType])
+    /* eslint-enable react-hooks/exhaustive-deps */
+
 
     return (
         <>
