@@ -227,6 +227,7 @@ const Filter = ({productType}) => {
                     </div>
                 </div>
             </div>
+
             <div className='filter__found contain'>
                 <div className={classNames('filter__count', {'filter__count--close': setFilterColor.size===0&&setFilterSize.size===0&&setFilterBrand.size===0&&setFilterPrice.size===0})}>{`${count} items Found`}</div>
                 <span className={classNames('filter__set', {'filter__set--close': setFilterColor.size===0})}>Color: {Array.from(setFilterColor).join(", ")}</span>
