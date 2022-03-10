@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import './clothes.scss'
+import {Link} from "react-router-dom";
+import classNames from "classnames";
 import PRODUCTS from "../../data/products";
 import MAIM_CLOTHES_BLOCK_MENU from "../../data/clothes-menu";
 import Cards from "../cards";
-import classNames from "classnames";
-import {Link} from "react-router-dom";
+import './clothes.scss'
 
 
 const Clothes = ({productType}) => {
@@ -23,8 +23,7 @@ const Clothes = ({productType}) => {
                         <h2 className='clothes__title'>{productType}’S</h2>
                         <ul className='clothes__filter' onClick={clickFilter}>
                             {MAIM_CLOTHES_BLOCK_MENU.map((item, index) => {
-                                return <li key={index} data-test-id={`clothes-${productType}-${item.particularName}`} id={item.particularName}
-                                           className={classNames('clothes__sorting', {'clothes__sorting--active': (filter === item.particularName)})}>{item.name}</li>
+                                return <li key={index} data-test-id={`clothes-${productType}-${item.particularName}`} id={item.particularName} className={classNames('clothes__sorting', {'clothes__sorting--active': (filter === item.particularName)})}>{item.name}</li>
                             })}
                         </ul>
                     </div>

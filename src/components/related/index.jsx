@@ -56,7 +56,6 @@ const Related = ({productType}) => {
                         return <SwiperSlide key={card.id}><Cards card={card} productType={productType}/></SwiperSlide>
                     })}
                 </Swiper>
-
             </div>
         </>
     );

@@ -33,11 +33,12 @@ const Panel = () => {
         }
     }
 
+
+
     return (
 
         <div className='panel contain' onClick={clickClose}>
-            <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo}
-                                                              alt="CleverShop"/></Link>
+            <Link to="/" data-test-id='header-logo-link'><img className='panel__logo' src={logo} alt="CleverShop"/></Link>
             <Nav isMenuOpen={isMenuOpen}/>
             <ul className='panel__block'>
                 <li className='panel__ico'><img src={search} alt="search" width="24" height="24"/></li>

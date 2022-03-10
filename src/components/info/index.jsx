@@ -33,12 +33,9 @@ const Info = () => {
             <div className='info__block'>
                 <h3 className='info__title'>Useful links</h3>
                 <ul>
-                    <li><Link to='/terms&conditions' data-test-id='footer-nav-link-terms&conditions'>Terms &
-                        Conditions</Link></li>
-                    <li><Link to='/returns&exchanges' data-test-id='footer-nav-link-returns&exchanges'>Returns &
-                        Exchanges</Link></li>
-                    <li><Link to='/shipping&delivery' data-test-id='footer-nav-link-shipping&delivery'>Shipping &
-                        Delivery</Link></li>
+                    <li><Link to='/terms&conditions' data-test-id='footer-nav-link-terms&conditions'>Terms & Conditions</Link></li>
+                    <li><Link to='/returns&exchanges' data-test-id='footer-nav-link-returns&exchanges'>Returns & Exchanges</Link></li>
+                    <li><Link to='/shipping&delivery' data-test-id='footer-nav-link-shipping&delivery'>Shipping & Delivery</Link></li>
                     <li><Link to='/privacy' data-test-id='footer-nav-link-privacy'>Privacy Policy</Link></li>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './article.scss'
 
-const Article = ({item:{img,title,text,description}}) => {
+const Article = ({item: {img, title, text, description}}) => {
     return (
         <article className='article'>
             <img className='article__img' src={img} alt={description}/>

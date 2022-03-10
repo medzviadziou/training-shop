@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import PRODUCTS from "../../data/products";
+import classNames from "classnames";
+import Cards from "../cards";
+import './filter.scss'
+//img
 import adjustments from "./img/adjustments.svg";
 import close from "./img/close.svg"
 import list from "../../pages/products-page/img/view-list.svg";
 import grid from "../../pages/products-page/img/view-grid.svg";
 import check from "./img/check.svg"
-import './filter.scss'
-import classNames from "classnames";
-import Cards from "../cards";
+
+
 
 
 const Filter = ({productType}) => {
@@ -53,7 +56,7 @@ const Filter = ({productType}) => {
             setSetFilterColor(setFilterColor)
         }
         setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
-        count=setRenderFilter.length
+        count = setRenderFilter.length
     }
     const onChangeSizeInput = (e) => {
         if (e.target.checked) {
@@ -65,7 +68,7 @@ const Filter = ({productType}) => {
 
         }
         setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
-        count=setRenderFilter.length
+        count = setRenderFilter.length
     }
     const onChangeBrandInput = (e) => {
         if (e.target.checked) {
@@ -76,7 +79,7 @@ const Filter = ({productType}) => {
             setSetFilterBrand(setFilterBrand)
         }
         setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
-        count=setRenderFilter.length
+        count = setRenderFilter.length
     }
     const onChangePriceInput = (e) => {
         if (e.target.checked) {
@@ -87,7 +90,7 @@ const Filter = ({productType}) => {
             setSetFilterPrice(setFilterPrice)
         }
         setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
-        count=setRenderFilter.length
+        count = setRenderFilter.length
     }
 
     //сравниваю, есть ли значение в коллекции выбраных импутов
@@ -141,29 +144,31 @@ const Filter = ({productType}) => {
 
     let count = renderFilter.length
 
-    useEffect(()=>{
+    useEffect(() => {
         toggleFilter(true)
         // eslint-disable-next-line
-        setSetFilterSize(setFilterSize=new Set())
+        setSetFilterSize(setFilterSize = new Set())
         // eslint-disable-next-line
-        setSetFilterBrand(setFilterBrand=new Set())
+        setSetFilterBrand(setFilterBrand = new Set())
         // eslint-disable-next-line
-        setSetFilterPrice(setFilterPrice=new Set())
-       // eslint-disable-next-line
+        setSetFilterPrice(setFilterPrice = new Set())
+        // eslint-disable-next-line
         setFilterColor.clear()
         setSetFilterColor(setFilterColor)
 
         setRenderFilter(PRODUCTS[productType])
 
-    },     [productType])
+    }, [productType])
 
 
     return (
         <>
             <div className='filter contain'>
                 <div className='filter__top '>
-                    <div className='filter__text filter__text--pointer' onClick={clickFilter} data-test-id='filter-button'><img
-                        src={isFilterClose ? adjustments : close} alt=""/><span>Filter</span></div>
+                    <div className='filter__text filter__text--pointer' onClick={clickFilter} data-test-id='filter-button'>
+                        <img src={isFilterClose ? adjustments : close} alt=""/>
+                        <span>Filter</span>
+                    </div>
                     <div className='filter__ico'>
                         <img src={list} alt=""/>
                         <img src={grid} alt=""/>
@@ -172,27 +177,25 @@ const Filter = ({productType}) => {
                 <div className='filter__list'>
                     <div className='filter__item' data-test-id={`filters-${productType}`}>
                         <form className={classNames('filter__form', {'filter__form--close': isFilterClose})}>
-                            <fieldset  className='filter__fieldset'>
-                                <legend className='filter__legend' >Color</legend>
-                                <div className='filter__wrap'  data-test-id='filters-color'>
+                            <fieldset className='filter__fieldset'>
+                                <legend className='filter__legend'>Color</legend>
+                                <div className='filter__wrap' data-test-id='filters-color'>
                                     {Array.from(setColor).sort().map((color, index) => {
-                                        return <label key={index} className='filter__label'  htmlFor={color}>
+                                        return <label key={index} className='filter__label' htmlFor={color}>
                                             <input onChange={onChangeColorInput} checked={setFilterColor.has(color)} data-test-id={`filter-color-${color}`} className='filter__check-input' type="checkbox" id={color}/>
-                                            <span className='filter__check-box'><img className='filter__check'
-                                                                                     src={check} alt=""/></span>
+                                            <span className='filter__check-box'><img className='filter__check' src={check} alt=""/></span>
                                             <span className='filter__point'>{color}</span>
                                         </label>
                                     })}
                                 </div>
                             </fieldset>
-                            <fieldset  className='filter__fieldset'>
+                            <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Sizes</legend>
-                                <div className='filter__wrap'  data-test-id='filters-size'>
+                                <div className='filter__wrap' data-test-id='filters-size'>
                                     {Array.from(setSizes).sort().map((size, index) => {
                                         return <label key={index} className='filter__label' htmlFor={size}>
                                             <input onChange={onChangeSizeInput} checked={setFilterSize.has(size)} data-test-id={`filter-size-${size}`} className='filter__check-input' type="checkbox" id={size}/>
-                                            <span className='filter__check-box'><img className='filter__check'
-                                                                                     src={check} alt=""/></span>
+                                            <span className='filter__check-box'><img className='filter__check' src={check} alt=""/></span>
                                             <span className='filter__point'>{size}</span>
                                         </label>
                                     })}
@@ -200,25 +203,24 @@ const Filter = ({productType}) => {
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Brand</legend>
-                                <div className='filter__wrap'  data-test-id='filters-brand'>
+                                <div className='filter__wrap' data-test-id='filters-brand'>
                                     {Array.from(setBrand).sort().map((brand, index) => {
-                                        return <label key={index} className='filter__label' htmlFor={brand}><input onChange={onChangeBrandInput} checked={setFilterBrand.has(brand)}  data-test-id={`filter-brand-${brand}`}
-                                            className='filter__check-input' type="checkbox" id={brand}/><span
-                                            className='filter__check-box'><img className='filter__check' src={check}
-                                                                               alt=""/></span><span
-                                            className='filter__point'>{brand}</span></label>
+                                        return <label key={index} className='filter__label' htmlFor={brand}>
+                                            <input onChange={onChangeBrandInput} checked={setFilterBrand.has(brand)} data-test-id={`filter-brand-${brand}`} className='filter__check-input' type="checkbox" id={brand}/>
+                                            <span className='filter__check-box'><img className='filter__check' src={check} alt=""/></span>
+                                            <span className='filter__point'>{brand}</span>
+                                        </label>
                                     })}
                                 </div>
                             </fieldset>
                             <fieldset className='filter__fieldset'>
                                 <legend className='filter__legend'>Price</legend>
-                                <div className='filter__wrap' >
+                                <div className='filter__wrap'>
                                     {Array.from(setPrice).map((price, index) => {
-                                        return <label key={index} className='filter__label' htmlFor={price}><input onChange={onChangePriceInput} checked={setFilterPrice.has(price)}
-                                            className='filter__check-input' type="checkbox" id={price}/><span
-                                            className='filter__check-box'><img className='filter__check' src={check}
-                                                                               alt=""/></span><span
-                                            className='filter__point'>{price}</span></label>
+                                        return <label key={index} className='filter__label' htmlFor={price}><input onChange={onChangePriceInput} checked={setFilterPrice.has(price)} className='filter__check-input' type="checkbox" id={price}/>
+                                            <span className='filter__check-box'><img className='filter__check' src={check} alt=""/></span>
+                                            <span className='filter__point'>{price}</span>
+                                        </label>
                                     })}
                                 </div>
                             </fieldset>
@@ -226,13 +228,12 @@ const Filter = ({productType}) => {
                     </div>
                 </div>
             </div>
-
             <div className='filter__found contain'>
-                <div className={classNames('filter__count', {'filter__count--close': setFilterColor.size===0&&setFilterSize.size===0&&setFilterBrand.size===0&&setFilterPrice.size===0})}>{`${count} items Found`}</div>
-                <span className={classNames('filter__set', {'filter__set--close': setFilterColor.size===0})}>Color: {Array.from(setFilterColor).join(", ")}</span>
-                <span className={classNames('filter__set', {'filter__set--close': setFilterSize.size===0})}>Size: {Array.from(setFilterSize).join(", ")}</span>
-                <span className={classNames('filter__set', {'filter__set--close': setFilterBrand.size===0})}>Brand: {Array.from(setFilterBrand).join(", ")}</span>
-                <span className={classNames('filter__set', {'filter__set--close': setFilterPrice.size===0})} >Price: {Array.from(setFilterPrice).join(", ")}</span>
+                <div className={classNames('filter__count', {'filter__count--close': setFilterColor.size === 0 && setFilterSize.size === 0 && setFilterBrand.size === 0 && setFilterPrice.size === 0})}>{`${count} items Found`}</div>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterColor.size === 0})}>Color: {Array.from(setFilterColor).join(", ")}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterSize.size === 0})}>Size: {Array.from(setFilterSize).join(", ")}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterBrand.size === 0})}>Brand: {Array.from(setFilterBrand).join(", ")}</span>
+                <span className={classNames('filter__set', {'filter__set--close': setFilterPrice.size === 0})}>Price: {Array.from(setFilterPrice).join(", ")}</span>
             </div>
             <div className='filter__grid contain'>
                 {renderFilter.map((card) => {

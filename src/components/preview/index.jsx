@@ -32,7 +32,6 @@ const Preview = () => {
                             <Link to='/men' ><span className="preview__banner">Men</span></Link>
                         </div>
                     </div>
-
                     <div className='preview__item '>
                         <img className='preview__img' src={accessories} alt="accessories"/>
                         <span className="preview__banner">Accessories</span>

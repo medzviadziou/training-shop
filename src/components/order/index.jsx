@@ -19,7 +19,6 @@ import pay7 from "./img/pay/express.png";
 import annotation from "./img/ico/annotation.svg";
 
 
-
 const Order = (props) => {
 
     //Color
@@ -39,11 +38,11 @@ const Order = (props) => {
         setSizeChose(e.target.id)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setColorChose(props.product.images[0].color)
         setSizeChose(Array.from(setSize).sort()[0])
         // eslint-disable-next-line react-hooks/exhaustive-deps
-            },[props])
+    }, [props])
 
     return (
         <div className='order'>
@@ -55,10 +54,7 @@ const Order = (props) => {
                 {props.product.images.map((item) => {
                     if (!setColor.has(item.color)) {
                         setColor.add(item.color)
-                        return <img id={item.color} key={item.id}
-                                    className={classNames('order__img', {'order__img--active': (colorChose === item.color)})}
-                                    src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64'
-                                    height='64'/>
+                        return <img id={item.color} key={item.id} className={classNames('order__img', {'order__img--active': (colorChose === item.color)})} src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64' height='64'/>
                     } else {
                         setColor.add(item.color)
                         return console.log("ok")
@@ -72,25 +68,21 @@ const Order = (props) => {
             <div className='order__choice' onClick={choseSize}>
                 {Array.from(setSize).sort().map((size, index) => {
                     return <span id={size} key={index} className={classNames('order__size', {'order__size--active': (sizeChose === size)})}>{size}</span>
-                    })}
+                })}
             </div>
             <div className='order__hanger'>
                 <img src={hanger} alt=""/><span className='order__text'>Size guide</span>
             </div>
             <div className='order__chapter'>
-                <span className='order__price'>$  {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount &&
-                <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
+                <span className='order__price'>$ {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount && <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
                 <button className='order__button'>Add to card</button>
                 <img src={heart} alt="" width="24" height="24"/>
                 <img src={scale} alt="" width="24" height="24"/>
             </div>
             <div className='order__advantage'>
-                <div><img className='order__ico' src={truck} alt="" width="24" height="24"/><span
-                    className='order__text'>Shipping & Delivery</span></div>
-                <div><img className='order__ico' src={refresh} alt="" width="24" height="24"/><span
-                    className='order__text'>Returns & Exchanges</span></div>
-                <div><img className='order__ico' src={mail} alt="" width="24" height="24"/><span
-                    className='order__text'>Ask a question</span></div>
+                <div><img className='order__ico' src={truck} alt="" width="24" height="24"/><span className='order__text'>Shipping & Delivery</span></div>
+                <div><img className='order__ico' src={refresh} alt="" width="24" height="24"/><span className='order__text'>Returns & Exchanges</span></div>
+                <div><img className='order__ico' src={mail} alt="" width="24" height="24"/><span className='order__text'>Ask a question</span></div>
             </div>
             <div className='order__checkout'>
                 <span>guaranteed safe checkout</span>
@@ -128,9 +120,9 @@ const Order = (props) => {
                 <span className='order__text order__text--bold'>REVIEWS</span>
                 <div className='order__annotations'>
                     <div className='order__rating'>
-                                <span className='order__stars'>
-                                    <Rating rating={props.product.rating} size="16"/>
-                                 </span>
+                        <span className='order__stars'>
+                            <Rating rating={props.product.rating} size="16"/>
+                        </span>
                         <span className='order__amount'>{props.product.reviews.length} Reviews</span>
                     </div>
                     <div className='order__annotation'>
@@ -149,7 +141,6 @@ const Order = (props) => {
                         <p className='order__text order__text--large'>{review.text}</p>
                     </div>
                 })}
-
             </div>
         </div>
     );

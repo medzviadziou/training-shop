@@ -24,7 +24,6 @@ const Reference = () => {
                     <img className='reference__img' src={partner7} alt="american express"/>
                 </div>
                 <span className='reference__text reference__text--underline'>Clevertec.ru/training</span>
-
             </div>
         </div>
     );
