@@ -4,6 +4,7 @@ import PRODUCTS from "../../data/products";
 import MAIM_CLOTHES_BLOCK_MENU from "../../data/clothes-menu";
 import Cards from "../cards";
 import classNames from "classnames";
+import {Link} from "react-router-dom";
 
 
 const Clothes = ({productType}) => {
@@ -34,7 +35,7 @@ const Clothes = ({productType}) => {
                             return <Cards card={card} key={card.id} productType={productType}/>
                         })}
                     </div>
-                    <button className='clothes__button' type="button">See All</button>
+                    <Link to={`/${productType}`}  ><div className='clothes__button'><span className='clothes__button-text'>See All</span></div></Link>
                 </div>
             </div>
         </div>

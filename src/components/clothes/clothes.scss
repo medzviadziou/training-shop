@@ -65,11 +65,16 @@
     font-size: 13px;
     line-height: 15px;
     align-items: center;
+    text-align: center;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #121212;
-   opacity: 0.8;
+        background: #F8F8F8;
+    border: 2px solid #F8F8F8;
+    box-sizing: border-box;
   }
+  &__button-text{
+    opacity: 0.8;}
 }
 
 

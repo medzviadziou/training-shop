@@ -6,6 +6,7 @@ import women from './img/preview_women.jpg'
 import men from './img/preview_men.jpg'
 import accessories from './img/preview_accessories.jpg'
 import slider from '../../components/slider/img/slider.jpg'
+import {Link} from "react-router-dom";
 
 
 const Preview = () => {
@@ -24,11 +25,11 @@ const Preview = () => {
                     <div className='preview__list'>
                         <div className='preview__item'>
                             <img className='preview__img' src={women} alt="women"/>
-                            <span className="preview__banner">Women</span>
+                            <Link to='/women' ><span className="preview__banner">Women</span></Link>
                         </div>
                         <div className='preview__item'>
                             <img className='preview__img' src={men} alt="men"/>
-                            <span className="preview__banner">Men</span>
+                            <Link to='/men' ><span className="preview__banner">Men</span></Link>
                         </div>
                     </div>
 

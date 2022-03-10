@@ -142,7 +142,6 @@ const Filter = ({productType}) => {
     let count = renderFilter.length
 
     useEffect(()=>{
-
         toggleFilter(true)
         // eslint-disable-next-line
         setSetFilterSize(setFilterSize=new Set())
@@ -150,13 +149,13 @@ const Filter = ({productType}) => {
         setSetFilterBrand(setFilterBrand=new Set())
         // eslint-disable-next-line
         setSetFilterPrice(setFilterPrice=new Set())
-/*        // eslint-disable-next-line
-        setSetFilterColor(setFilterColor=new Set())*/
+       // eslint-disable-next-line
+        setFilterColor.clear()
+        setSetFilterColor(setFilterColor)
 
         setRenderFilter(PRODUCTS[productType])
 
     },     [productType])
-
 
 
     return (
