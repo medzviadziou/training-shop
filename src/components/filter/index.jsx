@@ -150,8 +150,8 @@ const Filter = ({productType}) => {
         setSetFilterBrand(setFilterBrand=new Set())
         // eslint-disable-next-line
         setSetFilterPrice(setFilterPrice=new Set())
-        // eslint-disable-next-line
-        setSetFilterColor(setFilterColor=new Set())
+/*        // eslint-disable-next-line
+        setSetFilterColor(setFilterColor=new Set())*/
 
         setRenderFilter(PRODUCTS[productType])
 
