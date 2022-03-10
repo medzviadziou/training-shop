@@ -141,25 +141,21 @@ const Filter = ({productType}) => {
 
     let count = renderFilter.length
 
-
     useEffect(()=>{
 
         toggleFilter(true)
+        // eslint-disable-next-line
+        setSetFilterSize(setFilterSize=new Set())
+        // eslint-disable-next-line
+        setSetFilterBrand(setFilterBrand=new Set())
+        // eslint-disable-next-line
+        setSetFilterPrice(setFilterPrice=new Set())
+        // eslint-disable-next-line
+        setSetFilterColor(setFilterColor=new Set())
 
         setRenderFilter(PRODUCTS[productType])
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setSetFilterSize(setFilterSize=new Set())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setSetFilterBrand(setFilterBrand=new Set())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setSetFilterPrice(setFilterPrice=new Set())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setSetFilterColor(setFilterColor=new Set())
-
-
-
-    },[productType])
+    },     [productType])
 
 
 
