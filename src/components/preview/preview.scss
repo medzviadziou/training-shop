@@ -71,9 +71,15 @@
     background-color: #FFFFFF;
     border-radius: 4px;
     z-index: 4;
+    transition: all 1s ease-out;
+    &:hover{
+      width: 100%;
+
+    }
 
     &--slider {
       padding: 24px 32px;
+
       @media (max-width: 576px) {
         padding: 18px 20px;
       }
