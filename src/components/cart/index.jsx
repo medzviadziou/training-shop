@@ -22,20 +22,23 @@ const Cart = () => {
                         <li className='cart__item'>Payment</li>
                     </ul>
                 </menu>
-                <div className='cart__selected cart__contain'>
-                    {PRODUCTS['women'].map((card,index) => {
-                        if (index<3){
-                            return <Selected card={card} key={card.id} productType={'men'}/>
-                        }else {
-                            return console.log('ok')
-                        }
+                <div className='cart__wrap cart__contain'>
+                    <div className='cart__selected'>
+                        {PRODUCTS['women'].map((card,index) => {
+                            if (index<3){
+                                return <Selected card={card} key={card.id} productType={'men'}/>
+                            }else {
+                                return console.log('ok')
+                            }
 
-                    })}
+                        })}
+                    </div>
+                    <div className='cart__buttons'>
+                        <button className='cart__button'>Further</button>
+                        <button className='cart__button cart__button--light'>View Cart</button>
+                    </div>
                 </div>
-                <div className='cart__contain'>
-                    <button className='cart__button'>Further</button>
-                    <button className='cart__button cart__button--light'>View Cart</button>
-                </div>
+
             </div>
 
         </div>

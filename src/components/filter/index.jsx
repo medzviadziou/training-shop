@@ -47,6 +47,7 @@ const Filter = ({productType}) => {
     let [setFilterBrand, setSetFilterBrand] = useState(new Set())
     let [setFilterPrice, setSetFilterPrice] = useState(new Set())
 
+
     const onChangeColorInput = (e) => {
         if (e.target.checked) {
             setSetFilterColor(setFilterColor.add(e.target.id))
@@ -162,6 +163,7 @@ const Filter = ({productType}) => {
 
 
     return (
+
         <>
             <div className='filter contain'>
                 <div className='filter__top '>
@@ -242,7 +244,6 @@ const Filter = ({productType}) => {
             </div>
         </>
     );
-
 };
 
 export default Filter;

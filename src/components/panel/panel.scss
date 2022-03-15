@@ -37,27 +37,27 @@
 
   &__cart {
     position: relative;
+  }
 
-    &::before {
-      content: "2";
-      width: 16px;
-      height: 16px;
-      position: absolute;
-      bottom: 21px;
-      right: -6px;
-      text-align: center;
-      font-family: var(--Spartan);
-      font-weight: bold;
-      font-size: 9px;
-      line-height: 18px;
-      color: #fff;
-      background: #121212;
-      border: 2px solid #FFFFFF;
-      border-radius: 50%;
-      z-index: 4;
-      @media (max-width: 576px) {
-        bottom: 10px;
-      }
+  &__quantity{
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 23px;
+    right: -6px;
+    text-align: center;
+    font-family: var(--Spartan);
+    font-weight: bold;
+    font-size: 9px;
+    line-height: 18px;
+    color: #fff;
+    background: #121212;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    z-index: 4;
+    @media (max-width: 576px) {
+      bottom: 10px;
     }
   }
 

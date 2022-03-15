@@ -29,7 +29,6 @@ const Selected = ({card: {name, price, images, discount}}) => {
                     <img src={trash} alt=""/>
                 </div>
             </div>
-
         </div>
     );
 };
