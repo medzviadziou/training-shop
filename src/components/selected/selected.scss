@@ -1,13 +1,15 @@
-.selected{
+.selected {
   padding-top: 12px;
   padding-bottom: 14px;
   display: flex;
   gap: 16px;
   border-bottom: 2px solid #E6E6E6;
-  &__preview{
+
+  &__preview {
     position: relative;
   }
-  &__sale{
+
+  &__sale {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,19 +20,76 @@
     background-color: #E91E63;
     color: #FFFFFF;
   }
-  &__img{
+
+  &__img {
     width: 83px;
     height: 104px;
   }
-  &__block{
+
+  &__block {
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
-  &__manage{
+
+  &__name {
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+    opacity: 0.6;
+  }
+
+  &__characteristic {
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #121212;
+  }
+
+  &__manage {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  &__quantity{
+    min-width: 81px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8F8F8;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+  }
+  &__button{
+    padding: 7px 6px;
+    border: none;
+    background: #F8F8F8;
+  }
+  &__price{
+    padding-left: 16px;
+    flex:1 1 auto;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+    &--sale{
+      padding-left: 8px;
+      font-size: 10px;
+      line-height: 16px;
+      text-decoration-line: line-through;
+      opacity: 0.4;
+    }
   }
 }

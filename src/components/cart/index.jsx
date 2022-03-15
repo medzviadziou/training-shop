@@ -22,25 +22,21 @@ const Cart = () => {
                         <li className='cart__item'>Payment</li>
                     </ul>
                 </menu>
-                <div className='cart__wrap cart__contain'>
-                    <div className='cart__selected'>
-                        {PRODUCTS['women'].map((card,index) => {
-                            if (index<3){
+                <div className='cart__wrap '>
+                    <div className='cart__selected cart__contain'>
+                        {PRODUCTS['women'].map((card, index) => {
+                            if (index < 15) {
                                 return <Selected card={card} key={card.id} productType={'men'}/>
-                            }else {
+                            } else {
                                 return console.log('ok')
                             }
-
                         })}
                     </div>
-                    <div className='cart__buttons'>
-                        <button className='cart__button'>Further</button>
-                        <button className='cart__button cart__button--light'>View Cart</button>
-                    </div>
+                    <div className='cart__payment cart__contain'><span  className='cart__total'>Total</span><span className='cart__total--bold'> $433.99</span></div>
+                    <button className='cart__button cart__contain'>Further</button>
+                    <button className='cart__button cart__button--light cart__contain'>View Cart</button>
                 </div>
-
             </div>
-
         </div>
     );
 };

@@ -21,9 +21,9 @@ const Selected = ({card: {name, price, images, discount}}) => {
                 </div>
                 <div className='selected__manage'>
                     <div className='selected__quantity'>
-                        <img src={minus} alt=""/>
-                        <span>1</span>
-                        <img src={plus} alt=""/>
+                        <button className='selected__button'><img src={minus} alt=""/></button>
+                        <span  className='selected__number'>1</span>
+                       <button  className='selected__button'><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} {discount && <span className='selected__price selected__price--sale'>$ {price}</span>}</span>
                     <img src={trash} alt=""/>
