@@ -4,11 +4,9 @@
   display: flex;
   gap: 16px;
   border-bottom: 2px solid #E6E6E6;
-
   &__preview {
     position: relative;
   }
-
   &__sale {
     position: absolute;
     top: 0;
@@ -20,19 +18,16 @@
     background-color: #E91E63;
     color: #FFFFFF;
   }
-
   &__img {
     width: 83px;
     height: 104px;
   }
-
   &__block {
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
-
   &__name {
     font-family: var(--Spartan);
     font-style: normal;
@@ -42,7 +37,6 @@
     color: #121212;
     opacity: 0.6;
   }
-
   &__characteristic {
     font-family: var(--Spartan);
     font-style: normal;
@@ -51,7 +45,6 @@
     line-height: 18px;
     color: #121212;
   }
-
   &__manage {
     display: flex;
     justify-content: space-between;
