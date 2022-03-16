@@ -6,14 +6,14 @@
     "runtime-main.js": "/training-shop/static/js/runtime-main.461599c6.js",
     "runtime-main.js.map": "/training-shop/static/js/runtime-main.461599c6.js.map",
     "static/css/2.ddcd6bbb.chunk.css": "/training-shop/static/css/2.ddcd6bbb.chunk.css",
-    "static/js/2.7f8dddb8.chunk.js": "/training-shop/static/js/2.7f8dddb8.chunk.js",
-    "static/js/2.7f8dddb8.chunk.js.map": "/training-shop/static/js/2.7f8dddb8.chunk.js.map",
+    "static/js/2.086983d1.chunk.js": "/training-shop/static/js/2.086983d1.chunk.js",
+    "static/js/2.086983d1.chunk.js.map": "/training-shop/static/js/2.086983d1.chunk.js.map",
     "index.html": "/training-shop/index.html",
-    "precache-manifest.ef4ae8549b350daf463d707e29d09ab4.js": "/training-shop/precache-manifest.ef4ae8549b350daf463d707e29d09ab4.js",
+    "precache-manifest.47c27043ca604fd0d870f4241e544b86.js": "/training-shop/precache-manifest.47c27043ca604fd0d870f4241e544b86.js",
     "service-worker.js": "/training-shop/service-worker.js",
     "static/css/2.ddcd6bbb.chunk.css.map": "/training-shop/static/css/2.ddcd6bbb.chunk.css.map",
     "static/css/main.7908c6c3.chunk.css.map": "/training-shop/static/css/main.7908c6c3.chunk.css.map",
-    "static/js/2.7f8dddb8.chunk.js.LICENSE.txt": "/training-shop/static/js/2.7f8dddb8.chunk.js.LICENSE.txt",
+    "static/js/2.086983d1.chunk.js.LICENSE.txt": "/training-shop/static/js/2.086983d1.chunk.js.LICENSE.txt",
     "static/media/-arrow.svg": "/training-shop/static/media/-arrow.ba2ba65b.svg",
     "static/media/1.jpg": "/training-shop/static/media/1.02980ff8.jpg",
     "static/media/2.jpg": "/training-shop/static/media/2.35f54878.jpg",
@@ -65,7 +65,7 @@
   "entrypoints": [
     "static/js/runtime-main.461599c6.js",
     "static/css/2.ddcd6bbb.chunk.css",
-    "static/js/2.7f8dddb8.chunk.js",
+    "static/js/2.086983d1.chunk.js",
     "static/css/main.7908c6c3.chunk.css",
     "static/js/main.bb2121f4.chunk.js"
   ]
