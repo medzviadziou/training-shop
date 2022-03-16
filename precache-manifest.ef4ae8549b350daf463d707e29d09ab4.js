@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e4171a8314484e0154cdec60aca29e2e",
+    "revision": "28c1591a00ac12ff31df297d199c591d",
     "url": "/training-shop/index.html"
   },
   {
-    "revision": "f27b57f545d5a61a3f3e",
+    "revision": "010d4e527f79eb779234",
     "url": "/training-shop/static/css/2.ddcd6bbb.chunk.css"
   },
   {
-    "revision": "a35889b02c5919510810",
-    "url": "/training-shop/static/css/main.c729f852.chunk.css"
+    "revision": "20dac192f1d2c2903bb4",
+    "url": "/training-shop/static/css/main.7908c6c3.chunk.css"
   },
   {
-    "revision": "f27b57f545d5a61a3f3e",
-    "url": "/training-shop/static/js/2.6628d23a.chunk.js"
+    "revision": "010d4e527f79eb779234",
+    "url": "/training-shop/static/js/2.7f8dddb8.chunk.js"
   },
   {
-    "revision": "2fef175dda8e998324609df8a30ba72f",
-    "url": "/training-shop/static/js/2.6628d23a.chunk.js.LICENSE.txt"
+    "revision": "7c350c9e54f7a897e8c039f4e122679e",
+    "url": "/training-shop/static/js/2.7f8dddb8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a35889b02c5919510810",
-    "url": "/training-shop/static/js/main.7ec60864.chunk.js"
+    "revision": "20dac192f1d2c2903bb4",
+    "url": "/training-shop/static/js/main.bb2121f4.chunk.js"
   },
   {
     "revision": "5068c357bca5672e3a8d",
