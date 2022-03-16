@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://medzviadziou.github.io/training-shop",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -11,10 +12,11 @@
     "immer": "^9.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.0",
     "sass": "^1.49.7",
-    "swiper": "^8.0.6",
+    "swiper": "8.0.7",
     "watchpack-chokidar2": "^2.0.1",
     "web-vitals": "^2.1.4"
   },
