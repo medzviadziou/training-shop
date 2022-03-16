@@ -1,9 +1,10 @@
 .cart {
+  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   border: none;
   background: rgba(18, 18, 18, 0.4);
   z-index: 77;
@@ -72,9 +73,30 @@
     flex-direction: column;
     justify-content: space-between;
   }
+  &__payment{
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+      }
+  &__total{
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+    &--bold{
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
 
   &__selected {
-    height:  calc(100vh - 312px);
+    height: calc(100vh - 312px);
     overflow: auto;
     /*  Firefox */
     scrollbar-width: thin;
@@ -92,13 +114,6 @@
       background-color: #8D8B8B; /* color of the scroll thumb */
     }
   }
-
-  &__buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
   &__button {
     margin: 6px 0;
     padding-top: 16px;
