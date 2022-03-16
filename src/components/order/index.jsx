@@ -44,6 +44,12 @@ const Order = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
+    const clickAddToCart = (e) =>{
+        console.log(props.product.id)
+        console.log(sizeChose)
+        console.log(colorChose)
+    }
+
     return (
         <div className='order'>
             <div className='order__color'>
@@ -75,7 +81,7 @@ const Order = (props) => {
             </div>
             <div className='order__chapter'>
                 <span className='order__price'>$ {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount && <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
-                <button className='order__button'>Add to card</button>
+                <button className='order__button' onClick={clickAddToCart}>Add to card</button>
                 <img src={heart} alt="" width="24" height="24"/>
                 <img src={scale} alt="" width="24" height="24"/>
             </div>

@@ -1,11 +1,13 @@
 import React from 'react';
 import './cart.scss'
 import cross from './img/x.svg'
-import PRODUCTS from "../../data/products";
 import Selected from "../selected";
+import {useSelector} from "react-redux";
 
 
 const Cart = () => {
+    const cart = useSelector(state => state.cart.cart)
+
     return (
         <div className='cart'>
             <div className='cart__block'>
@@ -24,12 +26,8 @@ const Cart = () => {
                 </menu>
                 <div className='cart__wrap '>
                     <div className='cart__selected cart__contain'>
-                        {PRODUCTS['women'].map((card, index) => {
-                            if (index < 15) {
-                                return <Selected card={card} key={card.id} productType={'men'}/>
-                            } else {
-                                return console.log('ok')
-                            }
+                        {cart.map((card) => {
+                            return <Selected card={card} key={card.id} productType={'men'}/>
                         })}
                     </div>
                     <div className='cart__payment cart__contain'><span  className='cart__total'>Total</span><span className='cart__total--bold'> $433.99</span></div>
