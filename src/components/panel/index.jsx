@@ -33,7 +33,7 @@ const Panel = () => {
         }
     }
 
-    let quantity = undefined
+    let quantity = 1
 
     return (
 
