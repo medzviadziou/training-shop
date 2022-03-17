@@ -93,6 +93,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &--none{
+      opacity: 0;
+    }
   }
 
   &__total {
@@ -153,7 +157,9 @@
     &:hover{
       opacity: 0.5;
     }
-
+    &--none{
+      display: none;
+    }
     &--light {
       background: #F8F8F8;
       color: #121212;

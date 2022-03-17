@@ -16,10 +16,12 @@ const Cart = (props) => {
 
     const cart = useSelector(state => state.cart.cart)
 
+    let clear = useSelector(state => state.cart.cart).length<1;
+
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
             <div className='cart__hidden' onClick={(closeCart)}> </div>
-            <div className='cart__block'>
+            <div data-test-id='cart' className='cart__block'>
                 <header className='cart__header cart__contain'>
                     <div className='cart__title'>Shopping Cart</div>
                     <div onClick={(closeCart)} className='cart__cross'><img src={cross} alt=""/></div>
@@ -36,13 +38,14 @@ const Cart = (props) => {
                 <div className='cart__wrap '>
                     <div className='cart__selected cart__contain'>
                         {cart.map((cart, index) => {
-                            return <Selected cart={cart} key={index}/>
+                            return <Selected  data-test-id='cart-card' cart={cart} key={index}/>
                         })}
                     </div>
-                    <div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $433.99</span></div>
+                    <div className={classNames('cart__payment cart__contain', {'cart__payment--none': clear})}><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {}</span></div>
                     <div className='cart__contain'>
-                    <button className='cart__button'>Further</button>
-                    <button className='cart__button cart__button--light' onClick={(closeCart)}>View Cart</button>
+                    <button className={classNames('cart__button', {'cart__button--none': clear})}>Further</button>
+                    <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(closeCart)}>View Cart</button>
+                        <button className={classNames('cart__button', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
                 </div>
                 </div>
             </div>

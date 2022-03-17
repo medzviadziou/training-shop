@@ -17,8 +17,8 @@ import pay5 from "./img/pay/mastercard.png";
 import pay6 from "./img/pay/discover.png";
 import pay7 from "./img/pay/express.png";
 import annotation from "./img/ico/annotation.svg";
-import {useDispatch} from "react-redux";
-import {addToCart} from "../../store/cartSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart, removeToCart} from "../../store/cartSlice";
 
 
 const Order = (props) => {
@@ -27,10 +27,7 @@ const Order = (props) => {
     const setColor = new Set()
     const [colorChose, setColorChose] = useState(props.product.images[0].color)
     const [imageChose, setImageChose] = useState(props.product.images[0].url)
-    const choseColor = (e) => {
-        setColorChose(e.target.id)
-        setImageChose(e.target.name)
-    }
+
     //Size
     const setSize = new Set()
     for (let i = props.product.sizes.length; i > 0; i--) {
@@ -41,12 +38,6 @@ const Order = (props) => {
         setSizeChose(e.target.id)
     }
 
-    useEffect(() => {
-        setColorChose(props.product.images[0].color)
-        setSizeChose(Array.from(setSize).sort()[0])
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props])
-
 
     const dispatch = useDispatch()
     const idItem = props.product.id
@@ -54,8 +45,41 @@ const Order = (props) => {
     const discountItem = props.product.discount
     const nameItem = props.product.name
 
-    const addToCartItem = () => dispatch(addToCart({idItem, sizeChose, colorChose, imageChose,priceItem,discountItem,nameItem}))
+    const addToCartItem = () => dispatch(addToCart({
+        idItem,
+        sizeChose,
+        colorChose,
+        imageChose,
+        priceItem,
+        discountItem,
+        nameItem
+    }))
 
+    const exclusivity = idItem + colorChose + sizeChose
+
+    const cart = useSelector(state => state.cart.cart)
+
+
+    const choseColor = (e) => {
+        setColorChose(e.target.id)
+        setImageChose(e.target.name)
+    }
+
+    let addButton = true
+    cart.map(item => {
+        if (item.exclusivity === exclusivity) {
+            return addButton = false
+        } else {
+            return addButton = true
+        }
+    })
+
+
+    useEffect(() => {
+        setColorChose(props.product.images[0].color)
+        setSizeChose(Array.from(setSize).sort()[0])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props])
 
     return (
         <div className='order'>
@@ -94,7 +118,10 @@ const Order = (props) => {
                 <span
                     className='order__price'>$ {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount &&
                 <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
-                <button className='order__button' onClick={addToCartItem}>Add to card</button>
+                {addButton && <button data-test-id='add-cart-button' className='order__button' onClick={addToCartItem}>ADD TO CARD</button>}
+                {!addButton &&
+                <button data-test-id='add-cart-button' className='order__button' onClick={() => dispatch(removeToCart(exclusivity))}>REMOVE TO
+                    CARD</button>}
                 <img src={heart} alt="" width="24" height="24"/>
                 <img src={scale} alt="" width="24" height="24"/>
             </div>
