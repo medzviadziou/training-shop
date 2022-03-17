@@ -66,7 +66,7 @@ const Order = (props) => {
     }
 
     let addButton = true
-    cart.map(item => {
+    cart.forEach(item => {
         if (item.exclusivity === exclusivity) {
             return addButton = false
         } else {

@@ -4,6 +4,8 @@ import trash from './img/trash.svg'
 import plus from './img/plus.svg'
 import minus from './img/minus.svg'
 import {removeToCart} from "../../store/cartSlice";
+import {plusItem} from "../../store/cartSlice";
+import {minusItem} from "../../store/cartSlice";
 import {useDispatch} from "react-redux";
 
 const Selected = (props) => {
@@ -27,9 +29,9 @@ const Selected = (props) => {
                 </div>
                 <div className='selected__manage'>
                     <div className='selected__quantity'>
-                        <button data-test-id='minus-product' className='selected__button'><img src={minus} alt=""/></button>
+                        <button data-test-id='minus-product' className='selected__button' onClick={()=>dispatch(minusItem(exclusivity))}><img src={minus} alt=""/></button>
                         <span  className='selected__number'>{props.cart.count}</span>
-                       <button  data-test-id='plus-product'  className='selected__button'><img src={plus} alt=""/></button>
+                       <button  data-test-id='plus-product'  className='selected__button' onClick={()=>dispatch(plusItem(exclusivity))}><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { props.cart.price}</span>}</span>
                     <img data-test-id='remove-product' src={trash} onClick={()=>dispatch(removeToCart(exclusivity))} alt=""/>
