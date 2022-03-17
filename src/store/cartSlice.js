@@ -1,10 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-function existingCart(cart, action) {
-       if (cart.name === action.payload.nameItem && cart.color === action.payload.colorChose && cart.size === action.payload.sizeChose){
-           return true
-       }
-}
 
 const cartSlice = createSlice ({
     name: 'cart',
@@ -21,10 +16,11 @@ const cartSlice = createSlice ({
                 image: action.payload.imageChose,
                 price: action.payload.priceItem,
                 discount:  action.payload.discountItem,
+                exclusivity: action.payload.idItem+action.payload.colorChose+action.payload.sizeChose,
             })
         },
         removeToCart(state, action){
-            state.cart = state.cart.filter(state => !existingCart(state, action) )
+            state.cart = state.cart.filter(element => element.exclusivity!==action.payload )
         },
     },
 });

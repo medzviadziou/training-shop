@@ -11,6 +11,7 @@ const Selected = (props) => {
 
 
    const priceFinal = Math.round(props.cart.price + parseInt(props.cart.discount ?? 0) * (props.cart.price / 100))
+const exclusivity =props.cart.id+props.cart.color+props.cart.size
 
     return (
         <div className='selected'>
@@ -30,7 +31,7 @@ const Selected = (props) => {
                        <button  className='selected__button'><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { props.cart.price}</span>}</span>
-                    <img src={trash} onClick={()=>dispatch(removeToCart(props.cart))} alt=""/>
+                    <img src={trash} onClick={()=>dispatch(removeToCart(exclusivity))} alt=""/>
                 </div>
             </div>
         </div>
