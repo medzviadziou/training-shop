@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 
 const Cart = () => {
     const cart = useSelector(state => state.cart.cart)
-
+console.log(cart, "Это карт")
     return (
         <div className='cart'>
             <div className='cart__block'>
@@ -26,8 +26,8 @@ const Cart = () => {
                 </menu>
                 <div className='cart__wrap '>
                     <div className='cart__selected cart__contain'>
-                        {cart.map((card) => {
-                            return <Selected card={card} key={card.id} productType={'men'}/>
+                        {cart.map((cart,index) => {
+                            return <Selected  cart={cart} key={index}/>
                         })}
                     </div>
                     <div className='cart__payment cart__contain'><span  className='cart__total'>Total</span><span className='cart__total--bold'> $433.99</span></div>

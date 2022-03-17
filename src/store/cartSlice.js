@@ -7,10 +7,15 @@ const cartSlice = createSlice ({
     },
     reducers: {
         addToCart(state, action){
-            console.log(state)
-            console.log(action)
-            console.log(action.payload)
-            state.cart.push(action.payload)
+            state.cart.push({
+                id: action.payload.idItem,
+                name:  action.payload.nameItem,
+                color: action.payload.colorChose,
+                size: action.payload.sizeChose,
+                image: action.payload.imageChose,
+                price: action.payload.priceItem,
+                discount:  action.payload.discountItem,
+            })
         },
     },
 });

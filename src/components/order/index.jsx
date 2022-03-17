@@ -17,6 +17,8 @@ import pay5 from "./img/pay/mastercard.png";
 import pay6 from "./img/pay/discover.png";
 import pay7 from "./img/pay/express.png";
 import annotation from "./img/ico/annotation.svg";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../store/cartSlice";
 
 
 const Order = (props) => {
@@ -24,10 +26,11 @@ const Order = (props) => {
     //Color
     const setColor = new Set()
     const [colorChose, setColorChose] = useState(props.product.images[0].color)
+    const [imageChose, setImageChose] = useState(props.product.images[0].url)
     const choseColor = (e) => {
         setColorChose(e.target.id)
+        setImageChose(e.target.name)
     }
-
     //Size
     const setSize = new Set()
     for (let i = props.product.sizes.length; i > 0; i--) {
@@ -44,11 +47,14 @@ const Order = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
-    const clickAddToCart = (e) =>{
-        console.log(props.product.id)
-        console.log(sizeChose)
-        console.log(colorChose)
-    }
+
+    const dispatch = useDispatch()
+    const idItem = props.product.id
+    const priceItem = props.product.price
+    const discountItem = props.product.discount
+    const nameItem = props.product.name
+
+    const addToCartItem = () => dispatch(addToCart({idItem, sizeChose, colorChose, imageChose,priceItem,discountItem,nameItem}))
 
     return (
         <div className='order'>
@@ -60,7 +66,10 @@ const Order = (props) => {
                 {props.product.images.map((item) => {
                     if (!setColor.has(item.color)) {
                         setColor.add(item.color)
-                        return <img id={item.color} key={item.id} className={classNames('order__img', {'order__img--active': (colorChose === item.color)})} src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64' height='64'/>
+                        return <img id={item.color} name={item.url} key={item.id}
+                                    className={classNames('order__img', {'order__img--active': (colorChose === item.color)})}
+                                    src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64'
+                                    height='64'/>
                     } else {
                         setColor.add(item.color)
                         return console.log("ok")
@@ -73,22 +82,28 @@ const Order = (props) => {
             </div>
             <div className='order__choice' onClick={choseSize}>
                 {Array.from(setSize).sort().map((size, index) => {
-                    return <span id={size} key={index} className={classNames('order__size', {'order__size--active': (sizeChose === size)})}>{size}</span>
+                    return <span id={size} key={index}
+                                 className={classNames('order__size', {'order__size--active': (sizeChose === size)})}>{size}</span>
                 })}
             </div>
             <div className='order__hanger'>
                 <img src={hanger} alt=""/><span className='order__text'>Size guide</span>
             </div>
             <div className='order__chapter'>
-                <span className='order__price'>$ {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount && <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
-                <button className='order__button' onClick={clickAddToCart}>Add to card</button>
+                <span
+                    className='order__price'>$ {Math.round(props.product.price + (parseInt(props.product.discount ?? 0) * (props.product.price / 100)))} {props.product.discount &&
+                <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
+                <button className='order__button' onClick={addToCartItem}>Add to card</button>
                 <img src={heart} alt="" width="24" height="24"/>
                 <img src={scale} alt="" width="24" height="24"/>
             </div>
             <div className='order__advantage'>
-                <div><img className='order__ico' src={truck} alt="" width="24" height="24"/><span className='order__text'>Shipping & Delivery</span></div>
-                <div><img className='order__ico' src={refresh} alt="" width="24" height="24"/><span className='order__text'>Returns & Exchanges</span></div>
-                <div><img className='order__ico' src={mail} alt="" width="24" height="24"/><span className='order__text'>Ask a question</span></div>
+                <div><img className='order__ico' src={truck} alt="" width="24" height="24"/><span
+                    className='order__text'>Shipping & Delivery</span></div>
+                <div><img className='order__ico' src={refresh} alt="" width="24" height="24"/><span
+                    className='order__text'>Returns & Exchanges</span></div>
+                <div><img className='order__ico' src={mail} alt="" width="24" height="24"/><span
+                    className='order__text'>Ask a question</span></div>
             </div>
             <div className='order__checkout'>
                 <span>guaranteed safe checkout</span>
