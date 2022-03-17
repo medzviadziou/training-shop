@@ -12,7 +12,7 @@ const Selected = (props) => {
     const dispatch = useDispatch();
 
 
-    const priceFinal = Math.round(props.cart.price + parseInt(props.cart.discount ?? 0) * (props.cart.price / 100))
+    const priceFinal = Math.round((props.cart.price + parseInt(props.cart.discount ?? 0) * (props.cart.price / 100))*props.cart.count)
 
     const exclusivity =props.cart.id+props.cart.color+props.cart.size
 
@@ -33,7 +33,7 @@ const Selected = (props) => {
                         <span  className='selected__number'>{props.cart.count}</span>
                        <button  data-test-id='plus-product'  className='selected__button' onClick={()=>dispatch(plusItem(exclusivity))}><img src={plus} alt=""/></button>
                     </div>
-                    <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { props.cart.price}</span>}</span>
+                    <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { parseInt(props.cart.price*props.cart.count)}</span>}</span>
                     <img data-test-id='remove-product' src={trash} onClick={()=>dispatch(removeToCart(exclusivity))} alt=""/>
                 </div>
             </div>
