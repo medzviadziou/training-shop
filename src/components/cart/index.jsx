@@ -18,6 +18,12 @@ const Cart = (props) => {
 
     let clear = useSelector(state => state.cart.cart).length<1;
 
+    let total = 0
+    cart.forEach((item)=>{
+        total=total+Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100))*item.count)
+    })
+
+
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
             <div className='cart__hidden' onClick={(closeCart)}> </div>
@@ -43,7 +49,7 @@ const Cart = (props) => {
                             return <Selected  data-test-id='cart-card' cart={cart} key={index}/>
                         })}
                     </div>
-                    <div className={classNames('cart__payment cart__contain', {'cart__payment--none': clear})}><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {}</span></div>
+                    <div className={classNames('cart__payment cart__contain', {'cart__payment--none': clear})}><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>
                     <div className='cart__contain'>
                     <button className={classNames('cart__button', {'cart__button--none': clear})}>Further</button>
                     <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(closeCart)}>View Cart</button>
