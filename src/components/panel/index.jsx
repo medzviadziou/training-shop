@@ -9,6 +9,7 @@ import search from "./img/search.svg";
 import globe from "./img/globe.svg";
 import user from "./img/user.svg";
 import cart from "./img/cart.svg";
+import {useSelector} from "react-redux";
 
 
 const Panel = () => {
@@ -33,7 +34,7 @@ const Panel = () => {
         }
     }
 
-    let quantity = 1
+    let quantity = useSelector(state => state.cart.cart).length;
 
     return (
 
@@ -44,7 +45,7 @@ const Panel = () => {
                 <li className='panel__ico'><img src={search} alt="search" width="24" height="24"/></li>
                 <li className='panel__ico'><img src={globe} alt="globe" width="24" height="24"/></li>
                 <li className='panel__ico'><img src={user} alt="user" width="24" height="24"/></li>
-                <li className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/>{quantity && <span className='panel__quantity'>{quantity}</span>}</li>
+                <li className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/>{quantity>0 && <span className='panel__quantity'>{quantity}</span>}</li>
                 <li className='panel__ico panel__ico--display'>
                     <button onClick={clickHandler} className='panel__menu-burger' data-test-id='burger-menu-btn'>
                         <span className={classNames('panel__burger', {'panel__burger--1': isMenuOpen})}> </span>
