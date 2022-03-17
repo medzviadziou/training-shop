@@ -56,6 +56,7 @@ const Order = (props) => {
 
     const addToCartItem = () => dispatch(addToCart({idItem, sizeChose, colorChose, imageChose,priceItem,discountItem,nameItem}))
 
+
     return (
         <div className='order'>
             <div className='order__color'>

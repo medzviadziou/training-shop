@@ -10,6 +10,7 @@ import globe from "./img/globe.svg";
 import user from "./img/user.svg";
 import cart from "./img/cart.svg";
 import {useSelector} from "react-redux";
+import Cart from "../cart";
 
 
 const Panel = () => {
@@ -19,19 +20,24 @@ const Panel = () => {
     function toggleMenuMode() {
         toggleMenu(!isMenuOpen)
     }
-
     const clickHandler = () => {
         if (!isMenuOpen) {
             document.body.style.overflow = 'hidden';
         }
         toggleMenuMode();
     };
-
     const clickClose = () => {
         if (isMenuOpen) {
             document.body.style.overflow = '';
             toggleMenuMode();
         }
+    }
+
+    let [checkOpenCart, setCheckOpenCart] = useState(false)
+
+     const openCart =()=> {
+        setCheckOpenCart(true)
+        document.body.style.overflow = "hidden";
     }
 
     let quantity = useSelector(state => state.cart.cart).length;
@@ -45,7 +51,7 @@ const Panel = () => {
                 <li className='panel__ico'><img src={search} alt="search" width="24" height="24"/></li>
                 <li className='panel__ico'><img src={globe} alt="globe" width="24" height="24"/></li>
                 <li className='panel__ico'><img src={user} alt="user" width="24" height="24"/></li>
-                <li className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/>{quantity>0 && <span className='panel__quantity'>{quantity}</span>}</li>
+                <li onClick={(openCart)} data-test-id='cart-button' className='panel__ico panel__cart'><img src={cart} alt="cart" width="24" height="24"/>{quantity>0 && <span className='panel__quantity'>{quantity}</span>}</li>
                 <li className='panel__ico panel__ico--display'>
                     <button onClick={clickHandler} className='panel__menu-burger' data-test-id='burger-menu-btn'>
                         <span className={classNames('panel__burger', {'panel__burger--1': isMenuOpen})}> </span>
@@ -54,6 +60,7 @@ const Panel = () => {
                     </button>
                 </li>
             </ul>
+            <Cart checkOpenCart={checkOpenCart} setCheckOpenCart={setCheckOpenCart} />
         </div>
     );
 
