@@ -1,5 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+function existingCart(cart, action) {
+       if (cart.name === action.payload.nameItem && cart.color === action.payload.colorChose && cart.size === action.payload.sizeChose){
+           return true
+       }
+}
+
 const cartSlice = createSlice ({
     name: 'cart',
     initialState:{
@@ -17,9 +23,14 @@ const cartSlice = createSlice ({
                 discount:  action.payload.discountItem,
             })
         },
+        removeToCart(state, action){
+            state.cart = state.cart.filter(state => !existingCart(state, action) )
+        },
     },
 });
 
-export const {addToCart} = cartSlice.actions
+export const {addToCart,removeToCart} = cartSlice.actions
 
 export default  cartSlice.reducer
+
+

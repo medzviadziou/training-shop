@@ -6,7 +6,9 @@ import {useSelector} from "react-redux";
 import classNames from "classnames";
 
 
+
 const Cart = (props) => {
+
     function closeCart() {
         props.setCheckOpenCart(false)
         document.body.style.overflow = "";

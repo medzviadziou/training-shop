@@ -3,8 +3,12 @@ import './selected.scss'
 import trash from './img/trash.svg'
 import plus from './img/plus.svg'
 import minus from './img/minus.svg'
+import {removeToCart} from "../../store/cartSlice";
+import {useDispatch} from "react-redux";
 
 const Selected = (props) => {
+    const dispatch = useDispatch();
+
 
    const priceFinal = Math.round(props.cart.price + parseInt(props.cart.discount ?? 0) * (props.cart.price / 100))
 
@@ -26,7 +30,7 @@ const Selected = (props) => {
                        <button  className='selected__button'><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { props.cart.price}</span>}</span>
-                    <img src={trash} alt=""/>
+                    <img src={trash} onClick={()=>dispatch(removeToCart(props.cart))} alt=""/>
                 </div>
             </div>
         </div>
