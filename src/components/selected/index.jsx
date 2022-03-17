@@ -28,7 +28,7 @@ const Selected = (props) => {
                 <div className='selected__manage'>
                     <div className='selected__quantity'>
                         <button data-test-id='minus-product' className='selected__button'><img src={minus} alt=""/></button>
-                        <span  className='selected__number'>1</span>
+                        <span  className='selected__number'>{props.cart.count}</span>
                        <button  data-test-id='plus-product'  className='selected__button'><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { props.cart.price}</span>}</span>

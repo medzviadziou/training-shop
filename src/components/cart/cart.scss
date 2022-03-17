@@ -19,7 +19,7 @@
     height: 100vh;
     border: none;
     background: rgba(18, 18, 18, 0.4);
-    z-index: 77;
+    z-index: 100;
   }
 
   &__contain {
@@ -34,7 +34,11 @@
     width: 388px;
     height: 100%;
     background-color: #fff;
-    z-index: 78;
+    z-index: 102;
+
+    @media (max-width: 390px) {
+      width: 100%;
+    }
   }
 
   &__header {
@@ -96,6 +100,21 @@
 
     &--none{
       opacity: 0;
+    }
+  }
+
+  &__text{
+    margin: 0 auto;
+    max-width: 191px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 150%;
+    text-align: center;
+    color: #121212;
+    &--none{
+      display: none;
     }
   }
 

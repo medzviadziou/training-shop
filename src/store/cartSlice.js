@@ -22,6 +22,7 @@ const cartSlice = createSlice ({
         removeToCart(state, action){
             state.cart = state.cart.filter(element => element.exclusivity!==action.payload )
         },
+
     },
 });
 

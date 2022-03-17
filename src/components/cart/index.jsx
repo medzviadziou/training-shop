@@ -37,6 +37,8 @@ const Cart = (props) => {
                 </menu>
                 <div className='cart__wrap '>
                     <div className='cart__selected cart__contain'>
+                        <div className={classNames('cart__text cart__contain', {'cart__text--none': !clear})}>Sorry, your cart is empty</div>
+
                         {cart.map((cart, index) => {
                             return <Selected  data-test-id='cart-card' cart={cart} key={index}/>
                         })}
