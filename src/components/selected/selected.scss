@@ -67,6 +67,10 @@
     padding: 7px 6px;
     border: none;
     background: #F8F8F8;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.6;
+    }
   }
   &__price{
     padding-left: 16px;

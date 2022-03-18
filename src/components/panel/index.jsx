@@ -60,11 +60,9 @@ const Panel = () => {
                     </button>
                 </li>
             </ul>
-            <Cart checkOpenCart={checkOpenCart} setCheckOpenCart={setCheckOpenCart} />
+            {checkOpenCart &&<Cart checkOpenCart={checkOpenCart} setCheckOpenCart={setCheckOpenCart} />}
         </div>
     );
-
-
 };
 
 export default Panel;

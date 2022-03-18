@@ -25,7 +25,7 @@ const Selected = (props) => {
             <div  className='selected__block'>
                 <div className='selected__text'>
                     <h3 className='selected__name'>{props.cart.name}</h3>
-                    <p className='selected__characteristic'><span>{props.cart.color}</span><span>{props.cart.size}</span></p>
+                    <p className='selected__characteristic'><span>{props.cart.color}</span><span>, {props.cart.size}</span></p>
                 </div>
                 <div className='selected__manage'>
                     <div className='selected__quantity'>
