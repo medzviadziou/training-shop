@@ -65,14 +65,7 @@ const Order = (props) => {
         setImageChose(e.target.name)
     }
 
-    let addButton = true
-    cart.forEach(item => {
-        if (item.exclusivity === exclusivity) {
-            return addButton = false
-        } else {
-            return addButton = true
-        }
-    })
+    let addButton = !cart.some(item => item.exclusivity === exclusivity )
 
 
     useEffect(() => {
