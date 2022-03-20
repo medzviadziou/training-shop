@@ -113,8 +113,7 @@ const Order = (props) => {
                 <span className='order__price order__price--sale'>$ {props.product.price}</span>}</span>
                 {addButton && <button data-test-id='add-cart-button' className='order__button' onClick={addToCartItem}>ADD TO CARD</button>}
                 {!addButton &&
-                <button data-test-id='add-cart-button' className='order__button' onClick={() => dispatch(removeToCart(exclusivity))}>REMOVE TO
-                    CARD</button>}
+                <button data-test-id='add-cart-button' className='order__button' onClick={() => dispatch(removeToCart(exclusivity))}>REMOVE TO CARD</button>}
                 <img src={heart} alt="" width="24" height="24"/>
                 <img src={scale} alt="" width="24" height="24"/>
             </div>

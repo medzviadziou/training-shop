@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import classNames from "classnames";
 
 
-
 const Cart = (props) => {
 
     function closeCart() {
@@ -16,11 +15,11 @@ const Cart = (props) => {
 
     const cart = useSelector(state => state.cart.cart)
 
-    let clear = useSelector(state => state.cart.cart).length<1;
+    let clear = useSelector(state => state.cart.cart).length < 1;
 
     let total = 0
-    cart.forEach((item)=>{
-        total=total+Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100))*item.count)
+    cart.forEach((item) => {
+        total = total + Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100)) * item.count)
     })
 
 
@@ -44,17 +43,16 @@ const Cart = (props) => {
                 <div className='cart__wrap '>
                     <div className='cart__selected cart__contain'>
                         <div className={classNames('cart__text cart__contain', {'cart__text--none': !clear})}>Sorry, your cart is empty</div>
-
                         {cart.map((cart, index) => {
-                            return <Selected  data-test-id='cart-card' cart={cart} key={index}/>
+                            return <Selected data-test-id='cart-card' cart={cart} key={index}/>
                         })}
                     </div>
                     <div className={classNames('cart__payment cart__contain', {'cart__payment--none': clear})}><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>
                     <div className='cart__contain'>
-                    <button className={classNames('cart__button', {'cart__button--none': clear})}>Further</button>
-                    <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(closeCart)}>View Cart</button>
+                        <button className={classNames('cart__button', {'cart__button--none': clear})}>Further</button>
+                        <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(closeCart)}>View Cart</button>
                         <button className={classNames('cart__button', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>

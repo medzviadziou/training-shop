@@ -18,7 +18,7 @@ function App() {
                 <Route index element={<MainPage/>}/>
                 <Route path=':productType' element={<ProductsPage />}/>
                 <Route path=':productType/:id' element={<ProductPage />}/>
-                <Route  element={ <main style={{padding: '100px 0', textAlign: 'center',  fontSize: '72px'}}> <p>There's nothing here!</p></main>}/>
+                <Route element={ <main style={{padding: '100px 0', textAlign: 'center',  fontSize: '72px'}}> <p>There's nothing here!</p></main>}/>
             </Routes>
             <Footer/>
         </section>

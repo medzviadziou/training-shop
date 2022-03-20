@@ -34,7 +34,7 @@ const Selected = (props) => {
                        <button  data-test-id='plus-product'  className='selected__button' onClick={()=>dispatch(plusItem(exclusivity))}><img src={plus} alt=""/></button>
                     </div>
                     <span className='selected__price'>$ {priceFinal} { props.cart.discount && <span className='selected__price selected__price--sale'>$ { parseInt(props.cart.price*props.cart.count)}</span>}</span>
-                    <img data-test-id='remove-product' src={trash} onClick={()=>dispatch(removeToCart(exclusivity))} alt=""/>
+                    <img data-test-id='remove-product' className='selected__trash' src={trash} onClick={()=>dispatch(removeToCart(exclusivity))} alt=""/>
                 </div>
             </div>
         </div>

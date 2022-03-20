@@ -20,7 +20,7 @@ const Clothes = ({productType}) => {
             <div data-test-id={`clothes-${productType}`}>
                 <section className='clothes__top'>
                     <div className='clothes__header contain'>
-                        <h2 className='clothes__title'>{productType}’S</h2>
+                        <Link to={`/${productType}`}  ><h2 className='clothes__title'>{productType}’S</h2></Link>
                         <ul className='clothes__filter' onClick={clickFilter}>
                             {MAIM_CLOTHES_BLOCK_MENU.map((item, index) => {
                                 return <li key={index} data-test-id={`clothes-${productType}-${item.particularName}`} id={item.particularName} className={classNames('clothes__sorting', {'clothes__sorting--active': (filter === item.particularName)})}>{item.name}</li>
