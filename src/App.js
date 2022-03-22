@@ -1,24 +1,31 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import './app.scss';
-
 import Header from "./components/header";
 import Footer from "./components/footer";
 import MainPage from "./pages/main-page";
 import ProductsPage from "./pages/products-page";
 import ProductPage from "./pages/product-page";
+import Loader from "./components/loader";
+import Error from "./components/error";
+import {useSelector} from "react-redux";
 
 
 function App() {
+
+    const {isLoading, isError} = useSelector((state) => state.products)
+
     return (
 
         <section className="app" data-test-id='app'>
             <Header/>
+            {isLoading && <Loader data-test-id='loader'/>}
+            {isError && <Error data-test-id='error'/>}
             <Routes>
                 <Route index element={<MainPage/>}/>
-                <Route path=':productType' element={<ProductsPage />}/>
-                <Route path=':productType/:id' element={<ProductPage />}/>
-                <Route element={ <main style={{padding: '100px 0', textAlign: 'center',  fontSize: '72px'}}> <p>There's nothing here!</p></main>}/>
+                <Route path=':productType' element={<ProductsPage/>}/>
+                <Route path=':productType/:id' element={<ProductPage/>}/>
+                <Route element={<main style={{padding: '100px 0', textAlign: 'center', fontSize: '72px'}}><p>There's nothing here!</p></main>}/>
             </Routes>
             <Footer/>
         </section>

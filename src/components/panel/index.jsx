@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Link,} from "react-router-dom";
 import Nav from "../nav";
 import classNames from "classnames";
+import {useSelector} from "react-redux";
+import Cart from "../cart";
+
 import './panel.scss'
 //img
 import logo from "./img/logo.svg";
@@ -9,8 +12,6 @@ import search from "./img/search.svg";
 import globe from "./img/globe.svg";
 import user from "./img/user.svg";
 import cart from "./img/cart.svg";
-import {useSelector} from "react-redux";
-import Cart from "../cart";
 
 
 const Panel = () => {
