@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 
 
 const ProductPage = () => {
+
     const PRODUCTS =useSelector((state) => state.products.products)
 
     const {id, productType} = useParams();

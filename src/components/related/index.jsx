@@ -12,10 +12,9 @@ import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 
 
-
 const Related = ({productType}) => {
 
-    const PRODUCTS =useSelector((state) => state.products.products)
+    const PRODUCTS = useSelector((state) => state.products.products)
 
     return (
         <>

@@ -8,6 +8,7 @@ import Blog from "../../components/blog";
 
 
 const MainPage = () => {
+
     return (
         <main className='main-page'>
             <Preview/>

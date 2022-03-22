@@ -15,7 +15,10 @@ import check from "./img/check.svg"
 
 
 const Filter = ({productType}) => {
+
     const PRODUCTS =useSelector((state) => state.products.products)
+
+    console.log(PRODUCTS)
 
 
     //crate FilterList

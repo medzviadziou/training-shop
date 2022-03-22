@@ -13,10 +13,13 @@ import {getProductsFetch} from "./store/productsSlice";
 
 
 function App() {
+
     const dispatch =useDispatch()
+
     useEffect(()=>{
         dispatch(getProductsFetch())
     },[dispatch])
+
     const {isLoading, isError} = useSelector((state) => state.products)
 
     return (

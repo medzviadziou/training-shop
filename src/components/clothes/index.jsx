@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
-import classNames from "classnames";
-import MAIM_CLOTHES_BLOCK_MENU from "../../data/clothes-menu";
-import Cards from "../cards";
-import './clothes.scss'
 import {useSelector} from "react-redux";
+import classNames from "classnames";
+import Cards from "../cards";
+import MAIM_CLOTHES_BLOCK_MENU from "../../data/clothes-menu";
+import './clothes.scss'
 
 
 const Clothes = ({productType}) => {

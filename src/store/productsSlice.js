@@ -29,7 +29,6 @@ const productsSlice = createSlice({
     },
 });
 
-
 export const {getProductsFetch, getProductsSuccess, getProductsFailure} = productsSlice.actions
 
 export default productsSlice.reducer
