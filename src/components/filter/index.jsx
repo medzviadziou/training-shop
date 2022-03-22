@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PRODUCTS from "../../data/products";
+import {useSelector} from "react-redux";
 import classNames from "classnames";
 import Cards from "../cards";
 import './filter.scss'
@@ -13,7 +13,10 @@ import check from "./img/check.svg"
 
 
 
+
 const Filter = ({productType}) => {
+    const PRODUCTS =useSelector((state) => state.products.products)
+
 
     //crate FilterList
     let setColor = new Set()

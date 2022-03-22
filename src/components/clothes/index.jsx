@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import classNames from "classnames";
-import PRODUCTS from "../../data/products";
 import MAIM_CLOTHES_BLOCK_MENU from "../../data/clothes-menu";
 import Cards from "../cards";
 import './clothes.scss'
+import {useSelector} from "react-redux";
 
 
 const Clothes = ({productType}) => {
+
+    const PRODUCTS =useSelector((state) => state.products.products)
 
     const [filter, setFilter] = useState(MAIM_CLOTHES_BLOCK_MENU[0].particularName)
 

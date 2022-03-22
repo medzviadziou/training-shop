@@ -5,10 +5,13 @@ import ThumbsSwiper from "../../components/thumbs-swiper";
 import './product-page.scss';
 import Order from "../../components/order";
 import {useParams} from "react-router-dom";
-import PRODUCTS from "../../data/products";
+import {useSelector} from "react-redux";
+
 
 
 const ProductPage = () => {
+    const PRODUCTS =useSelector((state) => state.products.products)
+
     const {id, productType} = useParams();
 
     const product = PRODUCTS[productType].filter((product) => product.id===id)

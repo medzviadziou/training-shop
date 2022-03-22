@@ -1,6 +1,6 @@
 import React from 'react';
 import Cards from "../cards";
-import PRODUCTS from "../../data/products";
+import {useSelector} from "react-redux";
 import './related.scss'
 //img
 import arrowLeft from "../order/img/ico/-arrow.svg";
@@ -12,7 +12,10 @@ import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 
 
+
 const Related = ({productType}) => {
+
+    const PRODUCTS =useSelector((state) => state.products.products)
 
     return (
         <>

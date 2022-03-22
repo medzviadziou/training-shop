@@ -1,14 +1,13 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from "axios";
-import {getProductsSuccess} from "./productsSlice";
-
+import {getProductsFailure, getProductsSuccess} from "./productsSlice";
 
 function* productsRequestWorker() {
     try {
         const {data} = yield call(axios.get, "https://training.cleverland.by/shop/products");
         yield put(getProductsSuccess(data));
     } catch (err) {
-        yield put({type: 'error'});
+        yield put(getProductsFailure());
     }
 }
 
