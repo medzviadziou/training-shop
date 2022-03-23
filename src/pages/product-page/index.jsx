@@ -8,27 +8,36 @@ import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 
-
 const ProductPage = () => {
 
-    const PRODUCTS =useSelector((state) => state.products.products)
+    const PRODUCTS = useSelector((state) => state.products.products)
 
     const {id, productType} = useParams();
 
-    const product = PRODUCTS[productType].filter((product) => product.id===id)
+    const product = PRODUCTS[productType].filter((product) => product.id === id)
 
-    return (
-        <div className='product-page' data-test-id={`product-page-${productType}`}>
-            <ProductTop productType={productType} product={product[0]}/>
-            <div className='product-page__block  contain'>
-                <ThumbsSwiper product={product[0]} />
-                <Order product={product[0]}/>
+
+    if (product[0] !== undefined) {
+        return (
+            <div className='product-page' data-test-id={`product-page-${productType}`}>
+                <ProductTop productType={productType} product={product[0]}/>
+                <div className='product-page__block  contain'>
+                    <ThumbsSwiper product={product[0]}/>
+                    <Order product={product[0]}/>
+                </div>
+                <div className='product-page__related contain' data-test-id='related-slider'>
+                    <Related productType={productType}/>
+                </div>
             </div>
-            <div className='product-page__related contain' data-test-id='related-slider'>
-                <Related productType={productType}/>
-            </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <>
+            </>
+        )
+    }
+
+
 };
 
 export default ProductPage;

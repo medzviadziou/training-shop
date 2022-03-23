@@ -18,9 +18,6 @@ const Filter = ({productType}) => {
 
     const PRODUCTS =useSelector((state) => state.products.products)
 
-    console.log(PRODUCTS)
-
-
     //crate FilterList
     let setColor = new Set()
     let setSizes = new Set()
