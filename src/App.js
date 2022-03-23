@@ -26,8 +26,8 @@ function App() {
 
         <section className="app" data-test-id='app'>
             <Header/>
-            {isLoading && <Loader data-test-id='loader'/>}
-            {isError && <Error data-test-id='error'/>}
+            {isLoading && <Loader/>}
+            {isError && <Error/>}
             <Routes>
                 <Route index element={<MainPage/>}/>
                 <Route path=':productType' element={<ProductsPage/>}/>
