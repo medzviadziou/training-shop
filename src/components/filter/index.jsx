@@ -16,6 +16,7 @@ import check from "./img/check.svg"
 
 const Filter = ({productType}) => {
 
+
     const PRODUCTS =useSelector((state) => state.products.products)
 
     //crate FilterList
@@ -50,6 +51,9 @@ const Filter = ({productType}) => {
     let [setFilterBrand, setSetFilterBrand] = useState(new Set())
     let [setFilterPrice, setSetFilterPrice] = useState(new Set())
 
+    const getSetRenderFilter=()=>{
+        return setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
+    }
 
     const onChangeColorInput = (e) => {
         if (e.target.checked) {
@@ -59,7 +63,7 @@ const Filter = ({productType}) => {
             setFilterColor.delete(e.target.id)
             setSetFilterColor(setFilterColor)
         }
-        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
+        getSetRenderFilter()
         count = setRenderFilter.length
     }
     const onChangeSizeInput = (e) => {
@@ -71,7 +75,7 @@ const Filter = ({productType}) => {
             setSetFilterSize(setFilterSize)
 
         }
-        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
+        getSetRenderFilter()
         count = setRenderFilter.length
     }
     const onChangeBrandInput = (e) => {
@@ -82,7 +86,7 @@ const Filter = ({productType}) => {
             setFilterBrand.delete(e.target.id)
             setSetFilterBrand(setFilterBrand)
         }
-        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
+        getSetRenderFilter()
         count = setRenderFilter.length
     }
     const onChangePriceInput = (e) => {
@@ -93,7 +97,7 @@ const Filter = ({productType}) => {
             setFilterPrice.delete(e.target.id)
             setSetFilterPrice(setFilterPrice)
         }
-        setRenderFilter(PRODUCTS[productType].filter((color) => setFilterColor.size === 0 || hasColor(color)).filter((size) => setFilterSize.size === 0 || hasSize(size)).filter((brand) => setFilterBrand.size === 0 || hasBrand(brand)).filter((price) => setFilterPrice.size === 0 || hasPrice(price)));
+        getSetRenderFilter()
         count = setRenderFilter.length
     }
 

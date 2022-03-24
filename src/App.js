@@ -10,6 +10,7 @@ import Loader from "./components/loader";
 import Error from "./components/error";
 import {useSelector, useDispatch} from "react-redux";
 import {getProductsFetch} from "./store/productsSlice";
+import NotFound from "./components/not-found";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
                 <Route index element={<MainPage/>}/>
                 <Route path=':productType' element={<ProductsPage/>}/>
                 <Route path=':productType/:id' element={<ProductPage/>}/>
-                <Route element={<main style={{padding: '100px 0', textAlign: 'center', fontSize: '72px'}}><p>There's nothing here!</p></main>}/>
+                <Route element={<NotFound/>}/>
             </Routes>
             <Footer/>
         </section>
