@@ -71,6 +71,7 @@
     box-sizing: border-box;
     &:disabled{
       background: #9C9C9C;
+      border: 2px solid #9C9C9C;
     }
   }
 

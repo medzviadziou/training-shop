@@ -20,10 +20,10 @@ const Subscribe = () => {
                     <Formik
                         initialValues={{email: ''}}
                         validate={values => {
-                            if (!values.email) {
-                                setMailError(true)
-                            } else if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                            if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)  ) {
                                 setMailError(false)
+                            } else {
+                                setMailError(true)
                             }
                         }}
                         onSubmit={(values, {setSubmitting}) => {
@@ -31,7 +31,7 @@ const Subscribe = () => {
                                 alert(JSON.stringify(values, null, 2));
                                 setSubmitting(false);
                             }, 400);
-                            }}
+                        }}
                     >
                         {({
                               values,
