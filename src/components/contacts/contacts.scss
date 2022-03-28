@@ -67,6 +67,10 @@
     opacity: 0.9;
     background: #121212;
     border: 1px solid #FFFFFF;
+    &:disabled{
+      background: #9C9C9C;
+      border: 2px solid #9C9C9C;
+    }
   }
   &__donut{
     position: absolute;

@@ -16,7 +16,6 @@ const Subscribe = () => {
                 <div className='subscribe__block'>
                     <h3 className='subscribe__title'>Special Offer</h3>
                     <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text subscribe__text--color'>Get 10% Off</span></p>
-
                     <Formik
                         initialValues={{email: ''}}
                         validate={values => {
