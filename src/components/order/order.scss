@@ -13,6 +13,7 @@
   }
 
   &__text {
+    word-wrap: anywhere;
     padding-right: 2px;
     font-family: var(--Spartan);
     font-style: normal;

@@ -84,13 +84,10 @@ const Order = (props) => {
                 {props.product.images.map((item) => {
                     if (!setColor.has(item.color)) {
                         setColor.add(item.color)
-                        return <img id={item.color} name={item.url} key={item.id}
-                                    className={classNames('order__img', {'order__img--active': (colorChose === item.color)})}
-                                    src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64'
-                                    height='64'/>
+                        return <img id={item.color} name={item.url} key={item.id} className={classNames('order__img', {'order__img--active': (colorChose === item.color)})} src={`https://training.cleverland.by/shop${item.url}`} alt="" width='64' height='64'/>
                     } else {
                         setColor.add(item.color)
-                        return console.log("ok")
+                        return null
                     }
                 })}
             </div>
@@ -100,8 +97,7 @@ const Order = (props) => {
             </div>
             <div className='order__choice' onClick={choseSize}>
                 {Array.from(setSize).sort().map((size, index) => {
-                    return <span id={size} key={index}
-                                 className={classNames('order__size', {'order__size--active': (sizeChose === size)})}>{size}</span>
+                    return <span id={size} key={index} className={classNames('order__size', {'order__size--active': (sizeChose === size)})}>{size}</span>
                 })}
             </div>
             <div className='order__hanger'>

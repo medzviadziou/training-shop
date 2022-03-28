@@ -3,8 +3,11 @@ import './subscribe.scss'
 //img
 import women from './img/women_left.png'
 import men from './img/men_right.png'
+import Donut from "../donut";
+import {Formik} from "formik";
 
 const Subscribe = () => {
+    let isError = false
 
     return (
         <div className='subscribe'>
@@ -12,8 +15,68 @@ const Subscribe = () => {
                 <div className='subscribe__block'>
                     <h3 className='subscribe__title'>Special Offer</h3>
                     <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text subscribe__text--color'>Get 10% Off</span></p>
-                    <input className='subscribe__input' placeholder='Enter your email'/>
-                    <button className='subscribe__button' type='button'>Subscribe</button>
+
+                    <Formik
+                        initialValues={{email: ''}}
+                        validate={values => {
+
+                            const errors = {};
+                            if (!values.email) {
+                                errors.email = true;
+                            } else if (
+                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                            ) {
+                                errors.email = true;
+                            }
+                            return errors;
+                        }}
+                        onSubmit={(values, {setSubmitting}) => {
+                            setTimeout(() => {
+                                alert(JSON.stringify(values, null, 2));
+                                setSubmitting(false);
+                            }, 400);
+                        }
+                        }
+                    >
+                        {({
+                              values,
+                              errors,
+                              touched,
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              isSubmitting,
+                          }) => (
+                            <form className='subscribe__form' onSubmit={handleSubmit}>
+                                <input
+                                    className='subscribe__input'
+                                    placeholder='Enter your email'
+                                    type="email"
+                                    name="email"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.email}
+                                />
+                                {errors.email && touched.email && errors.email}
+                                <button type='submit' disabled={isSubmitting || !!errors.mail} className='subscribe__button'>
+                                    {isError && values.mail && <p className='subscribe__error'>Ошибка при отправке почты</p>}
+                                    {isError && <p className='subscribe__success'>Почта отправлена успешно</p>}
+                                    {isSubmitting && <div className='subscribe__donut'><Donut/></div>}
+                                    <div className='subscribe__button-text'>Subscribe</div>
+                                </button>
+                            </form>
+                        )}
+                    </Formik>
+
+
+                    {/*
+                     <input className='subscribe__input' placeholder='Enter your email'/>
+                    <button className='subscribe__button' type='button'>
+                        {!error&&<p  className='subscribe__error'>Ошибка при отправке почты</p>}
+                        {error&&<p  className='subscribe__success'>Почта отправлена успешно</p>}
+                        <div className='subscribe__donut' ><Donut /></div>
+                        <div className='subscribe__button-text'>Subscribe</div>
+                    </button>*/}
                 </div>
                 <img className='subscribe__img subscribe__img--left' src={women} alt="the lady in the hat"/>
                 <img className='subscribe__img subscribe__img--right' src={men} alt="dandy man"/>

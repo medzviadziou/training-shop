@@ -6,6 +6,7 @@ import './product-page.scss';
 import Order from "../../components/order";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Review from "../../components/review";
 
 
 const ProductPage = () => {
@@ -16,25 +17,20 @@ const ProductPage = () => {
 
     const product = PRODUCTS[productType].filter((product) => product.id === id)
 
-    if (product[0] !== undefined) {
-        return (
-            <div className='product-page' data-test-id={`product-page-${productType}`}>
-                <ProductTop productType={productType} product={product[0]}/>
-                <div className='product-page__block  contain'>
-                    <ThumbsSwiper product={product[0]}/>
-                    <Order product={product[0]}/>
-                </div>
-                <div className='product-page__related contain' data-test-id='related-slider'>
-                    <Related productType={productType}/>
-                </div>
+    if (product[0] === undefined) return null
+    return (
+        <div className='product-page' data-test-id={`product-page-${productType}`}>
+            <ProductTop productType={productType} product={product[0]}/>
+            <div className='product-page__block  contain'>
+                <ThumbsSwiper product={product[0]}/>
+                <Order product={product[0]}/>
             </div>
-        );
-    } else {
-        return (
-            <>
-            </>
-        )
-    }
+            <div className='product-page__related contain' data-test-id='related-slider'>
+                <Related productType={productType}/>
+            </div>
+            <Review/>
+        </div>
+    );
 };
 
 export default ProductPage;

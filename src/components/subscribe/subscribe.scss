@@ -1,5 +1,7 @@
 .subscribe {
+  position: relative;
   background: linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%);
+
   &__wrap {
     position: relative;
     margin: 0 auto;
@@ -7,6 +9,7 @@
     justify-content: center;
 
   }
+
   &__block {
     box-sizing: content-box;
     margin: 60px 0;
@@ -23,6 +26,7 @@
     }
 
   }
+
   &__title {
     font-family: var(--Spartan);
     font-style: normal;
@@ -35,6 +39,7 @@
     color: #121212;
     opacity: 0.4;
   }
+
   &__text {
     padding-top: 16px;
     font-family: var(--Spartan);
@@ -46,14 +51,61 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #121212;
+
     &--color {
       color: #E91E63;
     }
   }
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
   &__button {
+    position: relative;
     margin-top: 24px;
     padding-top: 23px;
     padding-bottom: 23px;
+    opacity: 0.9;
+    background: #121212;
+    border: 2px solid #121212;
+    box-sizing: border-box;
+    &:disabled{
+      background: #9C9C9C;
+    }
+  }
+
+  &__donut{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    transform: translate(-50%, -50%);
+    left: 40px;
+    top: 50%;
+  }
+  &__error{
+    position: absolute;
+    left: 0;
+    top: -28px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #D61313;
+  }
+  &__success{
+    position: absolute;
+    left: 0;
+    top: -28px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #121212;
+  }
+
+  &__button-text {
     font-family: var(--Spartan);
     font-style: normal;
     font-weight: 500;
@@ -62,15 +114,12 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #FFFFFF;
-    opacity: 0.9;
-    background: #121212;
-    border: 2px solid #121212;
-    box-sizing: border-box;
   }
+
   &__input {
     margin-top: 32px;
     height: 64px;
-    font-family:  var(--Spartan);
+    font-family: var(--Spartan);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -84,15 +133,18 @@
       opacity: 0.4;
     }
   }
+
   &__img {
     position: absolute;
-    @media (max-width: 1110px){
+    @media (max-width: 1110px) {
       display: none;
     }
+
     &--left {
       left: 40px;
       bottom: -38px;
     }
+
     &--right {
       right: 105px;
       bottom: 11px;
