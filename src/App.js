@@ -11,6 +11,7 @@ import Error from "./components/error";
 import {useSelector, useDispatch} from "react-redux";
 import {getProductsFetch} from "./store/productsSlice";
 import NotFound from "./components/not-found";
+import {getMailFetch} from "./store/mailSlise";
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
 
     useEffect(()=>{
         dispatch(getProductsFetch())
+    },[dispatch])
+    useEffect(()=>{
+        dispatch(getMailFetch())
     },[dispatch])
 
     const {isLoading, isError} = useSelector((state) => state.products)

@@ -12,9 +12,7 @@ import Review from "../../components/review";
 const ProductPage = () => {
 
     const PRODUCTS = useSelector((state) => state.products.products)
-
     const {id, productType} = useParams();
-
     const product = PRODUCTS[productType].filter((product) => product.id === id)
 
     if (product[0] === undefined) return null

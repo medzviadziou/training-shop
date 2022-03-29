@@ -9,23 +9,25 @@ const mailSlice = createSlice({
         isMailSendSuccess: false, // для отслеживания ошибки запроса
     },
     reducers: {
-        getProductsFetch(state) {
+        getMailFetch(state, action) {
+            state.isMailSendSuccess = false;
+            state.mail = action.payload;
             state.isMailLoading = true;
         },
-        getProductsSuccess(state, action) {
-            state.isError = false;
-            state.products = action.payload;
-            state.isLoading = false;
+        getMailSuccess(state) {
+            state.isMailSendSuccess = true;
+            state.isMailLoading = false;
+            state.email = ""
         },
-        getProductsFailure(state) {
-            state.isLoading = false;
-            state.isError = true;
-
+        getMailFailure(state) {
+            state.isMailLoading = false;
+            state.isMailSendSuccess = false;
+            state.email = ""
         },
     },
 });
 
-export const {} = mailSlice.actions
+export const {getMailFetch, getMailSuccess, getMailFailure} = mailSlice.actions
 
 export default mailSlice.reducer
 

@@ -19,7 +19,6 @@
   }
 
   &__block {
-    max-width: 480px;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -29,7 +28,7 @@
   }
 
   &__title {
-    margin: 20px;
+    margin: 40px 0 20px;
     text-align: center;
     font-family: var(--Spartan);
     font-style: normal;
@@ -47,13 +46,51 @@
   }
 
   &__wrap {
+    width: 460px;
     padding: 0 20px;
-    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: stretch;
+    @media (max-width: 480px) {
+      width: 320px;
+    }
   }
 
+  &__form {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+  }
+
+  &__input {
+    padding: 0 20px;
+    display: block;
+    height: 64px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: initial;
+    background: #F8F8F8;
+    border: none;
+    color: #121212;
+
+    &::placeholder {
+      opacity: 0.4;
+    }
+    &--text{
+      padding-top: 24px;
+      height: 200px;
+    }
+  }
+
+
   &__button {
+    position: relative;
+    margin: 0 auto;
     width: 156px;
     padding: 17px 0 16px;
     font-family: var(--Spartan);
@@ -68,8 +105,21 @@
     border: 2px solid #121212;
     cursor: pointer;
 
+    &:disabled {
+      background: #9C9C9C;
+      border: 2px solid #9C9C9C;
+    }
+
     &:hover {
       opacity: 0.5;
     }
+  }
+  &__donut{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    transform: translate(-50%, -50%);
+    left: 30px;
+    top: 50%;
   }
 }

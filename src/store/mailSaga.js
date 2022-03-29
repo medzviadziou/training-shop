@@ -3,16 +3,19 @@ import axios from "axios";
 
 function* mailRequestWorker() {
     try {
-        const {data} = yield call(axios.get, "https://training.cleverland.by/shop/email");
-        yield put();
+        const mailData = {
+            "mail": "email@test.by"
+        }
+        const {data} = yield call(axios.post, "https://training.cleverland.by/shop/email", mailData);
+        yield put(getMailSuccess());
     } catch (err) {
-        yield put();
+        yield put(getMailFailure());
     }
 }
 
 
-function* productsSaga() {
-    yield takeLatest('products', mailRequestWorker)
+function* mailSaga() {
+    yield takeLatest('mail', mailRequestWorker)
 }
 
-export default productsSaga;
+export default mailSaga;
