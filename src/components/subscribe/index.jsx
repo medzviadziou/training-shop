@@ -5,10 +5,16 @@ import women from './img/women_left.png'
 import men from './img/men_right.png'
 import Donut from "../donut";
 import {Formik} from "formik";
+import {getMailFetch} from "../../store/mailSlise";
+import {useDispatch, useSelector} from "react-redux";
 
 const Subscribe = () => {
-    let isError = false
+
     const [mailError, setMailError] = useState(true)
+
+    const dispatch = useDispatch()
+
+    const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
 
     return (
         <div className='subscribe'>
@@ -19,32 +25,27 @@ const Subscribe = () => {
                     <Formik
                         initialValues={{email: ''}}
                         validate={values => {
-                            if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)  ) {
+                            if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                                 setMailError(false)
                             } else {
                                 setMailError(true)
                             }
                         }}
                         onSubmit={(values, {setSubmitting}) => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null, 2));
-                                setSubmitting(false);
-                            }, 400);
+                            dispatch(getMailFetch(values));
+                            setSubmitting(false);
                         }}
                     >
                         {({
                               values,
-                              /*
-                              errors,
-                              touched,
-                              */
                               handleChange,
                               handleBlur,
+                              touched,
                               handleSubmit,
-                              isSubmitting,
                           }) => (
                             <form className='subscribe__form' onSubmit={handleSubmit}>
                                 <input
+                                    data-test-id='main-subscribe-mail-field'
                                     className='subscribe__input'
                                     placeholder='Enter your email'
                                     type="email"
@@ -53,10 +54,10 @@ const Subscribe = () => {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
-                                <button type='submit' disabled={mailError} className='subscribe__button'>
-                                    {isError && values.mail && <p className='subscribe__error'>Ошибка при отправке почты</p>}
-                                    {isError && <p className='subscribe__success'>Почта отправлена успешно</p>}
-                                    {isSubmitting && <div className='subscribe__donut'><Donut/></div>}
+                                <button  data-test-id='main-subscribe-mail-button' type='submit' disabled={mailError} className='subscribe__button'>
+                                    {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
+                                    {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
+                                    {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
                                     <div className='subscribe__button-text'>Subscribe</div>
                                 </button>
                             </form>

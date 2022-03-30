@@ -1,12 +1,13 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from "axios";
+import {getMailFailure, getMailSuccess} from "./mailSlise";
 
-function* mailRequestWorker() {
+
+
+function* mailRequestWorker({payload}) {
     try {
-        const mailData = {
-            "mail": "email@test.by"
-        }
-        const {data} = yield call(axios.post, "https://training.cleverland.by/shop/email", mailData);
+        const {data} = yield call(axios.post, "https://training.cleverland.by/shop/email", payload);
+        console.log(data)
         yield put(getMailSuccess());
     } catch (err) {
         yield put(getMailFailure());
@@ -15,7 +16,7 @@ function* mailRequestWorker() {
 
 
 function* mailSaga() {
-    yield takeLatest('mail', mailRequestWorker)
+    yield takeLatest('mail/getMailFetch', mailRequestWorker)
 }
 
 export default mailSaga;

@@ -5,6 +5,7 @@ import starGold from "../cards/img/ico/star_gold.svg";
 import {Formik} from "formik";
 import Donut from "../donut";
 
+
 const Review = () => {
     const star = [starGray, starGray, starGray, starGray, starGray,]
     let i = 1
@@ -18,6 +19,11 @@ const Review = () => {
     let error = false
 
     const [mailError, setMailError] = useState(true)
+
+
+
+
+
 
     return (
         <div className='review'>

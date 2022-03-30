@@ -3,12 +3,18 @@ import Social from "../social";
 import './contacts.scss'
 import Donut from "../donut";
 import {Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {getMailFetch} from "../../store/mailSlise";
 
 
 const Contacts = () => {
     let error = false
 
     const [mailError, setMailError] = useState(true)
+
+    const dispatch = useDispatch()
+
+    const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
 
     return (
         <div className='contacts'>
@@ -25,25 +31,20 @@ const Contacts = () => {
                         }
                     }}
                     onSubmit={(values, {setSubmitting}) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                        }, 400);
-                    }}
+                        dispatch(getMailFetch(values));
+                        setSubmitting(false);
+                                            }}
                 >
                     {({
                           values,
-                          /*
-                          errors,
-                          touched,
-                          */
                           handleChange,
                           handleBlur,
+                          touched,
                           handleSubmit,
-                          isSubmitting,
                       }) => (
                         <form className='contacts__form' onSubmit={handleSubmit}>
                             <input
+                                data-test-id='footer-mail-field'
                                 className='contacts__input'
                                 placeholder='Enter your email'
                                 type="email"
@@ -52,10 +53,10 @@ const Contacts = () => {
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
-                            <button type='submit' disabled={mailError} className='contacts__button'>
-                                {!error && values.mail && <p className='contacts__error'>Ошибка при отправке почты</p>}
-                                {error && <p className='contacts__success'>Почта отправлена успешно</p>}
-                                {isSubmitting && <div className='contacts__donut'><Donut/></div>}
+                            <button  data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button'>
+                                {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
+                                {isMailSendSuccess &&  touched.email &&  <p className='contacts__success'>Почта отправлена успешно</p>}
+                                {isMailLoading &&  touched.email && <div className='contacts__donut'><Donut/></div>}
                                 <div className='contacts__button-text'>Join Us</div>
                             </button>
                         </form>
