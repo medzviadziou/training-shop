@@ -37,10 +37,15 @@ const Review = (props) => {
 
     const {isReviewLoading, isReviewSendSuccess, isReviewError} = useSelector((state) => state.review)
 
+    const closeSuccess = (isReviewSendSuccess) => {
+        if (isReviewSendSuccess) {
+            props.setCheckOpenReview(false)
+            document.body.style.overflow = "";
+        }
+    }
 
     useEffect(() => {
-        // eslint-disable-next-line
-            if (isReviewSendSuccess) { closeReview()}
+            closeSuccess(isReviewSendSuccess)
         }, [isReviewSendSuccess]
     )
 
