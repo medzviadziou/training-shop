@@ -17,6 +17,7 @@ const ProductPage = () => {
     if (product[0] === undefined) return null
 
 
+
     return (
         <div className='product-page' data-test-id={`product-page-${productType}`}>
             <ProductTop productType={productType} product={product[0]}/>
