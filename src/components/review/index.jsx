@@ -33,7 +33,7 @@ const Review = (props) => {
 
 
     return (
-        <div className='review'>
+        <div className='review' data-test-id='review-button' >
             <div className='review__hidden' onClick={(closeReview)}> </div>
             <div className='review__block'>
                 <h2 className='review__title'>Write a review</h2>
@@ -76,6 +76,7 @@ const Review = (props) => {
                           }) => (
                             <form className='review__form' onSubmit={handleSubmit}>
                                 <input
+                                    data-test-id='review-name-field'
                                     className='review__input'
                                     placeholder='Имя'
                                     type="text"
@@ -85,6 +86,7 @@ const Review = (props) => {
                                     value={values.name}
                                 />
                                 <textarea
+                                    data-test-id='review-text-field'
                                     className='review__input review__input--text'
                                     placeholder='Комментарий'
                                         name="text"
@@ -92,7 +94,7 @@ const Review = (props) => {
                                     onBlur={handleBlur}
                                     value={values.text}
                                 />
-                                <button type='submit' disabled={mailError} className='review__button'>
+                                <button data-test-id='review-submit-button' type='submit' disabled={mailError} className='review__button'>
                                     {!error && values.mail && <p className='review__error'>Ошибка при отправке почты</p>}
                                     {error && <p className='review__success'>Почта отправлена успешно</p>}
                                     {isSubmitting && <div className='review__donut'><Donut/></div>}
