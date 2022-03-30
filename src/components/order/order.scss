@@ -226,10 +226,13 @@
   }
 
   &__annotation {
-    padding-top: 12px;
+    margin-top: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
   }
 
   &__review-title {

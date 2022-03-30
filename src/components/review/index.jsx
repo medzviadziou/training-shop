@@ -6,48 +6,61 @@ import {Formik} from "formik";
 import Donut from "../donut";
 
 
-const Review = () => {
+const Review = (props) => {
+    const [reviewRating, setReviewRating] =useState(1)
+    const choseReviewRating = (e) => {
+        setReviewRating(e.target.name)
+    }
+
     const star = [starGray, starGray, starGray, starGray, starGray,]
-    let i = 1
+    let i = reviewRating
     while (i > 0) {
         star.push(starGold)
         star.shift()
         i = i - 1
     }
+
     const size = 20
 
     let error = false
 
     const [mailError, setMailError] = useState(true)
 
-
-
-
+    function closeReview() {
+        props.setCheckOpenReview(false)
+        document.body.style.overflow = "";
+    }
 
 
     return (
         <div className='review'>
-            <div className='review__hidden'> </div>
+            <div className='review__hidden' onClick={(closeReview)}> </div>
             <div className='review__block'>
                 <h2 className='review__title'>Write a review</h2>
-                <div className='review__rating'>
-                    <img className='review__star' src={star[4]} alt="" width={size} height={size}/>
-                    <img className='review__star' src={star[3]} alt="" width={size} height={size}/>
-                    <img className='review__star' src={star[2]} alt="" width={size} height={size}/>
-                    <img className='review__star' src={star[1]} alt="" width={size} height={size}/>
-                    <img className='review__star' src={star[0]} alt="" width={size} height={size}/>
+                <div className='review__rating' onClick={choseReviewRating}>
+                    <img className='review__star' name='1' src={star[4]} alt="" width={size} height={size}/>
+                    <img className='review__star' name='2' src={star[3]} alt="" width={size} height={size}/>
+                    <img className='review__star' name='3' src={star[2]} alt="" width={size} height={size}/>
+                    <img className='review__star' name='4' src={star[1]} alt="" width={size} height={size}/>
+                    <img className='review__star' name='5' src={star[0]} alt="" width={size} height={size}/>
                 </div>
                 <div className='review__wrap'>
                     <Formik
-                        initialValues={{name: '', text: ''}}
+                        initialValues={{
+                            id: props.id,
+                            name: '',
+                            text: '',
+                            rating: reviewRating,
+                        }}
                         validate={values => {
-                            if (values.name || values.text) {
+                            if (values.name && values.text) {
                                 setMailError(false)
                             } else {
                                 setMailError(true)
                             }
                         }}
                         onSubmit={(values, {setSubmitting}) => {
+                            values.rating = reviewRating
                             setTimeout(() => {
                                 alert(JSON.stringify(values, null, 2));
                                 setSubmitting(false);
@@ -56,10 +69,6 @@ const Review = () => {
                     >
                         {({
                               values,
-                              /*
-                              errors,
-                              touched,
-                              */
                               handleChange,
                               handleBlur,
                               handleSubmit,

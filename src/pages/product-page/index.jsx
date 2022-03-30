@@ -6,7 +6,6 @@ import './product-page.scss';
 import Order from "../../components/order";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import Review from "../../components/review";
 
 
 const ProductPage = () => {
@@ -26,7 +25,6 @@ const ProductPage = () => {
             <div className='product-page__related contain' data-test-id='related-slider'>
                 <Related productType={productType}/>
             </div>
-            <Review/>
         </div>
     );
 };

@@ -19,6 +19,7 @@ import pay7 from "./img/pay/express.png";
 import annotation from "./img/ico/annotation.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeToCart} from "../../store/cartSlice";
+import Review from "../review";
 
 
 const Order = (props) => {
@@ -73,6 +74,13 @@ const Order = (props) => {
         setSizeChose(Array.from(setSize).sort()[0])
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
+
+    let [checkOpenReview, setCheckOpenReview] = useState(false)
+
+    const openReview =()=> {
+        setCheckOpenReview(true)
+        document.body.style.overflow = "hidden";
+    }
 
     return (
         <div className='order'>
@@ -162,10 +170,10 @@ const Order = (props) => {
                         </span>
                         <span className='order__amount'>{props.product.reviews.length} Reviews</span>
                     </div>
-                    <div className='order__annotation'>
-                        <img src={annotation} alt=""/>
+                    <button data-test-id='review-button' className='order__annotation'  onClick={(openReview)}>
+                        <img  src={annotation} alt=""/>
                         <span className='order__text'>Write a review</span>
-                    </div>
+                    </button>
                 </div>
                 {props.product.reviews.map((review) => {
                     return <div key={review.id} className='order__review'>
@@ -179,6 +187,7 @@ const Order = (props) => {
                     </div>
                 })}
             </div>
+            {checkOpenReview && <Review id={props.product.id} setCheckOpenReview={setCheckOpenReview}/>}
         </div>
     );
 };
