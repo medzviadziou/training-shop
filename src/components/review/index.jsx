@@ -49,7 +49,7 @@ const Review = (props) => {
     }, [isReviewSendSuccess])
 
     return (
-        <div className='review' data-test-id='review-button'>
+        <div className='review' data-test-id='review-modal'>
             <div className='review__hidden' onClick={(closeReview)}> </div>
             <div className='review__block'>
                 <h2 className='review__title'>Write a review</h2>
