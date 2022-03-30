@@ -45,6 +45,10 @@
     gap: 20px;
   }
 
+  &__star {
+    cursor: pointer;
+  }
+
   &__wrap {
     width: 460px;
     padding: 0 20px;
@@ -81,7 +85,8 @@
     &::placeholder {
       opacity: 0.4;
     }
-    &--text{
+
+    &--text {
       padding-top: 24px;
       height: 200px;
     }
@@ -114,7 +119,22 @@
       opacity: 0.5;
     }
   }
-  &__donut{
+
+  &__error {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: -40px;
+    white-space: nowrap;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #D61313;
+  }
+
+  &__donut {
     position: absolute;
     width: 25px;
     height: 25px;

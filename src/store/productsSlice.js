@@ -24,7 +24,6 @@ const productsSlice = createSlice({
         getProductsFailure(state) {
             state.isLoading = false;
             state.isError = true;
-
         },
     },
 });
