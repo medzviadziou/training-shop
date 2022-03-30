@@ -11,10 +11,10 @@ import {getReviewFetch} from "../../store/reviewSlice";
 const Review = (props) => {
     const [reviewRating, setReviewRating] = useState(1)
     const choseReviewRating = (e) => {
-        if (e.target.name){
+        if (e.target.name) {
             setReviewRating(e.target.name)
         }
-           }
+    }
 
     const star = [starGray, starGray, starGray, starGray, starGray,]
     let i = reviewRating
@@ -35,14 +35,13 @@ const Review = (props) => {
 
     const dispatch = useDispatch()
 
-    const {isReviewLoading,isReviewSendSuccess, isReviewError} = useSelector((state) => state.review)
+    const {isReviewLoading, isReviewSendSuccess, isReviewError} = useSelector((state) => state.review)
 
 
-    useEffect(()=>{
-        if (isReviewSendSuccess){
-            closeReview()
-        }
-                }, [isReviewSendSuccess]
+    useEffect(() => {
+        // eslint-disable-next-line
+            if (isReviewSendSuccess) { closeReview()}
+        }, [isReviewSendSuccess]
     )
 
 
