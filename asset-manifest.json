@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/training-shop/static/css/main.d5c8d9df.chunk.css",
-    "main.js": "/training-shop/static/js/main.75f8b408.chunk.js",
-    "main.js.map": "/training-shop/static/js/main.75f8b408.chunk.js.map",
+    "main.css": "/training-shop/static/css/main.3f73848c.chunk.css",
+    "main.js": "/training-shop/static/js/main.41d21825.chunk.js",
+    "main.js.map": "/training-shop/static/js/main.41d21825.chunk.js.map",
     "runtime-main.js": "/training-shop/static/js/runtime-main.461599c6.js",
     "runtime-main.js.map": "/training-shop/static/js/runtime-main.461599c6.js.map",
     "static/css/2.ddcd6bbb.chunk.css": "/training-shop/static/css/2.ddcd6bbb.chunk.css",
-    "static/js/2.488d6f50.chunk.js": "/training-shop/static/js/2.488d6f50.chunk.js",
-    "static/js/2.488d6f50.chunk.js.map": "/training-shop/static/js/2.488d6f50.chunk.js.map",
+    "static/js/2.28f25fcf.chunk.js": "/training-shop/static/js/2.28f25fcf.chunk.js",
+    "static/js/2.28f25fcf.chunk.js.map": "/training-shop/static/js/2.28f25fcf.chunk.js.map",
     "index.html": "/training-shop/index.html",
-    "precache-manifest.08109a8ad4b9b0ac1a6ee7f0c2c2b69b.js": "/training-shop/precache-manifest.08109a8ad4b9b0ac1a6ee7f0c2c2b69b.js",
+    "precache-manifest.045914ef7c899257b64c22355f8403a9.js": "/training-shop/precache-manifest.045914ef7c899257b64c22355f8403a9.js",
     "service-worker.js": "/training-shop/service-worker.js",
     "static/css/2.ddcd6bbb.chunk.css.map": "/training-shop/static/css/2.ddcd6bbb.chunk.css.map",
-    "static/css/main.d5c8d9df.chunk.css.map": "/training-shop/static/css/main.d5c8d9df.chunk.css.map",
-    "static/js/2.488d6f50.chunk.js.LICENSE.txt": "/training-shop/static/js/2.488d6f50.chunk.js.LICENSE.txt",
+    "static/css/main.3f73848c.chunk.css.map": "/training-shop/static/css/main.3f73848c.chunk.css.map",
+    "static/js/2.28f25fcf.chunk.js.LICENSE.txt": "/training-shop/static/js/2.28f25fcf.chunk.js.LICENSE.txt",
     "static/media/-arrow.svg": "/training-shop/static/media/-arrow.ba2ba65b.svg",
     "static/media/1.jpg": "/training-shop/static/media/1.02980ff8.jpg",
     "static/media/2.jpg": "/training-shop/static/media/2.35f54878.jpg",
@@ -65,8 +65,8 @@
   "entrypoints": [
     "static/js/runtime-main.461599c6.js",
     "static/css/2.ddcd6bbb.chunk.css",
-    "static/js/2.488d6f50.chunk.js",
-    "static/css/main.d5c8d9df.chunk.css",
-    "static/js/main.75f8b408.chunk.js"
+    "static/js/2.28f25fcf.chunk.js",
+    "static/css/main.3f73848c.chunk.css",
+    "static/js/main.41d21825.chunk.js"
   ]
 }
