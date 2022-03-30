@@ -42,6 +42,7 @@ const Subscribe = () => {
                               handleBlur,
                               touched,
                               handleSubmit,
+                              resetForm,
                           }) => (
                             <form className='subscribe__form' onSubmit={handleSubmit}>
                                 <input
@@ -54,7 +55,7 @@ const Subscribe = () => {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
-                                <button  data-test-id='main-subscribe-mail-button' type='submit' disabled={mailError} className='subscribe__button'>
+                                <button  data-test-id='main-subscribe-mail-button' type='submit' disabled={mailError} className='subscribe__button'  onClick={() => resetForm({ values: '' })}>
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
                                     {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}

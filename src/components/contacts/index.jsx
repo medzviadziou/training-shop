@@ -8,7 +8,6 @@ import {getMailFetch} from "../../store/mailSlise";
 
 
 const Contacts = () => {
-    let error = false
 
     const [mailError, setMailError] = useState(true)
 
@@ -33,7 +32,7 @@ const Contacts = () => {
                     onSubmit={(values, {setSubmitting}) => {
                         dispatch(getMailFetch(values));
                         setSubmitting(false);
-                                            }}
+                                          }}
                 >
                     {({
                           values,
@@ -41,6 +40,7 @@ const Contacts = () => {
                           handleBlur,
                           touched,
                           handleSubmit,
+                          resetForm,
                       }) => (
                         <form className='contacts__form' onSubmit={handleSubmit}>
                             <input
@@ -53,10 +53,10 @@ const Contacts = () => {
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
-                            <button  data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button'>
+                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button' onClick={() => resetForm({ values: '' })}>
                                 {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
-                                {isMailSendSuccess &&  touched.email &&  <p className='contacts__success'>Почта отправлена успешно</p>}
-                                {isMailLoading &&  touched.email && <div className='contacts__donut'><Donut/></div>}
+                                {isMailSendSuccess && touched.email && <p className='contacts__success'>Почта отправлена успешно</p>}
+                                {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}
                                 <div className='contacts__button-text'>Join Us</div>
                             </button>
                         </form>
