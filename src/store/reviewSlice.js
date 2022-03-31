@@ -18,14 +18,14 @@ const reviewSlice = createSlice({
         getReviewFetch(state, action) {
             state.isReviewSendSuccess = false;
             state.isReviewError = false;
-            state.review = action.payload;
             state.isReviewLoading = true;
+            state.review = action.payload;
         },
         getReviewSuccess(state) {
-            state.isReviewError = false;
             state.isReviewSendSuccess = true;
+            state.isReviewError = false;
             state.isReviewLoading = false;
-        },
+                    },
         getReviewFailure(state) {
             state.isReviewLoading = false;
             state.isReviewSendSuccess = false;

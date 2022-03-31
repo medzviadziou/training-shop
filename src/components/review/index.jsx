@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './review.scss'
 import starGray from "../cards/img/ico/star_gray.svg";
 import starGold from "../cards/img/ico/star_gold.svg";
@@ -6,6 +6,7 @@ import {Formik} from "formik";
 import Donut from "../donut";
 import {useDispatch, useSelector} from "react-redux";
 import {getReviewFetch} from "../../store/reviewSlice";
+import {getProductsFetch} from "../../store/productsSlice";
 
 
 const Review = (props) => {
@@ -29,24 +30,17 @@ const Review = (props) => {
     const [mailError, setMailError] = useState(true)
 
     function closeReview() {
+       dispatch(getProductsFetch())
         props.setCheckOpenReview(false)
         document.body.style.overflow = "";
     }
 
     const dispatch = useDispatch()
 
-    const {isReviewLoading, isReviewSendSuccess, isReviewError} = useSelector((state) => state.review)
+    const {isReviewLoading, /*isReviewSendSuccess,*/ isReviewError} = useSelector((state) => state.review)
 
-    let [closeSuccess, setCloseSuccess]=useState(false)
+        //как вызвать фенкцию closeReview() когда isReviewSendSuccess станет true ?
 
-    useEffect(() => {
-        // eslint-disable-next-line
-        setCloseSuccess(closeSuccess = isReviewSendSuccess)
-        // eslint-disable-next-line
-        if (closeSuccess){
-            closeReview()
-        }
-    }, [isReviewSendSuccess])
 
     return (
         <div className='review' data-test-id='review-modal'>

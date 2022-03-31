@@ -3,12 +3,9 @@ import axios from "axios";
 import {getReviewFailure, getReviewSuccess} from "./reviewSlice";
 
 
-
 function* reviewRequestWorker({payload}) {
     try {
-        console.log(payload, 'payload')
-        const {data} = yield call(axios.post, "https://training.cleverland.by/shop/product/review", payload);
-        console.log(data, 'data')
+        yield call(axios.post, "https://training.cleverland.by/shop/product/review", payload);
         yield put(getReviewSuccess());
     } catch (err) {
         yield put(getReviewFailure());
