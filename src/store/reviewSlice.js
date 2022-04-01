@@ -25,16 +25,19 @@ const reviewSlice = createSlice({
             state.isReviewSendSuccess = true;
             state.isReviewError = false;
             state.isReviewLoading = false;
-                    },
+        },
         getReviewFailure(state) {
             state.isReviewLoading = false;
             state.isReviewSendSuccess = false;
             state.isReviewError = true;
         },
+        closeReviewSuccess(state) {
+            state.isReviewSendSuccess = false;
+        },
     },
 });
 
-export const {getReviewFetch, getReviewSuccess, getReviewFailure} = reviewSlice.actions
+export const {getReviewFetch, getReviewSuccess, getReviewFailure, closeReviewSuccess} = reviewSlice.actions
 
 export default reviewSlice.reducer
 

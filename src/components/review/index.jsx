@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './review.scss'
 import starGray from "../cards/img/ico/star_gray.svg";
 import starGold from "../cards/img/ico/star_gold.svg";
 import {Formik} from "formik";
 import Donut from "../donut";
 import {useDispatch, useSelector} from "react-redux";
-import {getReviewFetch} from "../../store/reviewSlice";
+import {closeReviewSuccess, getReviewFetch} from "../../store/reviewSlice";
 import {getProductsFetch} from "../../store/productsSlice";
 
 
@@ -37,10 +37,15 @@ const Review = (props) => {
 
     const dispatch = useDispatch()
 
-    const {isReviewLoading, /*isReviewSendSuccess,*/ isReviewError} = useSelector((state) => state.review)
+    const {isReviewLoading, isReviewSendSuccess, isReviewError} = useSelector((state) => state.review)
 
-        //как вызвать фенкцию closeReview() когда isReviewSendSuccess станет true ?
-
+    useEffect(()=>{
+        if (isReviewSendSuccess){
+            closeReview()
+            dispatch(closeReviewSuccess())
+        }
+        // eslint-disable-next-line
+    },[isReviewSendSuccess])
 
     return (
         <div className='review' data-test-id='review-modal'>

@@ -9,10 +9,9 @@ import {getMailFetch} from "../../store/mailSlise";
 import {useDispatch, useSelector} from "react-redux";
 
 const Subscribe = () => {
+    const dispatch = useDispatch()
 
     const [mailError, setMailError] = useState(true)
-
-    const dispatch = useDispatch()
 
     const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
 
@@ -55,7 +54,12 @@ const Subscribe = () => {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
-                                <button  data-test-id='main-subscribe-mail-button' type='submit' disabled={mailError} className='subscribe__button'  onClick={() => resetForm({ values: '' })}>
+                                <button
+                                    data-test-id='main-subscribe-mail-button'
+                                    type='submit'
+                                    disabled={mailError}
+                                    className='subscribe__button'
+                                    onClick={() => resetForm({values: ''})}>  {/*  resetForm очищает форму принажатии, что надо очищать форму когда isMailSendSuccess === true*/}
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
                                     {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
