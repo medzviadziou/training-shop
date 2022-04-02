@@ -63,7 +63,7 @@ const Subscribe = () => {
                                 <button
                                     data-test-id='main-subscribe-mail-button'
                                     type='submit'
-                                    disabled={mailError}
+                                    disabled={mailError||isMailSendSuccess}
                                     className='subscribe__button'>
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}

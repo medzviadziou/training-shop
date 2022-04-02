@@ -59,7 +59,7 @@ const Contacts = () => {
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
-                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button'>
+                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError||isMailSendSuccess} className='contacts__button'>
                                 {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
                                 {isMailSendSuccess && touched.email && <p className='contacts__success'>Почта отправлена успешно</p>}
                                 {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}
