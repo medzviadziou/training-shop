@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Social from "../social";
 import './contacts.scss'
 import Donut from "../donut";
@@ -14,6 +14,12 @@ const Contacts = () => {
     const dispatch = useDispatch()
 
     const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
+
+    useEffect(() => {
+        if (isMailSendSuccess === true) {
+            document.getElementById("contacts__input").value = "";
+        }
+    }, [isMailSendSuccess])
 
     return (
         <div className='contacts'>
@@ -32,7 +38,7 @@ const Contacts = () => {
                     onSubmit={(values, {setSubmitting}) => {
                         dispatch(getMailFetch(values));
                         setSubmitting(false);
-                                          }}
+                    }}
                 >
                     {({
                           values,
@@ -40,12 +46,12 @@ const Contacts = () => {
                           handleBlur,
                           touched,
                           handleSubmit,
-                          resetForm,
                       }) => (
                         <form className='contacts__form' onSubmit={handleSubmit}>
                             <input
                                 data-test-id='footer-mail-field'
                                 className='contacts__input'
+                                id='contacts__input'
                                 placeholder='Enter your email'
                                 type="email"
                                 name="email"
@@ -53,7 +59,7 @@ const Contacts = () => {
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
-                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button' onClick={() => resetForm({ values: '' })}>
+                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError} className='contacts__button'>
                                 {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
                                 {isMailSendSuccess && touched.email && <p className='contacts__success'>Почта отправлена успешно</p>}
                                 {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './subscribe.scss'
 //img
 import women from './img/women_left.png'
@@ -14,6 +14,12 @@ const Subscribe = () => {
     const [mailError, setMailError] = useState(true)
 
     const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
+
+    useEffect(()=>{
+        if(isMailSendSuccess===true){
+            document.getElementById("subscribe__input").value = "";
+        }
+    },[isMailSendSuccess])
 
     return (
         <div className='subscribe'>
@@ -41,12 +47,12 @@ const Subscribe = () => {
                               handleBlur,
                               touched,
                               handleSubmit,
-                              resetForm,
                           }) => (
                             <form className='subscribe__form' onSubmit={handleSubmit}>
                                 <input
                                     data-test-id='main-subscribe-mail-field'
                                     className='subscribe__input'
+                                    id='subscribe__input'
                                     placeholder='Enter your email'
                                     type="email"
                                     name="email"
@@ -58,8 +64,7 @@ const Subscribe = () => {
                                     data-test-id='main-subscribe-mail-button'
                                     type='submit'
                                     disabled={mailError}
-                                    className='subscribe__button'
-                                    onClick={() => resetForm({values: ''})}>  {/*  resetForm очищает форму принажатии, что надо очищать форму когда isMailSendSuccess === true*/}
+                                    className='subscribe__button'>
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
                                     {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
