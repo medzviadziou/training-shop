@@ -59,7 +59,7 @@ const Subscribe = () => {
                                     type='submit'
                                     disabled={mailError}
                                     className='subscribe__button'
-                                    onClick={() => resetForm({values: ''})}>  {/*  resetForm очищает форму принажатии, что надо очищать форму когда isMailSendSuccess === true*/}
+                                    onClick={() => resetForm({values: ''})}>  {/*  resetForm очищает форму при нажатии, но надо очищать форму когда isMailSendSuccess === true*/}
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
                                     {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
