@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Social from "../social";
 import './contacts.scss'
 import Donut from "../donut";
@@ -10,16 +10,22 @@ import {getMailFetch} from "../../store/mailSlise";
 const Contacts = () => {
 
     const [mailError, setMailError] = useState(true)
+    const [successMail, setSuccessMail] = useState(false)
+    const [submitMail, setSubmitMail] = useState(false)
 
     const dispatch = useDispatch()
 
     const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
 
-    useEffect(() => {
-        if (isMailSendSuccess === true) {
-            document.getElementById("contacts__input").value = "";
+    const formikRef = useRef();
+
+
+    useEffect(()=>{
+        if(isMailSendSuccess&&submitMail){
+            formikRef.current.resetForm({ values: '' })
+            setSuccessMail(true)
         }
-    }, [isMailSendSuccess])
+    },[isMailSendSuccess])
 
     return (
         <div className='contacts'>
@@ -27,17 +33,20 @@ const Contacts = () => {
                 <h2 className="contacts__title">BE IN TOUCH WITH US:</h2>
 
                 <Formik
+                    innerRef={formikRef}
                     initialValues={{email: ''}}
                     validate={values => {
                         if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                             setMailError(false)
                         } else {
                             setMailError(true)
+                            setSuccessMail(false)
                         }
                     }}
                     onSubmit={(values, {setSubmitting}) => {
                         dispatch(getMailFetch(values));
                         setSubmitting(false);
+                        setSubmitMail(true)
                     }}
                 >
                     {({
@@ -59,9 +68,9 @@ const Contacts = () => {
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
-                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError||isMailSendSuccess} className='contacts__button'>
+                            <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError || successMail} className='contacts__button'>
                                 {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
-                                {isMailSendSuccess && touched.email && <p className='contacts__success'>Почта отправлена успешно</p>}
+                                {successMail &&<p className='contacts__success'>Почта отправлена успешно</p>}
                                 {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}
                                 <div className='contacts__button-text'>Join Us</div>
                             </button>

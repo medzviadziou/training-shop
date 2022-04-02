@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './subscribe.scss'
 //img
 import women from './img/women_left.png'
@@ -12,14 +12,21 @@ const Subscribe = () => {
     const dispatch = useDispatch()
 
     const [mailError, setMailError] = useState(true)
+    const [submitSubscribe, setSubmitSubscribe] = useState(false)
+    const [success, setSuccess] = useState(false)
 
     const {isMailLoading, isMailSendSuccess, isMailError} = useSelector((state) => state.mail)
 
+    const formikRef = useRef();
+
+
     useEffect(()=>{
-        if(isMailSendSuccess===true){
-            document.getElementById("subscribe__input").value = "";
-        }
+      if(isMailSendSuccess && submitSubscribe){
+          formikRef.current.resetForm({ values: '' })
+          setSuccess(true)
+      }
     },[isMailSendSuccess])
+
 
     return (
         <div className='subscribe'>
@@ -28,17 +35,20 @@ const Subscribe = () => {
                     <h3 className='subscribe__title'>Special Offer</h3>
                     <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text subscribe__text--color'>Get 10% Off</span></p>
                     <Formik
+                        innerRef={formikRef}
                         initialValues={{email: ''}}
                         validate={values => {
                             if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                                 setMailError(false)
                             } else {
                                 setMailError(true)
+                                setSuccess(false)
                             }
                         }}
                         onSubmit={(values, {setSubmitting}) => {
                             dispatch(getMailFetch(values));
                             setSubmitting(false);
+                            setSubmitSubscribe(true)
                         }}
                     >
                         {({
@@ -63,10 +73,10 @@ const Subscribe = () => {
                                 <button
                                     data-test-id='main-subscribe-mail-button'
                                     type='submit'
-                                    disabled={mailError||isMailSendSuccess}
+                                    disabled={mailError||success}
                                     className='subscribe__button'>
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
-                                    {isMailSendSuccess && touched.email && <p className='subscribe__success'>Почта отправлена успешно</p>}
+                                    {success && <p className='subscribe__success'>Почта отправлена успешно</p>}
                                     {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
                                     <div className='subscribe__button-text'>Subscribe</div>
                                 </button>
