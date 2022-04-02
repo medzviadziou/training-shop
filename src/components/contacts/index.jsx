@@ -20,12 +20,13 @@ const Contacts = () => {
     const formikRef = useRef();
 
 
-    useEffect(()=>{
-        if(isMailSendSuccess&&submitMail){
-            formikRef.current.resetForm({ values: '' })
+    useEffect(() => {
+        if (isMailSendSuccess && submitMail) {
+            formikRef.current.resetForm({values: ''})
             setSuccessMail(true)
         }
-    },[isMailSendSuccess])
+        // eslint-disable-next-line
+    }, [isMailSendSuccess])
 
     return (
         <div className='contacts'>
@@ -70,7 +71,7 @@ const Contacts = () => {
                             />
                             <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError || successMail} className='contacts__button'>
                                 {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
-                                {successMail &&<p className='contacts__success'>Почта отправлена успешно</p>}
+                                {successMail && <p className='contacts__success'>Почта отправлена успешно</p>}
                                 {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}
                                 <div className='contacts__button-text'>Join Us</div>
                             </button>

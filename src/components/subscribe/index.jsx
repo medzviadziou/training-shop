@@ -20,12 +20,13 @@ const Subscribe = () => {
     const formikRef = useRef();
 
 
-    useEffect(()=>{
-      if(isMailSendSuccess && submitSubscribe){
-          formikRef.current.resetForm({ values: '' })
-          setSuccess(true)
-      }
-    },[isMailSendSuccess])
+    useEffect(() => {
+        if (isMailSendSuccess && submitSubscribe) {
+            formikRef.current.resetForm({values: ''})
+            setSuccess(true)
+        }
+        // eslint-disable-next-line
+    }, [isMailSendSuccess])
 
 
     return (
@@ -73,7 +74,7 @@ const Subscribe = () => {
                                 <button
                                     data-test-id='main-subscribe-mail-button'
                                     type='submit'
-                                    disabled={mailError||success}
+                                    disabled={mailError || success}
                                     className='subscribe__button'>
                                     {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {success && <p className='subscribe__success'>Почта отправлена успешно</p>}
