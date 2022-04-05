@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './cart.scss'
 import cross from './img/x.svg'
-import Selected from "../selected";
-import {useSelector} from "react-redux";
 import classNames from "classnames";
+import Goods from "../goods";
+import {useSelector} from "react-redux";
+import Delivery from "../delivery";
+import Payment from "../payment";
 
 
 const Cart = (props) => {
@@ -12,15 +14,32 @@ const Cart = (props) => {
         props.setCheckOpenCart(false)
         document.body.style.overflow = "";
     }
-
-    const cart = useSelector(state => state.cart.cart)
+    function next() {
+        if(goods){
+            setGoods(false)
+            setDelivery(true)
+        }else if (delivery){
+            setDelivery(false)
+            setPay(true)
+        }
+    }
+    function back(){
+        if (goods){
+            closeCart()
+        }else if(delivery){
+            setGoods(true)
+            setDelivery(false)
+        }else if(setPay){
+            setDelivery(true)
+            setPay(false)
+        }
+    }
 
     let clear = useSelector(state => state.cart.cart).length < 1;
 
-    let total = 0
-    cart.forEach((item) => {
-        total = total + Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100)) * item.count)
-    })
+    const [goods, setGoods]= useState(true)
+    const [delivery, setDelivery]= useState(false)
+    const [pay, setPay]= useState(false)
 
 
     return (
@@ -33,24 +52,21 @@ const Cart = (props) => {
                 </header>
                 <menu className='cart__menu cart__contain'>
                     <ul className='cart__list'>
-                        <li className='cart__item cart__item--active'>Item in Cart</li>
+                        <li className={classNames('cart__item', {'cart__item--active': goods})}>Item in Cart</li>
                         <li className='cart__item cart__item--decor'>/</li>
-                        <li className='cart__item'>Delivery Info</li>
+                        <li className={classNames('cart__item', {'cart__item--active': delivery})}>Delivery Info</li>
                         <li className='cart__item cart__item--decor'>/</li>
-                        <li className='cart__item'>Payment</li>
+                        <li className={classNames('cart__item', {'cart__item--active': pay})}>Payment</li>
                     </ul>
                 </menu>
                 <div className='cart__wrap '>
-                    <div className='cart__selected cart__contain'>
-                        <div className={classNames('cart__text cart__contain', {'cart__text--none': !clear})}>Sorry, your cart is empty</div>
-                        {cart.map((cart, index) => {
-                            return <Selected data-test-id='cart-card' cart={cart} key={index}/>
-                        })}
-                    </div>
-                    <div className={classNames('cart__payment cart__contain', {'cart__payment--none': clear})}><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>
+                    {goods && <Goods props={props.setCheckOpenCart}/>}
+                    {delivery && <Delivery/>}
+                    {pay && <Payment/>}
                     <div className='cart__contain'>
-                        <button className={classNames('cart__button', {'cart__button--none': clear})}>Further</button>
-                        <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(closeCart)}>View Cart</button>
+                        {!pay && <button className={classNames('cart__button', {'cart__button--none': clear})} onClick={(next)}>Further</button>}
+                        {pay && <button className={classNames('cart__button')} onClick={(next)}>CHECK OUT</button>}
+                        <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>
                         <button className={classNames('cart__button', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
                     </div>
                 </div>
