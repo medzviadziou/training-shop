@@ -33,11 +33,10 @@ function App() {
                 <Route index element={<MainPage/>}/>
                 <Route path=':productType' element={<ProductsPage/>}/>
                 <Route path=':productType/:id' element={<ProductPage/>}/>
-                <Route element={<NotFound/>}/>
+                <Route path='/404'  element={<NotFound/>}/>
             </Routes>
             <Footer/>
         </section>
-
 
     );
 }

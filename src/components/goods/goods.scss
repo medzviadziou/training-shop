@@ -1,36 +1,6 @@
-.goods{
-  &__contain {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  &__payment {
-    height: 72px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &--none{
-      opacity: 0;
-    }
-  }
-
-  &__total {
-    font-family: var(--Spartan);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    color: #121212;
-
-    &--bold {
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 24px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-  }
+.goods {
+  padding-right: 24px;
+  padding-left: 24px;
 
   &__selected {
     height: calc(100vh - 312px);
@@ -52,7 +22,7 @@
     }
   }
 
-  &__text{
+  &__text {
     margin: 0 auto;
     max-width: 191px;
     font-family: var(--Spartan);
@@ -62,7 +32,8 @@
     line-height: 150%;
     text-align: center;
     color: #121212;
-    &--none{
+
+    &--none {
       display: none;
     }
   }

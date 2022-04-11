@@ -8,6 +8,7 @@ import Delivery from "../delivery";
 import Payment from "../payment";
 
 
+
 const Cart = (props) => {
 
     function closeCart() {
@@ -15,32 +16,23 @@ const Cart = (props) => {
         document.body.style.overflow = "";
     }
     function next() {
-        if(goods){
-            setGoods(false)
-            setDelivery(true)
-        }else if (delivery){
-            setDelivery(false)
-            setPay(true)
+        if(cartList==='goods'){
+            setCartList('delivery')
         }
     }
     function back(){
-        if (goods){
+        if (cartList==='goods'){
             closeCart()
-        }else if(delivery){
-            setGoods(true)
-            setDelivery(false)
-        }else if(setPay){
-            setDelivery(true)
-            setPay(false)
+        }else if(cartList==='delivery'){
+            setCartList('goods')
+        }else if(cartList==='pay'){
+            setCartList('delivery')
         }
     }
 
     let clear = useSelector(state => state.cart.cart).length < 1;
 
-    const [goods, setGoods]= useState(true)
-    const [delivery, setDelivery]= useState(false)
-    const [pay, setPay]= useState(false)
-
+    const [cartList, setCartList]= useState('goods')
 
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
@@ -52,22 +44,21 @@ const Cart = (props) => {
                 </header>
                 <menu className='cart__menu cart__contain'>
                     <ul className='cart__list'>
-                        <li className={classNames('cart__item', {'cart__item--active': goods})}>Item in Cart</li>
+                        <li className={classNames('cart__item', {'cart__item--active': cartList==='goods'})}>Item in Cart</li>
                         <li className='cart__item cart__item--decor'>/</li>
-                        <li className={classNames('cart__item', {'cart__item--active': delivery})}>Delivery Info</li>
+                        <li className={classNames('cart__item', {'cart__item--active': cartList==='delivery'})}>Delivery Info</li>
                         <li className='cart__item cart__item--decor'>/</li>
-                        <li className={classNames('cart__item', {'cart__item--active': pay})}>Payment</li>
+                        <li className={classNames('cart__item', {'cart__item--active': cartList==='pay'})}>Payment</li>
                     </ul>
                 </menu>
                 <div className='cart__wrap '>
-                    {goods && <Goods props={props.setCheckOpenCart}/>}
-                    {delivery && <Delivery/>}
-                    {pay && <Payment/>}
+                    {cartList==='goods' && <Goods props={props.setCheckOpenCart}/>}
+                    {cartList==='delivery' && <Delivery cartList={cartList} setCartList={setCartList}/>}
+                    {cartList==='pay' && <Payment/>}
                     <div className='cart__contain'>
-                        {!pay && <button className={classNames('cart__button', {'cart__button--none': clear})} onClick={(next)}>Further</button>}
-                        {pay && <button className={classNames('cart__button')} onClick={(next)}>CHECK OUT</button>}
+                        {cartList==='goods' && <button className={classNames('cart__button', {'cart__button--none': clear})} onClick={(next)}  form="data">Further</button>}
                         <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>
-                        <button className={classNames('cart__button', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
+                        <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
                     </div>
                 </div>
             </div>

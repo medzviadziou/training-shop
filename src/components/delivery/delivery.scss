@@ -1,3 +1,37 @@
 .delivery{
-  min-height: calc(100vh - 240px);
+  padding-right: 24px;
+  padding-left: 24px;
+
+  &__wrap{
+    min-height: calc(100vh - 312px);
+  }
+  &__button {
+    margin: 6px 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width: 100%;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.9;
+    border: none;
+    background: #121212;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.5;
+    }
+    &--none{
+      display: none;
+    }
+    &--light {
+      background: #F8F8F8;
+      color: #121212;
+    }
+  }
 }
