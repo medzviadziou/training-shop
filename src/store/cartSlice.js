@@ -17,7 +17,7 @@ const cartSlice = createSlice ({
                 price: action.payload.priceItem,
                 discount:  action.payload.discountItem,
                 exclusivity: action.payload.idItem+action.payload.colorChose+action.payload.sizeChose,
-                count: 1,
+                quantity: 1,
             })
         },
         removeToCart(state, action){
@@ -25,14 +25,14 @@ const cartSlice = createSlice ({
         },
         minusItem(state, action){
              state.cart.filter(element => element.exclusivity===action.payload).forEach((item)=>{
-                if(item.count>1){
-                    item.count=item.count-1
+                if(item.quantity>1){
+                    item.quantity=item.quantity-1
                 }
             })
         },
         plusItem(state, action){
             state.cart.filter(element => element.exclusivity===action.payload).forEach((item)=>{
-                item.count=item.count+1
+                item.quantity=item.quantity+1
             })
         },
     },

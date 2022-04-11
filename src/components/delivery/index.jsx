@@ -2,15 +2,21 @@ import React from 'react';
 import './delivery.scss'
 import {Field, Form, Formik} from "formik";
 import Total from "../total";
+import {useSelector} from "react-redux";
 
 
 const Delivery = (props) => {
+    // из  state.cart достаю только name, size, color и quantity
+    const productsFull = useSelector(state => state.cart.cart).map((item) => {
+        return { name: item.name, size:item.size, color:item.color, quantity:item.quantity}
+    })
 
 
     return (
         <div className='delivery'>
             <Formik
                 initialValues={{
+                    products: productsFull,
                     deliveryMethod: '',
                     phone: '',
                     email: '',
@@ -98,9 +104,9 @@ const Delivery = (props) => {
                             <Field name="apartment">
                                 {({
                                       field, // { name, value, onChange, onBlur }
-/*
-                                      form: {touched, errors}, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-*/
+                                      /*
+                                                                            form: {touched, errors}, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                                      */
                                       meta,
                                   }) => (
                                     <div>

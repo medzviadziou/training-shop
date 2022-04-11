@@ -12,7 +12,7 @@ const Goods = () => {
     let total = 0
 
     cart.forEach((item) => {
-        total = total + Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100)) * item.count)
+        total = total + Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100)) * item.quantity)
     })
 
     return (
