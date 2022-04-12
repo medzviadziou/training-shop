@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import './cart.scss'
 import cross from './img/x.svg'
 import classNames from "classnames";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Field, Form, Formik} from "formik";
 import paypal from "../order/img/pay/paypal.png";
 import visa from "../order/img/pay/visa.png";
 import mastercard from "../order/img/pay/mastercard.png";
 import Selected from "../selected";
+import {getOrderFetch} from "../../store/orderSlise";
 
 
 const Cart = (props) => {
@@ -48,6 +49,7 @@ const Cart = (props) => {
         }
     }
 
+    const dispatch = useDispatch()
 
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
@@ -101,7 +103,8 @@ const Cart = (props) => {
 
                     }}
                     onSubmit={(values) => {
-                        alert(JSON.stringify(values, null, 2));
+                        console.log(values)
+                        dispatch(getOrderFetch(values))
                     }}
                 >
                     {({
