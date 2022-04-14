@@ -1,21 +1,22 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useParams, Navigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 import Filter from "../../components/filter";
 //img
 import share from './img/share.svg'
 import square from './img/square-loading.png'
 //css
 import './products-page.scss'
-//data
-import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
+
 
 
 const ProductsPage = () => {
     const {productType} = useParams();
+    const PRODUCTS = useSelector((state) => state.products.products)
+    const isCategoryExist = PRODUCTS[productType]
     const {isLoading} = useSelector((state) => state.products)
 
-    return (
+    return isCategoryExist ? (
         <div data-test-id={`products-page-${productType}`}>
             <div className='products-page__top'>
                 <div className='products-page__header contain'>
@@ -31,6 +32,8 @@ const ProductsPage = () => {
             {!isLoading && <Filter productType={productType}/>}
             <div className='products-page__square'><img src={square} alt=""/></div>
         </div>
+    ) : (
+        <Navigate to="/404"/>
     );
 };
 

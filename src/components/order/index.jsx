@@ -71,6 +71,7 @@ const Order = (props) => {
 
     useEffect(() => {
         setColorChose(props.product.images[0].color)
+        setImageChose(props.product.images[0].url)
         setSizeChose(Array.from(setSize).sort()[0])
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
