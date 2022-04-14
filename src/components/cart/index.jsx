@@ -84,8 +84,8 @@ const Cart = (props) => {
                 {cartList !== 'goods' && <Formik
                     initialValues={{
                         products: productsFull,
-                        deliveryMethod: "",
-                        paymentMethod: "",
+                        deliveryMethod: "pickup from post offices",
+                        paymentMethod: "card",
                         totalPrice: total,
                         phone: "",
                         email: "",
@@ -103,7 +103,6 @@ const Cart = (props) => {
 
                     }}
                     onSubmit={(values) => {
-                        console.log(values)
                         dispatch(getOrderFetch(values))
                     }}
                 >
@@ -111,76 +110,104 @@ const Cart = (props) => {
                           values,
                           handleSubmit,
                       }) => (
-                        <Form id='form' onSubmit={handleSubmit}>
+                        <Form id='form' onSubmit={handleSubmit} className='cart__form'>
 
 
                             {cartList === 'delivery' && <div className='cart__wrap cart__contain'>
-                                <div id="radio-group-delivery">Choose the method of delivery of the items</div>
-                                <div role="group" aria-labelledby="radio-group-delivery">
-                                    <label>
-                                        <Field type="radio" name="deliveryMethod" value="pickup from post offices"/>
-                                        Pickup from post offices
-                                    </label>
-                                    <label>
-                                        <Field type="radio" name="deliveryMethod" value="express delivery"/>
-                                        Express delivery
-                                    </label>
-                                    <label>
-                                        <Field type="radio" name="deliveryMethod" value="store pickup"/>
-                                        Store pickup
-                                    </label>
-                                    <div>Picked: {values.picked}</div>
+                                <div className='cart__radio-group' role="group" aria-labelledby="radio-group-delivery">
+                                    <div className='cart__radio-block'><span className='cart__radio-text'>Choose the method of delivery of the items</span></div>
+                                    <div className='cart__radio-block'><label className='cart__label'>
+                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="pickup from post offices" checked="checked"/>
+                                        <span className='cart__check'> </span><span className='cart__radio-text'>Pickup from post offices</span>
+                                    </label></div>
+                                    <div className='cart__radio-block'><label className='cart__label'>
+                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="express delivery"/>
+                                        <span className='cart__check'> </span><span className='cart__radio-text'>Express delivery</span>
+                                    </label></div>
+                                    <div className='cart__radio-block'><label className='cart__label'>
+                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="store pickup"/>
+                                        <span className='cart__check'> </span><span className='cart__radio-text'>Store pickup</span>
+                                    </label></div>
                                 </div>
+                                <h2 className='cart__h2'>PHONE</h2>
                                 <Field name="phone">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="+375  (__) _______" {...field} />
+                                            <input className='cart__input' type="text" placeholder="+375  (__) _______" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>
+                                <h2 className='cart__h2'>e-mail</h2>
                                 <Field name="email">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="e-mail" {...field} />
+                                            <input className='cart__input' type="text" placeholder="e-mail" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>
-                                <Field name="country" as="select" className="my-select">
+                                <Field name="country" className='cart__input' as="select">
                                     <option value="Abkhazia">Abkhazia</option>
                                     <option value="Belarus">Belarus</option>
                                     <option value="Cyprus">Cyprus</option>
                                 </Field>
-                                <Field name="city" as="select" className="my-select">
+                                <h2 className='cart__h2'>ADRESS {values.deliveryMethod === "store pickup" ? "OF STORE" : ""}</h2>
+                                {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' as="select">
                                     <option value="Minsk">Minsk</option>
                                     <option value="Оrsha">Оrsha</option>
-                                </Field>
-                                <Field name="street">
+                                </Field>}
+                                {values.deliveryMethod !== "store pickup" && <Field name="street">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="Street" {...field} />
+                                            <input className='cart__input' type="text" placeholder="Street" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
-                                    )}</Field>
-                                <Field name="house">
+                                    )}</Field>}
+                                {values.deliveryMethod !== "store pickup" && <div className='cart__input-block'>
+                                    <Field name="house">
+                                        {({
+                                              field, // { name, value, onChange, onBlur }
+                                              meta,
+                                          }) => (
+                                            <div>
+                                                <input className='cart__input' type="text" placeholder="House" {...field} />
+                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            </div>
+                                        )}</Field>
+                                    <Field name="apartment">
+                                        {({
+                                              field, // { name, value, onChange, onBlur }
+                                              /*
+                                                                                    form: {touched, errors}, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                                              */
+                                              meta,
+                                          }) => (
+                                            <div>
+                                                <input className='cart__input' type="text" placeholder="Apartment" {...field} />
+                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            </div>
+                                        )}</Field>
+                                </div>}
+                                {values.deliveryMethod === "pickup from post offices" && <h2 className='cart__h2'>POSTCODE</h2>}
+                                {values.deliveryMethod === "pickup from post offices" && <Field name="postcode">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="House" {...field} />
+                                            <input className='cart__input' type="text" placeholder="BY______" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
-                                    )}</Field>
-                                <Field name="apartment">
+                                    )}</Field>}
+                                {values.deliveryMethod === "store pickup" && <Field name="storeAddress">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           /*
@@ -189,99 +216,90 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="Apartment" {...field} />
+                                            <input className='cart__input' type="text" placeholder="Store address" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
-                                    )}</Field>
-                                <Field name="postcode">
-                                    {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
-                                      }) => (
-                                        <div>
-                                            <input type="text" placeholder="BY______" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
-                                        </div>
-                                    )}</Field>
-                                <Field name="storeAddress">
-                                    {({
-                                          field, // { name, value, onChange, onBlur }
-                                          /*
-                                                                                form: {touched, errors}, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                                          */
-                                          meta,
-                                      }) => (
-                                        <div>
-                                            <input type="text" placeholder="Store address" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
-                                        </div>
-                                    )}</Field>
+                                    )}</Field>}
                                 <label>
-                                    <Field type="checkbox" name="agree"/>
+                                    <Field type="checkbox" name="agree" className='cart__radio-text'/>
                                     I agree to the processing of my personal information
                                 </label>
                             </div>}
 
                             {cartList === 'pay' && <div className='cart__wrap cart__contain'>
-                                <div id="paymentMethod">Method of payments</div>
-                                <div role="group" aria-labelledby="paymentMethod">
-                                    <label>
-                                        <Field type="radio" name="paymentMethod" value="paypal"/>
-                                        <img src={paypal} alt="paypal"/>
-                                    </label>
-                                    <label>
-                                        <Field type="radio" name="paymentMethod" value="card"/>
-                                        <img src={visa} alt="visa"/>
-                                    </label>
-                                    <label>
-                                        <Field type="radio" name="paymentMethod" value="card"/>
-                                        <img src={mastercard} alt="mastercard"/>
-                                    </label>
-                                    <label>
-                                        <Field type="radio" name="paymentMethod" value="cash"/>
-                                        Cash
-                                    </label>
+
+                                <div className='cart__radio-group' role="group" aria-labelledby="radio-group-paymentMethod">
+                                    <div className='cart__radio-block'><span className='cart__radio-text'>Method of payments</span></div>
+                                    <div className='cart__radio-block'>
+                                        <label className='cart__label'>
+                                            <Field className='cart__radio' checked={values.paymentMethod === "paypal"} type="radio" name="paymentMethod" value="paypal"/>
+                                            <span className='cart__check'> </span><img src={paypal} alt="paypal"/>
+                                        </label>
+                                    </div>
+                                    <div className='cart__radio-block'>
+                                        <label className='cart__label'>
+                                            <Field className='cart__radio' checked={values.paymentMethod === "card"} type="radio" name="paymentMethod" value="card"/>
+                                            <span className='cart__check'> </span><img src={visa} alt="visa"/>
+                                        </label>
+                                    </div>
+                                    <div className='cart__radio-block'>
+                                        <label className='cart__label'>
+                                            <Field className='cart__radio' type="radio" name="paymentMethod" value="card"/>
+                                            <span className='cart__check'> </span><img src={mastercard} alt="mastercard"/>
+                                        </label>
+                                    </div>
+                                    <div className='cart__radio-block'>
+                                        <label className='cart__label'>
+                                            <Field className='cart__radio' checked={values.paymentMethod === "cash"} type="radio" name="paymentMethod" value="cash"/>
+                                            <span className='cart__check'> </span><span className='cart__radio-text'>Cash</span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <Field name="cashEmail">
+
+                                {values.paymentMethod === "paypal" && <h2 className='cart__h2'>e-mail</h2>}
+                                {values.paymentMethod === "paypal" && <Field name="cashEmail">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="e-mail" {...field} />
+                                            <input className='cart__input' type="text" placeholder="e-mail" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
-                                    )}</Field>
-                                <Field name="card">
+                                    )}</Field>}
+                                {values.paymentMethod === "card" && <h2 className='cart__h2'>card</h2>}
+                                {values.paymentMethod === "card" && <Field name="card">
                                     {({
                                           field, // { name, value, onChange, onBlur }
                                           meta,
                                       }) => (
                                         <div>
-                                            <input type="text" placeholder="____ ____ ____ ____" {...field} />
+                                            <input className='cart__input' type="text" placeholder="____ ____ ____ ____" {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
-                                    )}</Field>
-                                <Field name="cardDate">
-                                    {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
-                                      }) => (
-                                        <div>
-                                            <input type="text" placeholder="MM/YY" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
-                                        </div>
-                                    )}</Field>
-                                <Field name="cardCVV">
-                                    {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
-                                      }) => (
-                                        <div>
-                                            <input type="text" placeholder="CVV" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
-                                        </div>
-                                    )}</Field>
+                                    )}</Field>}
+                                {values.paymentMethod === "card" && <div className='cart__input-block'>
+                                    <Field name="cardDate">
+                                        {({
+                                              field, // { name, value, onChange, onBlur }
+                                              meta,
+                                          }) => (
+                                            <div>
+                                                <input className='cart__input' type="text" placeholder="MM/YY" {...field} />
+                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            </div>
+                                        )}</Field>
+                                    <Field name="cardCVV">
+                                        {({
+                                              field, // { name, value, onChange, onBlur }
+                                              meta,
+                                          }) => (
+                                            <div>
+                                                <input className='cart__input' type="text" placeholder="CVV" {...field} />
+                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            </div>
+                                        )}</Field>
+                                </div>}
                             </div>}
 
 
@@ -293,8 +311,7 @@ const Cart = (props) => {
                                 }, 500)}>CHECK OUT</button>}
                             </div>
 
-                        </Form>
-                    )}
+                        </Form>)}
                 </Formik>}
 
                 <div className='cart__contain'>
