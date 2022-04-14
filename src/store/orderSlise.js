@@ -23,10 +23,11 @@ const orderSlice = createSlice({
         cardCVV: ""
     },
     reducers: {
-        getOrderFetch(state) {
+        getOrderFetch(state, action) {
+            state.order = action.payload;
         },
-        getOrderSuccess(state) {
-            console.log(state)
+        getOrderSuccess(action) {
+            console.log('action.payload', action.payload)
         },
     },
 });
