@@ -9,6 +9,8 @@ import visa from "../order/img/pay/visa.png";
 import mastercard from "../order/img/pay/mastercard.png";
 import Selected from "../selected";
 import {getOrderFetch} from "../../store/orderSlise";
+import InputMask from "react-input-mask";
+
 
 
 const Cart = (props) => {
@@ -102,6 +104,7 @@ const Cart = (props) => {
                         cardCVV: ""
 
                     }}
+
                     onSubmit={(values) => {
                         dispatch(getOrderFetch(values))
                     }}
@@ -136,7 +139,7 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="+375  (__) _______" {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="+375(__)_______" mask={values.phone !== "" ? "+375 (99)999 99 99" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>
