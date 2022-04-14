@@ -206,7 +206,7 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="BY______" {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="BY______" mask={values.postcode !== "" ? "BY 999999" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
@@ -277,7 +277,7 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="____ ____ ____ ____" {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="____ ____ ____ ____" mask={values.card !== "" ? "9999 9999 9999 9999" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
@@ -288,7 +288,7 @@ const Cart = (props) => {
                                               meta,
                                           }) => (
                                             <div>
-                                                <input className='cart__input' type="text" placeholder="MM/YY" {...field} />
+                                                <InputMask className='cart__input' type="text" placeholder="MM/YY" mask={values.cardDate !== "" ? "99/99" : ""} {...field} />
                                                 {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                             </div>
                                         )}</Field>
@@ -298,7 +298,7 @@ const Cart = (props) => {
                                               meta,
                                           }) => (
                                             <div>
-                                                <input className='cart__input' type="text" placeholder="CVV" {...field} />
+                                                <InputMask className='cart__input' type="text" placeholder="CVV"  mask={values.cardCVV !== "" ? "9999" : ""} {...field} />
                                                 {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                             </div>
                                         )}</Field>
