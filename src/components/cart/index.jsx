@@ -10,6 +10,7 @@ import mastercard from "../order/img/pay/mastercard.png";
 import Selected from "../selected";
 import {getOrderFetch} from "../../store/orderSlise";
 import InputMask from "react-input-mask";
+import {getCountriesFetch} from "../../store/countriesSlise";
 
 
 
@@ -129,7 +130,7 @@ const Cart = (props) => {
                                         <span className='cart__check'> </span><span className='cart__radio-text'>Express delivery</span>
                                     </label></div>
                                     <div className='cart__radio-block'><label className='cart__label'>
-                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="store pickup"/>
+                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="store pickup" onClick={()=>dispatch(getCountriesFetch())}/>
                                         <span className='cart__check'> </span><span className='cart__radio-text'>Store pickup</span>
                                     </label></div>
                                 </div>
@@ -155,12 +156,12 @@ const Cart = (props) => {
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>
+                                <h2 className='cart__h2'>ADRESS {values.deliveryMethod === "store pickup" ? "OF STORE" : ""}</h2>
                                 <Field name="country" className='cart__input' as="select">
                                     <option value="Abkhazia">Abkhazia</option>
                                     <option value="Belarus">Belarus</option>
                                     <option value="Cyprus">Cyprus</option>
                                 </Field>
-                                <h2 className='cart__h2'>ADRESS {values.deliveryMethod === "store pickup" ? "OF STORE" : ""}</h2>
                                 {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' as="select">
                                     <option value="Minsk">Minsk</option>
                                     <option value="Оrsha">Оrsha</option>
