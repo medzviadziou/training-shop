@@ -13,8 +13,7 @@ const countriesSlice = createSlice({
             state.isCountriesLoading = true
         },
         getCountriesSuccess(state, action) {
-            state.products = action.payload;
-            console.log('action.payload countries', action.payload)
+            state.countries = action.payload;
             state.isCountriesFilled = true
         },
         getCountriesFailure(state) {
