@@ -27,6 +27,7 @@ const Cart = (props) => {
     })
 
     const [cartList, setCartList] = useState('goods')
+    const [checkedPay, setCheckedPay] = useState('visa')
 
     function closeCart() {
         props.setCheckOpenCart(false)
@@ -139,8 +140,8 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <InputMask className='cart__input' type="text" placeholder="+375(__)_______" mask={values.phone !== "" ? "+375 (99)999 99 99" : ""} {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            <InputMask className='cart__input' type="text" placeholder="+375(__)_______" mask={values.phone !== "+375" ? "+375 (99)999 99 99" : ""} {...field} />
+                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
                                         </div>
                                     )}</Field>
                                 <h2 className='cart__h2'>e-mail</h2>
@@ -206,7 +207,7 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <InputMask className='cart__input' type="text" placeholder="BY______" mask={values.postcode !== "" ? "BY 999999" : ""} {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="BY______" mask={values.postcode !== "BY" ? "BY 999999" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
@@ -235,25 +236,25 @@ const Cart = (props) => {
                                     <div className='cart__radio-block'><span className='cart__radio-text'>Method of payments</span></div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "paypal"} type="radio" name="paymentMethod" value="paypal"/>
+                                            <Field className='cart__radio' checked={checkedPay === "paypal"} type="radio" name="paymentMethod" value="paypal" onClick={()=>setCheckedPay("paypal")}/>
                                             <span className='cart__check'> </span><img src={paypal} alt="paypal"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "card"} type="radio" name="paymentMethod" value="card"/>
+                                            <Field className='cart__radio'  checked={checkedPay === "visa"} type="radio" name="paymentMethod" value="card" onClick={()=>setCheckedPay("visa")}/>
                                             <span className='cart__check'> </span><img src={visa} alt="visa"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' type="radio" name="paymentMethod" value="card"/>
+                                            <Field className='cart__radio'  checked={checkedPay === "mastercard"}  type="radio" name="paymentMethod" value="card" onClick={()=>setCheckedPay("mastercard")}/>
                                             <span className='cart__check'> </span><img src={mastercard} alt="mastercard"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "cash"} type="radio" name="paymentMethod" value="cash"/>
+                                            <Field className='cart__radio' checked={checkedPay === "cash"} type="radio" name="paymentMethod" value="cash" onClick={()=>setCheckedPay("cash")}/>
                                             <span className='cart__check'> </span><span className='cart__radio-text'>Cash</span>
                                         </label>
                                     </div>
@@ -267,7 +268,7 @@ const Cart = (props) => {
                                       }) => (
                                         <div>
                                             <input className='cart__input' type="text" placeholder="e-mail" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
                                         </div>
                                     )}</Field>}
                                 {values.paymentMethod === "card" && <h2 className='cart__h2'>card</h2>}
@@ -298,7 +299,7 @@ const Cart = (props) => {
                                               meta,
                                           }) => (
                                             <div>
-                                                <InputMask className='cart__input' type="text" placeholder="CVV"  mask={values.cardCVV !== "" ? "9999" : ""} {...field} />
+                                                <InputMask className='cart__input' type="text" placeholder="CVV"  mask={values.cardCVV !== "" ? "9999" : ""} alwaysShowMask='false'  {...field} />
                                                 {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                             </div>
                                         )}</Field>
