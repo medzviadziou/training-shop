@@ -19,13 +19,13 @@ const Cart = (props) => {
 
     const cart = useSelector(state => state.cart.cart)
     let clear = useSelector(state => state.cart.cart).length < 1;
-    const {countries, isCountriesFilled, /*isCountriesLoading*/} = useSelector((state) => state.countries)
+    const {countries, isCountriesFilled} = useSelector((state) => state.countries)
     const cities = useSelector(state => state.cities.cities)
 
-    const getCity =(countryGet, cityGet)=>{
-        if (cityGet.length===3){
+    const getCity = (countryGet, cityGet) => {
+        if (cityGet.length === 3) {
             dispatch(getCitiesFetch({
-                city:cityGet,
+                city: cityGet,
                 country: countryGet
             }))
         }
@@ -69,6 +69,86 @@ const Cart = (props) => {
 
     const dispatch = useDispatch()
 
+
+    function validatePhone(value) {
+        let error;
+        if (value==="+375 (__)_______") {
+            error = 'Поле должно быть заполнено';
+        } else if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!/(\+375 )+\(+(29|25|44|33)+\)+(\d{7})$/i.test(value)) {
+            error = 'Проверьте правильность введенных данных';
+        }
+        return error;
+    }
+    function validateEmail(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(value)) {
+            error = 'Проверьте правильность введенных данных';
+        }
+        return error;
+    }
+    function validatePostcode(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!/^(BY)+[0-9]{6}$/i.test(value)) {
+            error = 'Поле должно быть заполнено';
+        }
+        return error;
+    }
+    function validateExist(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        }
+        return error;
+    }
+    function validateCites(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!cities.map((item) => item.city).includes(value)){
+            error = 'В этом городе нет выдачи';
+        }
+        return error;
+    }
+    function validateCard(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!/(\d{4})+\s+(\d{4})+\s+(\d{4})+\s+(\d{4})$/i.test(value)) {
+            error = 'Поле должно быть заполнено';
+        }
+        return error;
+    }
+    function validateCardDate(value){
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!value.match(/^(0\d|1[0-2])\/\d{2}$/)) {
+            error = 'Дата не верна';
+        } else if (value.match(/^(0\d|1[0-2])\/\d{2}$/)) {
+            const {0: month, 1: year} = value.split("/");
+            const expiry = new Date("20"+year, month);
+            const current = new Date();
+            if (expiry.getTime() < current.getTime()){
+                error = 'Срок действия карты истек';
+            }
+        }
+        return error;
+    }
+    function validateCardCVV (value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
+        } else if (!/^[0-9]{3,4}$/i.test(value)) {
+            error = 'СVV это 3 или 4 цифры';
+        }
+        return error;
+    }
 
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
@@ -125,9 +205,12 @@ const Cart = (props) => {
                     }}
                 >
                     {({
+                          errors,
                           touched,
                           values,
                           handleSubmit,
+                          /* validateField,*/
+                          validateForm,
                       }) => (
                         <Form id='form' onSubmit={handleSubmit} className='cart__form'>
 
@@ -149,74 +232,76 @@ const Cart = (props) => {
                                     </label></div>
                                 </div>
                                 <h2 className='cart__h2'>PHONE</h2>
-                                <Field name="phone">
+                                <Field name="phone" validate={validatePhone}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <InputMask className='cart__input' type="text" placeholder="+375(__)_______" mask={values.phone !== "+375" ? "+375 (99)999 99 99" : ""} {...field} />
-                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
+                                        <div className='cart__block-relative'>
+                                            <InputMask className={classNames('cart__input', {'cart__input--errors': errors.phone && touched.phone})} type="text" placeholder="+375 (__)_______" mask={values.phone !== "+375" ? "+375 (99)9999999" : ""} {...field} />
+                                            {errors.phone && touched.phone && <div className='cart__errors'>{errors.phone}</div>}
                                         </div>
                                     )}</Field>
                                 <h2 className='cart__h2'>e-mail</h2>
-                                <Field name="email">
+                                <Field name="email" validate={validateEmail}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <input className='cart__input' type="text" placeholder="e-mail" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        <div className='cart__block-relative'>
+                                            <input className={classNames('cart__input', {'cart__input--errors': errors.email && touched.email})} type="text" placeholder="e-mail" {...field} />
+                                            {errors.email && touched.email && <div className='cart__errors'>{errors.email}</div>}
                                         </div>
                                     )}</Field>
                                 <h2 className='cart__h2'>ADRESS {values.deliveryMethod === "store pickup" ? "OF STORE" : ""}</h2>
-                                {values.deliveryMethod !== "store pickup" && <Field name="country">
+                                {values.deliveryMethod !== "store pickup" && <Field name="country" validate={validateExist}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <input className='cart__input' type="text" placeholder="Country" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        <div className='cart__block-relative'>
+                                            <input  className={classNames('cart__input', {'cart__input--errors': errors.country && touched.country})} type="text" placeholder="Country" {...field} />
+                                            {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod === "store pickup" && <Field name="country" className='cart__input'>
+                                {values.deliveryMethod === "store pickup" && <Field name="country" validate={validateExist}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                                                               }) => (
-                                        <div>
-                                            <input list='list-country' className='cart__input' type="text" placeholder="Country" {...field}/>
+                                          field
+                                      }) => (
+                                        <div className='cart__block-relative'>
+                                            <input list='list-country'  className={classNames('cart__input', {'cart__input--errors': errors.country && touched.country})} type="text" placeholder="Country" {...field}/>
                                             <datalist id="list-country">
                                                 {countries.map((item) => {
                                                     return <option key={item._id} value={item.name}>{item.name}</option>
                                                 })}
                                             </datalist>
+                                            {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
+
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' as="select">
-                                    <option value="Minsk">Minsk</option>
-                                    <option value="Оrsha">Оrsha</option>
-                                </Field>}
-                                {values.deliveryMethod !== "store pickup" && <Field name="street">
+                                {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' validate={validateExist}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <input className='cart__input' type="text" placeholder="Street" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        <div className='cart__block-relative'>
+                                            <input  className={classNames('cart__input', {'cart__input--errors': errors.city && touched.city})} type="text" placeholder="City" {...field} />
+                                            {errors.city && touched.city && <div className='cart__errors'>{errors.city}</div>}
+                                        </div>
+                                    )}</Field>}
+                                {values.deliveryMethod !== "store pickup" && <Field name="street" validate={validateExist}>
+                                    {({
+                                          field,
+                                      }) => (
+                                        <div className='cart__block-relative'>
+                                            <input  className={classNames('cart__input', {'cart__input--errors': errors.street && touched.street})} type="text" placeholder="Street" {...field} />
+                                            {errors.street && touched.street && <div className='cart__errors'>{errors.street}</div>}
                                         </div>
                                     )}</Field>}
                                 {values.deliveryMethod !== "store pickup" && <div className='cart__input-block'>
-                                    <Field name="house">
+                                    <Field name="house" validate={validateExist}>
                                         {({
-                                              field, // { name, value, onChange, onBlur }
-                                              meta,
+                                              field,
                                           }) => (
-                                            <div>
-                                                <input className='cart__input' type="text" placeholder="House" {...field} />
-                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            <div className='cart__block-relative'>
+                                                <input  className={classNames('cart__input', {'cart__input--errors': errors.house && touched.house})} type="text" placeholder="House" {...field} />
+                                                {errors.house && touched.house && <div className='cart__errors'>{errors.house}</div>}
                                             </div>
                                         )}</Field>
                                     <Field name="apartment">
@@ -234,29 +319,27 @@ const Cart = (props) => {
                                         )}</Field>
                                 </div>}
                                 {values.deliveryMethod === "pickup from post offices" && <h2 className='cart__h2'>POSTCODE</h2>}
-                                {values.deliveryMethod === "pickup from post offices" && <Field name="postcode">
+                                {values.deliveryMethod === "pickup from post offices" && <Field name="postcode" validate={validatePostcode}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <InputMask className='cart__input' type="text" placeholder="BY______" mask={values.postcode !== "BY" ? "BY 999999" : ""} {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        <div className='cart__block-relative'>
+                                            <InputMask className={classNames('cart__input', {'cart__input--errors': errors.postcode && touched.postcode})} type="text" placeholder="BY______" mask={values.postcode !== "BY" ? "BY999999" : ""} {...field} />
+                                            {errors.postcode && touched.postcode && <div className='cart__errors'>{errors.postcode}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod === "store pickup" && <Field name="storeAddress">
+                                {values.deliveryMethod === "store pickup" && <Field name="storeAddress" validate={validateCites}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <input list='list-store-address' className='cart__input' type="text" placeholder="Store address" {...field} disabled={!touched.country} onClick={getCity(values.country ,values.storeAddress)}/>
+                                        <div className='cart__block-relative'>
+                                            <input list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})}  type="text" placeholder="Store address" {...field} disabled={!touched.country} onClick={getCity(values.country, values.storeAddress)}/>
                                             <datalist id="list-store-address">
                                                 {cities.map((item) => {
                                                     return <option key={item._id} value={item.city}>{item.city}</option>
                                                 })}
                                             </datalist>
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            {errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
                                         </div>
                                     )}</Field>}
                                 <label>
@@ -295,48 +378,43 @@ const Cart = (props) => {
                                 </div>
 
                                 {values.paymentMethod === "paypal" && <h2 className='cart__h2'>e-mail</h2>}
-                                {values.paymentMethod === "paypal" && <Field name="cashEmail">
+                                {values.paymentMethod === "paypal" && <Field name="cashEmail" validate={validateEmail}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <input className='cart__input' type="text" placeholder="e-mail" {...field} />
-                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
+                                        <div className='cart__block-relative'>
+                                            <input  className={classNames('cart__input', {'cart__input--errors': errors.cashEmail && touched.cashEmail})}  type="text" placeholder="e-mail" {...field} />
+                                            {errors.cashEmail && touched.cashEmail && <div className='cart__errors'>{errors.cashEmail}</div>}
                                         </div>
                                     )}</Field>}
                                 {values.paymentMethod === "card" && <h2 className='cart__h2'>card</h2>}
-                                {values.paymentMethod === "card" && <Field name="card">
+                                {values.paymentMethod === "card" && <Field name="card" validate={validateCard}>
                                     {({
-                                          field, // { name, value, onChange, onBlur }
-                                          meta,
+                                          field,
                                       }) => (
-                                        <div>
-                                            <InputMask className='cart__input' type="text" placeholder="____ ____ ____ ____" mask={values.card !== "" ? "9999 9999 9999 9999" : ""} {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        <div className='cart__block-relative'>
+                                            <InputMask  className={classNames('cart__input', {'cart__input--errors': errors.card && touched.card})} type="text" placeholder="____ ____ ____ ____" mask={values.card !== "" ? "9999 9999 9999 9999" : ""} {...field} />
+                                            {errors.card && touched.card && <div className='cart__errors'>{errors.card}</div>}
                                         </div>
                                     )}</Field>}
                                 {values.paymentMethod === "card" && <div className='cart__input-block'>
-                                    <Field name="cardDate">
+                                    <Field name="cardDate" validate={validateCardDate}>
                                         {({
-                                              field, // { name, value, onChange, onBlur }
-                                              meta,
-                                          }) => (
-                                            <div>
-                                                <InputMask className='cart__input' type="text" placeholder="MM/YY" mask={values.cardDate !== "" ? "99/99" : ""} {...field} />
-                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
-                                            </div>
-                                        )}</Field>
-                                    <Field name="cardCVV">
-                                        {({
-                                              field, // { name, value, onChange, onBlur }
-                                              meta,
+                                              field,
                                           }) => (
                                             <div className='cart__block-relative'>
-                                                <input className='cart__input' type={openEye ? "password" : "text"} placeholder="CVV" {...field}/>
+                                                <InputMask  className={classNames('cart__input', {'cart__input--errors': errors.cardDate && touched.cardDate})}   type="text" placeholder="MM/YY" mask={values.cardDate !== "" ? "99/99" : ""} {...field} />
+                                                {errors.cardDate && touched.cardDate && <div className='cart__errors'>{errors.cardDate}</div>}
+                                            </div>
+                                        )}</Field>
+                                    <Field name="cardCVV"  validate={validateCardCVV}>
+                                        {({
+                                              field,
+                                          }) => (
+                                            <div className='cart__block-relative'>
+                                                <input className={classNames('cart__input', {'cart__input--errors': errors.cardCVV && touched.cardCVV})} type={openEye ? "password" : "text"} placeholder="CVV" {...field}/>
                                                 <img className='cart__eye' src={eye} alt="" onClick={() => setOpenEye(!openEye)}/>
-
-                                                {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                                {errors.cardCVV && touched.cardCVV && <div className='cart__errors'>{errors.cardCVV}</div>}
                                             </div>
                                         )}</Field>
                                 </div>}
@@ -344,6 +422,13 @@ const Cart = (props) => {
 
 
                             <div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>
+
+                            <button
+                                type="button"
+                                onClick={() => validateForm().then(() => console.log('blah'))}
+                            >
+                                Validate All
+                            </button>
 
                             <div className='cart__contain'>
                                 {cartList === 'pay' && <button className='cart__button' type='submit' onClick={() => setTimeout(() => {

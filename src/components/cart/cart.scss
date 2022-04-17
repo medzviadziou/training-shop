@@ -215,14 +215,15 @@
     background: #F8F8F8;
     border: none;
     color: #121212;
-
     &::placeholder {
       opacity: 0.4;
     }
-
     &--text {
       padding-top: 24px;
       height: 200px;
+    }
+    &--errors{
+      border: 1px solid #D61313;
     }
   }
   &__input-block{
@@ -238,5 +239,15 @@
     right: 20px;
     top: 10px;
     z-index: 101;
+  }
+  &__errors{
+    position: absolute;
+    top: 50px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    color: #D61313;
   }
 }
