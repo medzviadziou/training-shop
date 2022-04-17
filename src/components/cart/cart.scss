@@ -230,4 +230,13 @@
     flex-direction: row;
     gap: 8px;
   }
+  &__block-relative{
+    position: relative;
+  }
+  &__eye{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 101;
+  }
 }
