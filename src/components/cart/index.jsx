@@ -1,20 +1,36 @@
 import React, {useState} from 'react';
 import './cart.scss'
-import cross from './img/x.svg'
 import classNames from "classnames";
 import {useDispatch, useSelector} from "react-redux";
 import {Field, Form, Formik} from "formik";
+import cross from './img/x.svg'
+import eye from './img/icon-eye.svg'
 import paypal from "../order/img/pay/paypal.png";
 import visa from "../order/img/pay/visa.png";
 import mastercard from "../order/img/pay/mastercard.png";
 import Selected from "../selected";
 import {getOrderFetch} from "../../store/orderSlise";
+import InputMask from "react-input-mask";
+import {getCountriesFetch} from "../../store/countriesSlise";
+import {getCitiesFetch} from "../../store/citiesSlise";
 
 
 const Cart = (props) => {
 
     const cart = useSelector(state => state.cart.cart)
     let clear = useSelector(state => state.cart.cart).length < 1;
+    const {countries, isCountriesFilled, /*isCountriesLoading*/} = useSelector((state) => state.countries)
+    const cities = useSelector(state => state.cities.cities)
+
+    const getCity =(countryGet, cityGet)=>{
+        if (cityGet.length===3){
+            dispatch(getCitiesFetch({
+                city:cityGet,
+                country: countryGet
+            }))
+        }
+    }
+
     let total = 0
     cart.forEach((item) => {
         total = total + Math.round((item.price + parseInt(item.discount ?? 0) * (item.price / 100)) * item.quantity)
@@ -25,6 +41,8 @@ const Cart = (props) => {
     })
 
     const [cartList, setCartList] = useState('goods')
+    const [checkedPay, setCheckedPay] = useState('visa')
+    const [openEye, setOpenEye] = useState('false')
 
     function closeCart() {
         props.setCheckOpenCart(false)
@@ -50,6 +68,7 @@ const Cart = (props) => {
     }
 
     const dispatch = useDispatch()
+
 
     return (
         <div className={classNames('cart', {'cart--open': props.checkOpenCart})}>
@@ -100,13 +119,13 @@ const Cart = (props) => {
                         card: "",
                         cardDate: "",
                         cardCVV: ""
-
                     }}
                     onSubmit={(values) => {
                         dispatch(getOrderFetch(values))
                     }}
                 >
                     {({
+                          touched,
                           values,
                           handleSubmit,
                       }) => (
@@ -125,7 +144,7 @@ const Cart = (props) => {
                                         <span className='cart__check'> </span><span className='cart__radio-text'>Express delivery</span>
                                     </label></div>
                                     <div className='cart__radio-block'><label className='cart__label'>
-                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="store pickup"/>
+                                        <Field className='cart__radio' type="radio" name="deliveryMethod" value="store pickup" onClick={() => !isCountriesFilled ? dispatch(getCountriesFetch()) : ""}/>
                                         <span className='cart__check'> </span><span className='cart__radio-text'>Store pickup</span>
                                     </label></div>
                                 </div>
@@ -136,8 +155,8 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="+375  (__) _______" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            <InputMask className='cart__input' type="text" placeholder="+375(__)_______" mask={values.phone !== "+375" ? "+375 (99)999 99 99" : ""} {...field} />
+                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
                                         </div>
                                     )}</Field>
                                 <h2 className='cart__h2'>e-mail</h2>
@@ -151,12 +170,30 @@ const Cart = (props) => {
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>
-                                <Field name="country" className='cart__input' as="select">
-                                    <option value="Abkhazia">Abkhazia</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Cyprus">Cyprus</option>
-                                </Field>
                                 <h2 className='cart__h2'>ADRESS {values.deliveryMethod === "store pickup" ? "OF STORE" : ""}</h2>
+                                {values.deliveryMethod !== "store pickup" && <Field name="country">
+                                    {({
+                                          field, // { name, value, onChange, onBlur }
+                                          meta,
+                                      }) => (
+                                        <div>
+                                            <input className='cart__input' type="text" placeholder="Country" {...field} />
+                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                        </div>
+                                    )}</Field>}
+                                {values.deliveryMethod === "store pickup" && <Field name="country" className='cart__input'>
+                                    {({
+                                          field, // { name, value, onChange, onBlur }
+                                                                               }) => (
+                                        <div>
+                                            <input list='list-country' className='cart__input' type="text" placeholder="Country" {...field}/>
+                                            <datalist id="list-country">
+                                                {countries.map((item) => {
+                                                    return <option key={item._id} value={item.name}>{item.name}</option>
+                                                })}
+                                            </datalist>
+                                        </div>
+                                    )}</Field>}
                                 {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' as="select">
                                     <option value="Minsk">Minsk</option>
                                     <option value="Оrsha">Оrsha</option>
@@ -203,20 +240,22 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="BY______" {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="BY______" mask={values.postcode !== "BY" ? "BY 999999" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
                                 {values.deliveryMethod === "store pickup" && <Field name="storeAddress">
                                     {({
                                           field, // { name, value, onChange, onBlur }
-                                          /*
-                                                                                form: {touched, errors}, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                                          */
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="Store address" {...field} />
+                                            <input list='list-store-address' className='cart__input' type="text" placeholder="Store address" {...field} disabled={!touched.country} onClick={getCity(values.country ,values.storeAddress)}/>
+                                            <datalist id="list-store-address">
+                                                {cities.map((item) => {
+                                                    return <option key={item._id} value={item.city}>{item.city}</option>
+                                                })}
+                                            </datalist>
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
@@ -225,32 +264,31 @@ const Cart = (props) => {
                                     I agree to the processing of my personal information
                                 </label>
                             </div>}
-
                             {cartList === 'pay' && <div className='cart__wrap cart__contain'>
 
                                 <div className='cart__radio-group' role="group" aria-labelledby="radio-group-paymentMethod">
                                     <div className='cart__radio-block'><span className='cart__radio-text'>Method of payments</span></div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "paypal"} type="radio" name="paymentMethod" value="paypal"/>
+                                            <Field className='cart__radio' checked={checkedPay === "paypal"} type="radio" name="paymentMethod" value="paypal" onClick={() => setCheckedPay("paypal")}/>
                                             <span className='cart__check'> </span><img src={paypal} alt="paypal"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "card"} type="radio" name="paymentMethod" value="card"/>
+                                            <Field className='cart__radio' checked={checkedPay === "visa"} type="radio" name="paymentMethod" value="card" onClick={() => setCheckedPay("visa")}/>
                                             <span className='cart__check'> </span><img src={visa} alt="visa"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' type="radio" name="paymentMethod" value="card"/>
+                                            <Field className='cart__radio' checked={checkedPay === "mastercard"} type="radio" name="paymentMethod" value="card" onClick={() => setCheckedPay("mastercard")}/>
                                             <span className='cart__check'> </span><img src={mastercard} alt="mastercard"/>
                                         </label>
                                     </div>
                                     <div className='cart__radio-block'>
                                         <label className='cart__label'>
-                                            <Field className='cart__radio' checked={values.paymentMethod === "cash"} type="radio" name="paymentMethod" value="cash"/>
+                                            <Field className='cart__radio' checked={checkedPay === "cash"} type="radio" name="paymentMethod" value="cash" onClick={() => setCheckedPay("cash")}/>
                                             <span className='cart__check'> </span><span className='cart__radio-text'>Cash</span>
                                         </label>
                                     </div>
@@ -264,7 +302,7 @@ const Cart = (props) => {
                                       }) => (
                                         <div>
                                             <input className='cart__input' type="text" placeholder="e-mail" {...field} />
-                                            {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
+                                            {meta.touched && meta.error && <div className="cart__error">{meta.error}</div>}
                                         </div>
                                     )}</Field>}
                                 {values.paymentMethod === "card" && <h2 className='cart__h2'>card</h2>}
@@ -274,7 +312,7 @@ const Cart = (props) => {
                                           meta,
                                       }) => (
                                         <div>
-                                            <input className='cart__input' type="text" placeholder="____ ____ ____ ____" {...field} />
+                                            <InputMask className='cart__input' type="text" placeholder="____ ____ ____ ____" mask={values.card !== "" ? "9999 9999 9999 9999" : ""} {...field} />
                                             {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                         </div>
                                     )}</Field>}
@@ -285,7 +323,7 @@ const Cart = (props) => {
                                               meta,
                                           }) => (
                                             <div>
-                                                <input className='cart__input' type="text" placeholder="MM/YY" {...field} />
+                                                <InputMask className='cart__input' type="text" placeholder="MM/YY" mask={values.cardDate !== "" ? "99/99" : ""} {...field} />
                                                 {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                             </div>
                                         )}</Field>
@@ -294,8 +332,10 @@ const Cart = (props) => {
                                               field, // { name, value, onChange, onBlur }
                                               meta,
                                           }) => (
-                                            <div>
-                                                <input className='cart__input' type="text" placeholder="CVV" {...field} />
+                                            <div className='cart__block-relative'>
+                                                <input className='cart__input' type={openEye ? "password" : "text"} placeholder="CVV" {...field}/>
+                                                <img className='cart__eye' src={eye} alt="" onClick={() => setOpenEye(!openEye)}/>
+
                                                 {meta.touched && meta.error && (<div className="error">{meta.error}</div>)}
                                             </div>
                                         )}</Field>
