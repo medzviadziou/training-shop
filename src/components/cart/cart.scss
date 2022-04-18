@@ -283,4 +283,8 @@
       opacity: 1;
     }
   }
+
+  &__status{
+    height: calc(100vh - 244px);
+  }
 }

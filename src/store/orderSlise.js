@@ -27,12 +27,15 @@ const orderSlice = createSlice({
             state.order = action.payload;
         },
         getOrderSuccess(action) {
-            console.log('action.payload', action.payload)
+            console.log('action.payload', action)
+        },
+        getOrderError(action) {
+            console.log('action.error', action)
         },
     },
 });
 
-export const {getOrderFetch, getOrderSuccess} = orderSlice.actions
+export const {getOrderFetch, getOrderSuccess, getOrderError} = orderSlice.actions
 
 export default orderSlice.reducer
 

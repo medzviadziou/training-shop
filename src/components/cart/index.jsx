@@ -109,7 +109,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateExist(value) {
         let error;
         if (!value) {
@@ -117,7 +116,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCites(value) {
         let error;
         if (!value) {
@@ -177,7 +175,7 @@ const Cart = (props) => {
                     <div className='cart__title'>Shopping Cart</div>
                     <div onClick={(closeCart)} className='cart__cross'><img src={cross} alt=""/></div>
                 </header>
-                <menu className='cart__menu cart__contain'>
+                {cartList !== 'status' && <menu className='cart__menu cart__contain'>
                     <ul className='cart__list'>
                         <li className={classNames('cart__item', {'cart__item--active': cartList === 'goods'})}>Item in Cart</li>
                         <li className='cart__item cart__item--decor'>/</li>
@@ -185,7 +183,10 @@ const Cart = (props) => {
                         <li className='cart__item cart__item--decor'>/</li>
                         <li className={classNames('cart__item', {'cart__item--active': cartList === 'pay'})}>Payment</li>
                     </ul>
-                </menu>
+                </menu>}
+                {cartList === 'status' && <div className='cart__status cart__contain'>
+                    <div className='cart__text'>Sorry, your payment has not been processed.</div>
+                                                        </div>}
 
 
                 {cartList === 'goods' && <div className='cart__selected cart__contain'>
@@ -405,8 +406,8 @@ const Cart = (props) => {
                                     </div>
                                 </div>
 
-                                {values.paymentMethod === "paypal" && <h2 className='cart__h2'>e-mail</h2>}
-                                {values.paymentMethod === "paypal" && <Field name="cashEmail" validate={validateEmail}>
+                                {checkedPay === "paypal" && <h2 className='cart__h2'>e-mail</h2>}
+                                {checkedPay === "paypal" && <Field name="cashEmail" validate={validateEmail}>
                                     {({
                                           field,
                                       }) => (
@@ -415,8 +416,8 @@ const Cart = (props) => {
                                             {errors.cashEmail && touched.cashEmail && <div className='cart__errors'>{errors.cashEmail}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.paymentMethod === "card" && <h2 className='cart__h2'>card</h2>}
-                                {values.paymentMethod === "card" && <Field name="card" validate={validateCard}>
+                                {checkedPay !== "cash" && checkedPay !== "paypal" && <h2 className='cart__h2'>card</h2>}
+                                {checkedPay !== "cash" && checkedPay !== "paypal" &&  <Field name="card" validate={validateCard}>
                                     {({
                                           field,
                                       }) => (
@@ -447,7 +448,7 @@ const Cart = (props) => {
                                         )}</Field>
                                 </div>}
                             </div>}
-                            <div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>
+                            {cartList !== 'status' &&<div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>}
                             <div className='cart__contain'>
                                 {cartList === 'delivery' && <button className={classNames('cart__button', {'cart__button--none': clear})} onClick={() => {
                                     touched.phone = true
@@ -471,15 +472,18 @@ const Cart = (props) => {
                                 }} form="data">Further</button>}
                             </div>
                             <div className='cart__contain'>
-                                {cartList === 'pay' && <button className='cart__button' type='submit' onClick={() => setCartList('pay')}>CHECK OUT</button>}
+                                {cartList === 'pay' && values.paymentMethod !== "cash" && <button className='cart__button' type='submit' onClick={() => {if(Object.keys(errors).length === 0){setCartList('status')}}}>CHECK OUT</button>}
+                                {cartList === 'pay' && values.paymentMethod === "cash" && <button className='cart__button' type='submit' onClick={() => {if(Object.keys(errors).length === 0){setCartList('status')}}}>READY</button>}
                             </div>
                         </Form>)}
                 </Formik>}
 
                 <div className='cart__contain'>
-
-                    <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>
+                    {cartList === 'status' && <button className='cart__button cart__button--back' onClick={()=>setCartList('pay')}>BACK TO PAYMENT</button>}
+                    {cartList === 'status' && <button className='cart__button cart__button--light' onClick={()=>setCartList('goods')}>View Cart</button>}
                     <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
+                    {cartList !== 'status' &&<button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
+
                 </div>
             </div>
         </div>
