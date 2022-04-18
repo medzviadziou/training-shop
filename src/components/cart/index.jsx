@@ -57,8 +57,14 @@ const Cart = (props) => {
     const [isAgree, setIsAgree] = useState('false')
 
     function closeCart() {
-        props.setCheckOpenCart(false)
-        document.body.style.overflow = "";
+        if (isMessage === "success") {
+            dispatch(clearCart())
+            props.setCheckOpenCart(false)
+            document.body.style.overflow = "";
+        } else {
+            props.setCheckOpenCart(false)
+            document.body.style.overflow = "";
+        }
     }
 
     function next() {
@@ -177,16 +183,12 @@ const Cart = (props) => {
         return error;
     }
 
-    const closeAll = () => {
-        dispatch(clearCart())
-        closeCart()
-    }
-
 
     const formikRef = useRef();
-    function viewCart(){
-    formikRef.current.resetForm({values: ''})
-    setCartList('goods')
+
+    function viewCart() {
+        formikRef.current.resetForm({values: ''})
+        setCartList('goods')
 
     }
 
@@ -514,7 +516,7 @@ const Cart = (props) => {
                 <div className='cart__contain'>
                     {cartList === 'status' && isMessage !== "success" && <button className='cart__button cart__button--back' onClick={() => setCartList('pay')}>BACK TO PAYMENT</button>}
                     {cartList === 'status' && isMessage !== "success" && <button className='cart__button cart__button--light' onClick={(viewCart)}>View Cart</button>}
-                    {cartList === 'status' && isMessage === "success" && <button className='cart__button cart__button--back' onClick={(closeAll)}>BACK TO SHOPPING</button>}
+                    {cartList === 'status' && isMessage === "success" && <button className='cart__button cart__button--back' onClick={(closeCart)}>BACK TO SHOPPING</button>}
                     <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
                     {cartList !== 'status' && cartList !== 'goods' && <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
                 </div>
