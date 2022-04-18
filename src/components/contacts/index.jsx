@@ -35,9 +35,9 @@ const Contacts = () => {
 
                 <Formik
                     innerRef={formikRef}
-                    initialValues={{email: ''}}
+                    initialValues={{mail: ''}}
                     validate={values => {
-                        if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                        if (values.mail && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.mail)) {
                             setMailError(false)
                         } else {
                             setMailError(true)
@@ -64,15 +64,15 @@ const Contacts = () => {
                                 id='contacts__input'
                                 placeholder='Enter your email'
                                 type="email"
-                                name="email"
+                                name="mail"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.email}
                             />
                             <button data-test-id='footer-subscribe-mail-button' type='submit' disabled={mailError || successMail} className='contacts__button'>
-                                {isMailError && touched.email && <p className='contacts__error'>Ошибка при отправке почты</p>}
+                                {isMailError && touched.mail && <p className='contacts__error'>Ошибка при отправке почты</p>}
                                 {successMail && <p className='contacts__success'>Почта отправлена успешно</p>}
-                                {isMailLoading && touched.email && <div className='contacts__donut'><Donut/></div>}
+                                {isMailLoading && touched.mail && <div className='contacts__donut'><Donut/></div>}
                                 <div className='contacts__button-text'>Join Us</div>
                             </button>
                         </form>
