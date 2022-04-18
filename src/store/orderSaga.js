@@ -1,6 +1,6 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from "axios";
-import {getOrderSuccess} from "./orderSlise";
+import {getOrderSuccess, getOrderError} from "./orderSlise";
 
 
 function* orderRequestWorker({payload}) {
@@ -8,7 +8,7 @@ function* orderRequestWorker({payload}) {
         const {data} =yield call(axios.post, "https://training.cleverland.by/shop/cart", payload);
       yield put(getOrderSuccess(data));
     } catch (err) {
-       console.log(err)
+        yield put(getOrderError(err));
     }
 }
 
