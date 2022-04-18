@@ -15,6 +15,7 @@ import {getCountriesFetch} from "../../store/countriesSlise";
 import {getCitiesFetch} from "../../store/citiesSlise";
 import check from "../filter/img/check.svg";
 import {clearCart} from "../../store/cartSlice";
+import FieldCountry from "../fieldCountry";
 
 
 const Cart = (props) => {
@@ -39,6 +40,7 @@ const Cart = (props) => {
             getCitiFetch = true
         }
     }
+
 
     let total = 0
     cart.forEach((item) => {
@@ -294,20 +296,11 @@ const Cart = (props) => {
                                             {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod === "store pickup" && <Field name="country" as="select" validate={validateExist}>
-                                    {({
-                                          field
-                                      }) => (
-                                        <div className='cart__block-relative'>
-                                            <select className={classNames('cart__input', {'cart__input--errors': errors.country && touched.country})}   {...field}>
-                                                {countries.map((item) => {
-                                                    return <option key={item._id} value={item.name}>{item.name}</option>
-                                                })}
-                                            </select>
-                                            {!isCountriesError && errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
-                                            {isCountriesError && <div className='cart__errors'>Ошибка загрузки данных</div>}
-                                        </div>
-                                    )}</Field>}
+                                {values.deliveryMethod === "store pickup" &&<div className='cart__block-relative'>
+                                    <FieldCountry countries={countries} />
+                                    {!isCountriesError && errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
+                                    {isCountriesError && <div className='cart__errors'>Ошибка загрузки данных</div>}
+                                </div>}
                                 {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' validate={validateExist}>
                                     {({
                                           field,
