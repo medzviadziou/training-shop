@@ -250,7 +250,6 @@
     line-height: 18px;
     color: #D61313;
   }
-
   &__agree{
     display: flex;
   }
@@ -266,11 +265,9 @@
       border: 1px solid #D61313;
     }
   }
-
   &__check {
     opacity: 0;
   }
-
   &__check-input {
     width: 0;
     height: 0;
@@ -283,8 +280,18 @@
       opacity: 1;
     }
   }
-
   &__status{
+    padding-top: 68px;
     height: calc(100vh - 244px);
+  }
+  &__message{
+    padding-top: 24px;
+    font-family: var(--Spartan);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
   }
 }

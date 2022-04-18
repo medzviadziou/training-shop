@@ -21,21 +21,22 @@ const Cart = (props) => {
     const cart = useSelector(state => state.cart.cart)
     let clear = useSelector(state => state.cart.cart).length < 1;
     const {countries, isCountriesFilled, isCountriesError} = useSelector((state) => state.countries)
-    const {cities, isCitiesError} = useSelector((state )=> state.cities)
+    const {cities, isCitiesError} = useSelector((state) => state.cities)
+    const isMessage = useSelector(state => state.order.isMessage)
 
 
     let getCitiFetch
     const getCity = (countryGet, cityGet) => {
         console.log(countryGet, cityGet)
-         if (cityGet.length === 3 && getCitiFetch) {
+        if (cityGet.length === 3 && getCitiFetch) {
             dispatch(getCitiesFetch({
                 city: cityGet,
                 country: countryGet
             }))
-             getCitiFetch = false
-        }else if (cityGet.length !== 3 && !getCitiFetch){
-             getCitiFetch = true
-         }
+            getCitiFetch = false
+        } else if (cityGet.length !== 3 && !getCitiFetch) {
+            getCitiFetch = true
+        }
     }
 
     let total = 0
@@ -109,6 +110,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateExist(value) {
         let error;
         if (!value) {
@@ -116,6 +118,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateCites(value) {
         let error;
         if (!value) {
@@ -125,6 +128,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateCard(value) {
         let error;
         if (!value) {
@@ -134,6 +138,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateCardDate(value) {
         let error;
         if (!value) {
@@ -150,6 +155,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateCardCVV(value) {
         let error;
         if (!value) {
@@ -159,6 +165,7 @@ const Cart = (props) => {
         }
         return error;
     }
+
     function validateAgree(value) {
         let error;
         if (!value) {
@@ -184,9 +191,18 @@ const Cart = (props) => {
                         <li className={classNames('cart__item', {'cart__item--active': cartList === 'pay'})}>Payment</li>
                     </ul>
                 </menu>}
-                {cartList === 'status' && <div className='cart__status cart__contain'>
+                {cartList === 'status' && isMessage !== "success" && <div className='cart__status cart__contain'>
                     <div className='cart__text'>Sorry, your payment has not been processed.</div>
-                                                        </div>}
+                    {isMessage === "request-error" &&<div className='cart__message'>Server request failed, please try again later</div>}
+                    {isMessage === "underfunded" &&<div className='cart__message'>There are not enough funds to pay for the order</div>}
+                    {isMessage === "bank-error" &&<div className='cart__message'>Failed to pay for the order, the problem is on the side of the bank</div>}
+                    {isMessage === "timeout" &&<div className='cart__message'>Timed out request</div>}
+                </div>}
+                {cartList === 'status' && isMessage === "success" && <div className='cart__status cart__contain'>
+                    <div className='cart__text'>Thank you for your order</div>
+                    <div className='cart__message'>Information about your order will appear in your e-mail.</div>
+                    <div className='cart__message'>Our manager will call you back.</div>
+                </div>}
 
 
                 {cartList === 'goods' && <div className='cart__selected cart__contain'>
@@ -223,6 +239,8 @@ const Cart = (props) => {
                         agree: isAgree,
                     }}
                     onSubmit={(values) => {
+                        console.log(values)
+                        console.log("test")
                         dispatch(getOrderFetch(values))
                     }}
                 >
@@ -234,7 +252,6 @@ const Cart = (props) => {
                           validateForm,
                       }) => (
                         <Form id='form' onSubmit={handleSubmit} className='cart__form'>
-
                             {cartList === 'delivery' && <div className='cart__wrap cart__contain'>
                                 <div className='cart__radio-group' role="group" aria-labelledby="radio-group-delivery">
                                     <div className='cart__radio-block'><span className='cart__radio-text'>Choose the method of delivery of the items</span></div>
@@ -281,7 +298,7 @@ const Cart = (props) => {
                                             {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod === "store pickup" && <Field name="country"  as="select" validate={validateExist}>
+                                {values.deliveryMethod === "store pickup" && <Field name="country" as="select" validate={validateExist}>
                                     {({
                                           field
                                       }) => (
@@ -348,7 +365,7 @@ const Cart = (props) => {
                                           field,
                                       }) => (
                                         <div className='cart__block-relative'>
-                                            <input onChange={getCity(values.country, values.storeAddress)} list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})} type="text" placeholder="Store address" {...field} disabled={!touched.country} />
+                                            <input onChange={getCity(values.country, values.storeAddress)} list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})} type="text" placeholder="Store address" {...field} disabled={!touched.country}/>
                                             <datalist id="list-store-address">
                                                 {cities.map((item) => {
                                                     return <option key={item._id} value={item.city}>{item.city}</option>
@@ -417,7 +434,7 @@ const Cart = (props) => {
                                         </div>
                                     )}</Field>}
                                 {checkedPay !== "cash" && checkedPay !== "paypal" && <h2 className='cart__h2'>card</h2>}
-                                {checkedPay !== "cash" && checkedPay !== "paypal" &&  <Field name="card" validate={validateCard}>
+                                {checkedPay !== "cash" && checkedPay !== "paypal" && <Field name="card" validate={validateCard}>
                                     {({
                                           field,
                                       }) => (
@@ -448,7 +465,7 @@ const Cart = (props) => {
                                         )}</Field>
                                 </div>}
                             </div>}
-                            {cartList !== 'status' &&<div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>}
+                            {cartList !== 'status' && <div className='cart__payment cart__contain'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>}
                             <div className='cart__contain'>
                                 {cartList === 'delivery' && <button className={classNames('cart__button', {'cart__button--none': clear})} onClick={() => {
                                     touched.phone = true
@@ -461,29 +478,38 @@ const Cart = (props) => {
                                     touched.postcode = true
                                     touched.storeAddress = true
                                     validateForm().then(console.log(Object.keys(errors).length === 0))
-                                    if (!isAgree){
+                                    if (!isAgree) {
                                         if (Object.keys(errors).length !== 0) {
                                             setIsAgree(!isAgree)
-                                        }else if (Object.keys(errors).length === 0) {
+                                        } else if (Object.keys(errors).length === 0) {
                                             next()
                                         }
                                     }
 
                                 }} form="data">Further</button>}
+                                {cartList === 'pay' && values.paymentMethod !== "cash" && <button className='cart__button' type='submit' onClick={() => {
+                                    if (Object.keys(errors).length === 0) {
+                                        setCartList('status');
+                                        handleSubmit()
+                                    }
+                                }}>CHECK OUT</button>}
+                                {cartList === 'pay' && values.paymentMethod === "cash" && <button className='cart__button' type='submit' onClick={() => {
+                                    if (Object.keys(errors).length === 0) {
+                                        setCartList('status');
+                                        handleSubmit()
+                                    }
+                                }}>READY</button>}
                             </div>
-                            <div className='cart__contain'>
-                                {cartList === 'pay' && values.paymentMethod !== "cash" && <button className='cart__button' type='submit' onClick={() => {if(Object.keys(errors).length === 0){setCartList('status')}}}>CHECK OUT</button>}
-                                {cartList === 'pay' && values.paymentMethod === "cash" && <button className='cart__button' type='submit' onClick={() => {if(Object.keys(errors).length === 0){setCartList('status')}}}>READY</button>}
-                            </div>
+
                         </Form>)}
                 </Formik>}
 
                 <div className='cart__contain'>
-                    {cartList === 'status' && <button className='cart__button cart__button--back' onClick={()=>setCartList('pay')}>BACK TO PAYMENT</button>}
-                    {cartList === 'status' && <button className='cart__button cart__button--light' onClick={()=>setCartList('goods')}>View Cart</button>}
+                    {cartList === 'status' && isMessage !== "success" &&<button className='cart__button cart__button--back' onClick={() => setCartList('pay')}>BACK TO PAYMENT</button>}
+                    {cartList === 'status' && isMessage !== "success" &&<button className='cart__button cart__button--light' onClick={() => setCartList('goods')}>View Cart</button>}
+                    {cartList === 'status' && isMessage === "success" &&<button  className='cart__button cart__button--back' onClick={(closeCart)}>BACK TO SHOPPING</button>}
                     <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
-                    {cartList !== 'status' &&<button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
-
+                    {cartList !== 'status' && <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
                 </div>
             </div>
         </div>
