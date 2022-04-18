@@ -6,10 +6,12 @@ import {getOrderSuccess, getOrderError} from "./orderSlise";
 function* orderRequestWorker({payload}) {
     try {
         const {data} = yield call(axios.post, "https://training.cleverland.by/shop/cart", payload);
-        yield put(getOrderSuccess({data}));
+        if (data.message === "success") {
+            yield put(getOrderSuccess({data}));
+        } else {
+            yield put(getOrderError({data}));
+        }
     } catch (err) {
-
-        console.log(err)
         yield put(getOrderError(err));
     }
 }
