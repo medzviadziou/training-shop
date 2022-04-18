@@ -14,6 +14,7 @@ import InputMask from "react-input-mask";
 import {getCountriesFetch} from "../../store/countriesSlise";
 import {getCitiesFetch} from "../../store/citiesSlise";
 import check from "../filter/img/check.svg";
+import {clearCart} from "../../store/cartSlice";
 
 
 const Cart = (props) => {
@@ -90,7 +91,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateEmail(value) {
         let error;
         if (!value) {
@@ -100,7 +100,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validatePostcode(value) {
         let error;
         if (!value) {
@@ -110,7 +109,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateExist(value) {
         let error;
         if (!value) {
@@ -118,7 +116,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCites(value) {
         let error;
         if (!value) {
@@ -128,7 +125,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCard(value) {
         let error;
         if (!value) {
@@ -138,7 +134,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCardDate(value) {
         let error;
         if (!value) {
@@ -155,7 +150,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCardCVV(value) {
         let error;
         if (!value) {
@@ -165,13 +159,17 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateAgree(value) {
         let error;
         if (!value) {
             error = 'Вы должны согласиться на обработку личной информации';
         }
         return error;
+    }
+
+    const closeAll=()=>{
+        dispatch(clearCart())
+        closeCart()
     }
 
     return (
@@ -217,7 +215,9 @@ const Cart = (props) => {
                 </div>}
 
 
-                {cartList !== 'goods' && <Formik
+                <div className={classNames('cart__block-none', {'cart__block-none--block ': cartList !== 'goods'})}>
+
+                 <Formik
                     initialValues={{
                         products: productsFull,
                         deliveryMethod: "pickup from post offices",
@@ -502,12 +502,14 @@ const Cart = (props) => {
                             </div>
 
                         </Form>)}
-                </Formik>}
+                </Formik>
+
+                </div>
 
                 <div className='cart__contain'>
                     {cartList === 'status' && isMessage !== "success" &&<button className='cart__button cart__button--back' onClick={() => setCartList('pay')}>BACK TO PAYMENT</button>}
                     {cartList === 'status' && isMessage !== "success" &&<button className='cart__button cart__button--light' onClick={() => setCartList('goods')}>View Cart</button>}
-                    {cartList === 'status' && isMessage === "success" &&<button  className='cart__button cart__button--back' onClick={(closeCart)}>BACK TO SHOPPING</button>}
+                    {cartList === 'status' && isMessage === "success" &&<button  className='cart__button cart__button--back' onClick={(closeAll)}>BACK TO SHOPPING</button>}
                     <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
                     {cartList !== 'status' && <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
                 </div>

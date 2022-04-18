@@ -6,6 +6,11 @@
   width: 100%;
   height: 100vh;
   z-index: 76;
+  &__block-none{
+    display: none;
+    &--block{
+      display: block;
+      }}
   &__hidden{
 
     position: fixed;

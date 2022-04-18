@@ -37,9 +37,9 @@ const Subscribe = () => {
                     <p className='subscribe__text'>Subscribe <br/> And <span className='subscribe__text subscribe__text--color'>Get 10% Off</span></p>
                     <Formik
                         innerRef={formikRef}
-                        initialValues={{email: ''}}
+                        initialValues={{mail: ''}}
                         validate={values => {
-                            if (values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                            if (values.mail && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.mail)) {
                                 setMailError(false)
                             } else {
                                 setMailError(true)
@@ -66,7 +66,7 @@ const Subscribe = () => {
                                     id='subscribe__input'
                                     placeholder='Enter your email'
                                     type="email"
-                                    name="email"
+                                    name="mail"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.email}
@@ -76,9 +76,9 @@ const Subscribe = () => {
                                     type='submit'
                                     disabled={mailError || success}
                                     className='subscribe__button'>
-                                    {isMailError && touched.email && <p className='subscribe__error'>Ошибка при отправке почты</p>}
+                                    {isMailError && touched.mail && <p className='subscribe__error'>Ошибка при отправке почты</p>}
                                     {success && <p className='subscribe__success'>Почта отправлена успешно</p>}
-                                    {isMailLoading && touched.email && <div className='subscribe__donut'><Donut/></div>}
+                                    {isMailLoading && touched.mail && <div className='subscribe__donut'><Donut/></div>}
                                     <div className='subscribe__button-text'>Subscribe</div>
                                 </button>
                             </form>
