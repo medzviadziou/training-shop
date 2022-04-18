@@ -17,7 +17,7 @@ const Selected = (props) => {
     const exclusivity =props.cart.id+props.cart.color+props.cart.size
 
     return (
-        <div className='selected'>
+        <div className='selected' data-test-id='cart-card'>
             <div className='selected__preview'>
                 { props.cart.discount && <span className='selected__sale'>{ props.cart.discount}</span>}
                 <img className='selected__img' src={`https://training.cleverland.by/shop${props.cart.image}`} alt=""/>
