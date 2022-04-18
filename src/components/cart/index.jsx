@@ -201,13 +201,11 @@ const Cart = (props) => {
                     <div className='cart__message'>Information about your order will appear in your e-mail.</div>
                     <div className='cart__message'>Our manager will call you back.</div>
                 </div>}
-
-
                 {cartList === 'goods' && <div className='cart__selected cart__contain'>
-                    <div className='cart__wrap'>
+                    <div className='cart__wrap' data-test-id='cart-card' >
                         <div className={classNames('cart__text', {'cart__text--none': !clear})}>Sorry, your cart is empty</div>
                         {cart.map((cart, index) => {
-                            return <Selected data-test-id='cart-card' cart={cart} key={index}/>
+                            return <Selected cart={cart} key={index}/>
                         })}
                     </div>
                     {!clear && <div className='cart__payment'><span className='cart__total'>Total</span><span className='cart__total--bold'> $ {total}</span></div>}
@@ -239,8 +237,6 @@ const Cart = (props) => {
                         agree: isAgree,
                     }}
                     onSubmit={(values) => {
-                        console.log(values)
-                        console.log("test")
                         dispatch(getOrderFetch(values))
                     }}
                 >
@@ -511,7 +507,7 @@ const Cart = (props) => {
                     {cartList === 'status' && isMessage !== "success" &&<button className='cart__button cart__button--light' onClick={() => setCartList('goods')}>View Cart</button>}
                     {cartList === 'status' && isMessage === "success" &&<button  className='cart__button cart__button--back' onClick={(closeAll)}>BACK TO SHOPPING</button>}
                     <button className={classNames('cart__button cart__button--back', {'cart__button--none': !clear})} onClick={(closeCart)}>BACK TO SHOPPING</button>
-                    {cartList !== 'status' && <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
+                    {cartList !== 'status' && cartList !== 'goods'  &&  <button className={classNames('cart__button cart__button--light', {'cart__button--none': clear})} onClick={(back)}>View Cart</button>}
                 </div>
             </div>
         </div>
