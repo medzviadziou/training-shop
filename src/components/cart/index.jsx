@@ -20,16 +20,22 @@ const Cart = (props) => {
 
     const cart = useSelector(state => state.cart.cart)
     let clear = useSelector(state => state.cart.cart).length < 1;
-    const {countries, isCountriesFilled} = useSelector((state) => state.countries)
-    const cities = useSelector(state => state.cities.cities)
+    const {countries, isCountriesFilled, isCountriesError} = useSelector((state) => state.countries)
+    const {cities, isCitiesError} = useSelector((state )=> state.cities)
 
+
+    let getCitiFetch
     const getCity = (countryGet, cityGet) => {
-        if (cityGet.length === 3) {
+        console.log(countryGet, cityGet)
+         if (cityGet.length === 3 && getCitiFetch) {
             dispatch(getCitiesFetch({
                 city: cityGet,
                 country: countryGet
             }))
-        }
+             getCitiFetch = false
+        }else if (cityGet.length !== 3 && !getCitiFetch){
+             getCitiFetch = true
+         }
     }
 
     let total = 0
@@ -121,7 +127,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCard(value) {
         let error;
         if (!value) {
@@ -131,7 +136,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCardDate(value) {
         let error;
         if (!value) {
@@ -148,7 +152,6 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateCardCVV(value) {
         let error;
         if (!value) {
@@ -158,13 +161,11 @@ const Cart = (props) => {
         }
         return error;
     }
-
     function validateAgree(value) {
         let error;
         if (!value) {
             error = 'Вы должны согласиться на обработку личной информации';
         }
-        console.log(error)
         return error;
     }
 
@@ -233,7 +234,6 @@ const Cart = (props) => {
                       }) => (
                         <Form id='form' onSubmit={handleSubmit} className='cart__form'>
 
-
                             {cartList === 'delivery' && <div className='cart__wrap cart__contain'>
                                 <div className='cart__radio-group' role="group" aria-labelledby="radio-group-delivery">
                                     <div className='cart__radio-block'><span className='cart__radio-text'>Choose the method of delivery of the items</span></div>
@@ -280,19 +280,18 @@ const Cart = (props) => {
                                             {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
                                         </div>
                                     )}</Field>}
-                                {values.deliveryMethod === "store pickup" && <Field name="country" validate={validateExist}>
+                                {values.deliveryMethod === "store pickup" && <Field name="country"  as="select" validate={validateExist}>
                                     {({
                                           field
                                       }) => (
                                         <div className='cart__block-relative'>
-                                            <input list='list-country' className={classNames('cart__input', {'cart__input--errors': errors.country && touched.country})} type="text" placeholder="Country" {...field}/>
-                                            <datalist id="list-country">
+                                            <select className={classNames('cart__input', {'cart__input--errors': errors.country && touched.country})}   {...field}>
                                                 {countries.map((item) => {
                                                     return <option key={item._id} value={item.name}>{item.name}</option>
                                                 })}
-                                            </datalist>
-                                            {errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
-
+                                            </select>
+                                            {!isCountriesError && errors.country && touched.country && <div className='cart__errors'>{errors.country}</div>}
+                                            {isCountriesError && <div className='cart__errors'>Ошибка загрузки данных</div>}
                                         </div>
                                     )}</Field>}
                                 {values.deliveryMethod !== "store pickup" && <Field name="city" className='cart__input' validate={validateExist}>
@@ -348,13 +347,14 @@ const Cart = (props) => {
                                           field,
                                       }) => (
                                         <div className='cart__block-relative'>
-                                            <input list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})} type="text" placeholder="Store address" {...field} disabled={!touched.country} onClick={getCity(values.country, values.storeAddress)}/>
+                                            <input onChange={getCity(values.country, values.storeAddress)} list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})} type="text" placeholder="Store address" {...field} disabled={!touched.country} />
                                             <datalist id="list-store-address">
                                                 {cities.map((item) => {
                                                     return <option key={item._id} value={item.city}>{item.city}</option>
                                                 })}
                                             </datalist>
-                                            {errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
+                                            {!isCitiesError && errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
+                                            {isCitiesError && touched.storeAddress && <div className='cart__errors'>Ошибка загрузки данных</div>}
                                         </div>
                                     )}</Field>}
                                 <Field name="agree" validate={validateAgree(values.agree)}>
