@@ -203,7 +203,7 @@ const Cart = (props) => {
                 </div>}
                 {cartList === 'goods' && <div className='cart__selected cart__contain'>
                     <div className='cart__wrap' >
-                        <div className={classNames('cart__text', {'cart__text--none': !clear})}>Sorry, your cart is empty</div>
+                        {clear && <div className='cart__text'>Sorry, your cart is empty</div>}
                         {cart.map((cart, index) => {
                             return <Selected cart={cart} key={index}/>
                         })}

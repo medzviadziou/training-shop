@@ -1,18 +1,18 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from "axios";
-import {getOrderSuccess, getOrderError} from "./orderSlise";
+import {getOrderSuccess, submitOrderError} from "./orderSlise";
 
 
 function* orderRequestWorker({payload}) {
     try {
         const {data} = yield call(axios.post, "https://training.cleverland.by/shop/cart", payload);
         if (data.message === "success") {
-            yield put(getOrderSuccess({data}));
+            yield put(getOrderSuccess(data.message));
         } else {
-            yield put(getOrderError({data}));
+            yield put(submitOrderError(data.message));
         }
     } catch (err) {
-        yield put(getOrderError(err));
+        yield put(submitOrderError("timeout"));
     }
 }
 
