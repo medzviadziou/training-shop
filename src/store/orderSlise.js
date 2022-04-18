@@ -4,33 +4,39 @@ import {createSlice} from "@reduxjs/toolkit";
 const orderSlice = createSlice({
     name: 'order',
     initialState: {
-        products: [],
-        deliveryMethod: "",
-        paymentMethod: "",
-        totalPrice: "",
-        phone: "",
-        email: "",
-        country: "",
-        cashEmail: "",
-        city: "",
-        street: "",
-        house: "",
-        apartment: "",
-        postcode: "",
-        storeAddress: "",
-        card: "",
-        cardDate: "",
-        cardCVV: ""
+        order: {
+            products: [],
+            deliveryMethod: "",
+            paymentMethod: "",
+            totalPrice: "",
+            phone: "",
+            email: "",
+            country: "",
+            cashEmail: "",
+            city: "",
+            street: "",
+            house: "",
+            apartment: "",
+            postcode: "",
+            storeAddress: "",
+            card: "",
+            cardDate: "",
+            cardCVV: ""
+        },
+        isMessage: ""
     },
     reducers: {
         getOrderFetch(state, action) {
+            state.isMessage ="";
             state.order = action.payload;
         },
-        getOrderSuccess(action) {
-            console.log('action.payload', action)
+        getOrderSuccess(state, action) {
+            console.log(action.payload.data.message);
+            state.isMessage = action.payload.data.message;
         },
-        getOrderError(action) {
-            console.log('action.error', action)
+        getOrderError(state, action) {
+            console.log(action.payload.data.message);
+            state.isMessage = action.payload.data.message;
         },
     },
 });
