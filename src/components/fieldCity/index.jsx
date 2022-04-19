@@ -24,9 +24,12 @@ const FieldCity = ({cities = []}) => {
         let error;
         if (!value) {
             error = 'Поле должно быть заполнено';
+        }else if (!cities.map((item) => item.city).includes(value)) {
+            error = 'В этом городе нет выдачи';
         }
         return error;
     }
+
 
     const ref = useRef(null);
     useEffect(() => {
@@ -40,11 +43,15 @@ const FieldCity = ({cities = []}) => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [ref]);
-
     useEffect(() => {
         if (cityValue.length === 3) {
             dispatch(getCitiesFetch({
                 city: cityValue,
+                country: countryValue
+            }))
+        }else if (cities.length===0 && cityValue.length > 3){
+            dispatch(getCitiesFetch({
+                city: cityValue.slice(0,3),
                 country: countryValue
             }))
         }
