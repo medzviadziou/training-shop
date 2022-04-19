@@ -46,7 +46,7 @@ const FieldCountry = ({countries}) => {
                     onFocus={() => toggleShowCountriesList(true)}
                     onBlur={(e) => handleBlurCustom(e.target.value)}
                     onChange={(e) => formikContext.setFieldValue('country', e.target.value)}
-                    className={classNames('field-country__input', {'field-country--errors': isError})}
+                    className={classNames('field-country__input', {'field-country__input--errors': isError})}
                 />
             </label>
             {showCountriesList &&
