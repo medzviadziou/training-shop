@@ -4,6 +4,7 @@ import classNames from "classnames";
 import './field-city.scss'
 import {getCitiesFetch} from "../../store/citiesSlise";
 import {useDispatch} from "react-redux";
+import arrow from '../cart/img/arrow-up.svg'
 
 
 const FieldCity = ({cities = [], isCitiesError}) => {
@@ -54,6 +55,7 @@ const FieldCity = ({cities = [], isCitiesError}) => {
                 country: countryValue
             }))
         }
+        // eslint-disable-next-line
     },[cityValue])
 
     return (
@@ -70,6 +72,7 @@ const FieldCity = ({cities = [], isCitiesError}) => {
                     onChange={(e) => formikContext.setFieldValue('storeAddress', e.target.value)}
                     className={classNames('field-city__input', {'field-city__input--errors': isError})}
                 />
+                {showCitiesList && <img className='field-city__arrow' src={arrow} alt=""/>}
             </label>
             {showCitiesList &&
             <ul className="field-city__list">

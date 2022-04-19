@@ -42,6 +42,11 @@
       background-color: #f8f8f8;
     }
   }
+  &__arrow{
+    position: absolute;
+    top: 19px;
+    right: 16px;
+  }
   &__btn {
     cursor: pointer;
     padding: 15px;
