@@ -12,10 +12,10 @@ import Selected from "../selected";
 import {getOrderFetch} from "../../store/orderSlise";
 import InputMask from "react-input-mask";
 import {getCountriesFetch} from "../../store/countriesSlise";
-import {getCitiesFetch} from "../../store/citiesSlise";
 import check from "../filter/img/check.svg";
 import {clearCart} from "../../store/cartSlice";
 import FieldCountry from "../fieldCountry";
+import FieldCity from "../fieldCity";
 
 
 const Cart = (props) => {
@@ -25,21 +25,6 @@ const Cart = (props) => {
     const {countries, isCountriesFilled, isCountriesError} = useSelector((state) => state.countries)
     const {cities, isCitiesError} = useSelector((state) => state.cities)
     const isMessage = useSelector(state => state.order.isMessage)
-
-
-    let getCitiFetch
-    const getCity = (countryGet, cityGet) => {
-        console.log(countryGet, cityGet)
-        if (cityGet.length === 3 && getCitiFetch) {
-            dispatch(getCitiesFetch({
-                city: cityGet,
-                country: countryGet
-            }))
-            getCitiFetch = false
-        } else if (cityGet.length !== 3 && !getCitiFetch) {
-            getCitiFetch = true
-        }
-    }
 
 
     let total = 0
@@ -128,15 +113,6 @@ const Cart = (props) => {
         return error;
     }
 
-    function validateCites(value) {
-        let error;
-        if (!value) {
-            error = 'Поле должно быть заполнено';
-        } else if (!cities.map((item) => item.city).includes(value)) {
-            error = 'В этом городе нет выдачи';
-        }
-        return error;
-    }
 
     function validateCard(value) {
         let error;
@@ -368,21 +344,11 @@ const Cart = (props) => {
                                                 {errors.postcode && touched.postcode && <div className='cart__errors'>{errors.postcode}</div>}
                                             </div>
                                         )}</Field>}
-                                    {values.deliveryMethod === "store pickup" && <Field name="storeAddress" validate={validateCites}>
-                                        {({
-                                              field,
-                                          }) => (
-                                            <div className='cart__block-relative'>
-                                                <input onChange={getCity(values.country, values.storeAddress)} list='list-store-address' className={classNames('cart__input', {'cart__input--errors': errors.storeAddress && touched.storeAddress})} type="text" placeholder="Store address" {...field} disabled={!touched.country}/>
-                                                <datalist id="list-store-address">
-                                                    {cities.map((item) => {
-                                                        return <option key={item._id} value={item.city}>{item.city}</option>
-                                                    })}
-                                                </datalist>
-                                                {!isCitiesError && errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
-                                                {isCitiesError && touched.storeAddress && <div className='cart__errors'>Ошибка загрузки данных</div>}
-                                            </div>
-                                        )}</Field>}
+                                    {values.deliveryMethod === "store pickup" && <div className='cart__block-relative'>
+                                        <FieldCity cities={cities} isCitysError={isCitiesError}/>
+                                        {!isCitiesError && errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
+                                        {isCitiesError && <div className='cart__errors'>Ошибка загрузки данных</div>}
+                                    </div>}
                                     <Field name="agree" validate={validateAgree(values.agree)}>
                                         {({
                                               field,

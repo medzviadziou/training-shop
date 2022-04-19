@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import { useFormikContext, Field } from 'formik';
 import classNames from "classnames";
 import './field-country.scss'
+import arrow from "../cart/img/arrow-up.svg";
 
 
 const FieldCountry = ({countries}) => {
@@ -46,8 +47,9 @@ const FieldCountry = ({countries}) => {
                     onFocus={() => toggleShowCountriesList(true)}
                     onBlur={(e) => handleBlurCustom(e.target.value)}
                     onChange={(e) => formikContext.setFieldValue('country', e.target.value)}
-                    className={classNames('field-country__input', {'field-country--errors': isError})}
+                    className={classNames('field-country__input', {'field-country__input--errors': isError})}
                 />
+                {showCountriesList && <img className='field-country__arrow' src={arrow} alt=""/>}
             </label>
             {showCountriesList &&
             <ul className="field-country__list">

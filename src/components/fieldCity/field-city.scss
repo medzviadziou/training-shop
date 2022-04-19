@@ -1,4 +1,4 @@
-.field-country {
+.field-city {
 
   &__input {
     margin-bottom: 36px;
@@ -19,7 +19,7 @@
       opacity: 0.4;
     }
 
-    &--errors{
+    &--errors {
       border: 1px solid #D61313;
     }
   }
@@ -43,7 +43,7 @@
     }
   }
   &__arrow{
-    position: absolute;
+position: absolute;
     top: 19px;
     right: 16px;
   }
