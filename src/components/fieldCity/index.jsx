@@ -28,6 +28,7 @@ const FieldCity = ({cities = []}) => {
         return error;
     }
 
+
     const ref = useRef(null);
     useEffect(() => {
         function handleClickOutside(event) {
@@ -40,11 +41,15 @@ const FieldCity = ({cities = []}) => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [ref]);
-
     useEffect(() => {
         if (cityValue.length === 3) {
             dispatch(getCitiesFetch({
                 city: cityValue,
+                country: countryValue
+            }))
+        }else if (cities.length===0 && cityValue.length > 3){
+            dispatch(getCitiesFetch({
+                city: cityValue.slice(0,3),
                 country: countryValue
             }))
         }
