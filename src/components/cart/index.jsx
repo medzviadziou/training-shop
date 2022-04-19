@@ -113,7 +113,6 @@ const Cart = (props) => {
         return error;
     }
 
-
     function validateCard(value) {
         let error;
         if (!value) {
@@ -345,7 +344,7 @@ const Cart = (props) => {
                                             </div>
                                         )}</Field>}
                                     {values.deliveryMethod === "store pickup" && <div className='cart__block-relative'>
-                                        <FieldCity cities={cities} isCitysError={isCitiesError}/>
+                                        <FieldCity cities={cities}/>
                                         {!isCitiesError && errors.storeAddress && touched.storeAddress && <div className='cart__errors'>{errors.storeAddress}</div>}
                                         {isCitiesError && <div className='cart__errors'>Ошибка загрузки данных</div>}
                                     </div>}

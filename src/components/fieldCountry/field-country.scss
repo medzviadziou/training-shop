@@ -1,5 +1,25 @@
 .field-country {
 
+  &__label {
+    position: relative;
+    display: block;
+
+    .field-country--active & {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 16px;
+        margin: auto;
+        display: block;
+        background: url("./img/arrow.svg") no-repeat center;
+        width: 12px;
+        height: 12px;
+        pointer-events: none;
+      }
+    }
+  }
   &__input {
     margin-bottom: 36px;
     padding: 0 16px;
@@ -41,11 +61,6 @@
     &:nth-child(even) {
       background-color: #f8f8f8;
     }
-  }
-  &__arrow{
-    position: absolute;
-    top: 19px;
-    right: 16px;
   }
   &__btn {
     cursor: pointer;

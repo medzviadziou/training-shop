@@ -21,10 +21,13 @@ const citiesSlice = createSlice({
         getCitiesFailure(state) {
             state.isCitiesError = true;
         },
+        clearCities(state) {
+            state.cities = [];
+        }
     },
 });
 
-export const {getCitiesFetch, getCitiesSuccess, getCitiesFailure} = citiesSlice.actions
+export const {getCitiesFetch, getCitiesSuccess, getCitiesFailure, clearCities} = citiesSlice.actions
 
 export default citiesSlice.reducer
 
