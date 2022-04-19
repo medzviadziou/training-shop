@@ -113,7 +113,6 @@ const Cart = (props) => {
         return error;
     }
 
-
     function validateCard(value) {
         let error;
         if (!value) {

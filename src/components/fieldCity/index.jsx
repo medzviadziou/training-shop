@@ -2,39 +2,32 @@ import React, {useState, useEffect, useRef} from "react";
 import { useFormikContext, Field } from 'formik';
 import classNames from "classnames";
 import './field-city.scss'
-import {getCitiesFetch} from "../../store/citiesSlise";
+import {getCitiesFetch, clearCities} from "../../store/citiesSlise";
 import {useDispatch} from "react-redux";
-import arrow from '../cart/img/arrow-up.svg'
 
 
-const FieldCity = ({cities = [], isCitiesError}) => {
+const FieldCity = ({cities = []}) => {
     const dispatch = useDispatch();
     const formikContext = useFormikContext();
     const countryValue = formikContext.values.country;
     const cityValue = formikContext.values.storeAddress;
     const isError =  formikContext.errors.storeAddress && formikContext.touched.storeAddress;
     const [showCitiesList, toggleShowCitiesList] = useState(false);
-    const options = cities.filter(({city}) => city.toLowerCase().indexOf(cityValue.toLowerCase()) !== -1);
+    const options = cities.filter(({city}) => city.toLowerCase().includes(cityValue.toLowerCase()));
     const handleClick = (e) => {
         e.preventDefault();
         formikContext.setFieldValue('storeAddress', e.target.value);
         toggleShowCitiesList(false);
     }
 
-    const validateCity = (value) => {
-        let errors;
-        if (isCitiesError && cities.length) {
-            const citiesArray = cities.map(({city}) => city);
-            const countriesArray = new Set(cities.map(({country}) => country));
-            if (!citiesArray.includes(value) || !countriesArray.has(countryValue)) {
-                errors = 'Нету результатов';
-            }
+    function validateCites(value) {
+        let error;
+        if (!value) {
+            error = 'Поле должно быть заполнено';
         }
-        if (isCitiesError && !cities.length)
-            errors = 'Нету результатов';
-
-        return errors;
+        return error;
     }
+
     const ref = useRef(null);
     useEffect(() => {
         function handleClickOutside(event) {
@@ -57,14 +50,19 @@ const FieldCity = ({cities = [], isCitiesError}) => {
         }
         // eslint-disable-next-line
     },[cityValue])
+    useEffect(() => {
+        formikContext.setFieldValue('storeAddress', '');
+        dispatch( clearCities())
+        // eslint-disable-next-line
+    },[countryValue])
 
     return (
         <div className={classNames('field-city', {'field-city--active': showCitiesList})} ref={ref}>
-            <label htmlFor="storeAddress-input">
+            <label className="field-city__label" htmlFor="storeAddress-input">
                 <Field
                     id="storeAddress-input"
                     name="storeAddress"
-                    validate={validateCity}
+                    validate={validateCites}
                     autoComplete="whatever"
                     placeholder="Store address"
                     disabled={!countryValue}
@@ -72,7 +70,6 @@ const FieldCity = ({cities = [], isCitiesError}) => {
                     onChange={(e) => formikContext.setFieldValue('storeAddress', e.target.value)}
                     className={classNames('field-city__input', {'field-city__input--errors': isError})}
                 />
-                {showCitiesList && <img className='field-city__arrow' src={arrow} alt=""/>}
             </label>
             {showCitiesList &&
             <ul className="field-city__list">
