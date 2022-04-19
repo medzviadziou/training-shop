@@ -24,6 +24,8 @@ const FieldCity = ({cities = []}) => {
         let error;
         if (!value) {
             error = 'Поле должно быть заполнено';
+        }else if (!cities.map((item) => item.city).includes(value)) {
+            error = 'В этом городе нет выдачи';
         }
         return error;
     }
